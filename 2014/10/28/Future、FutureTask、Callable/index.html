@@ -1,0 +1,399 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Future、FutureTask、Callable | JiangNan&#39;s Blog</title>
+  <meta name="author" content="JiangNan">
+  
+  <meta name="description" content="筚路蓝缕，以启山林">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Future、FutureTask、Callable"/>
+  <meta property="og:site_name" content="JiangNan&#39;s Blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="JiangNan&#39;s Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">JiangNan&#39;s Blog</a></h1>
+  <h2><a href="/">筚路蓝缕，以启山林</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">全部文章</a></li>
+    
+      <li><a href="/about">关于我</a></li>
+    
+      <li><a href="/feature">规划页</a></li>
+    
+	<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//qzone.haoduoge.com/music/48A09O38IG846DBF4FD1889F31315A6A8B2F9.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>音乐</a> </li>
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-10-28T06:13:50.000Z"><a href="/2014/10/28/Future、FutureTask、Callable/">10月 28 2014</a></time>
+      
+      
+  
+    <h1 class="title">Future、FutureTask、Callable</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="1-_Future接口">1. Future接口</h2>
+<p>JDK API中的说明</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Future</span> &lt;<span class="title">V</span>&gt;</span></div></pre></td></tr></table></figure>
+
+<p> Future表示异步计算的结果。<span style="color:red">它提供了检查计算是否完成的方法，以等待计算的完成，并获取计算的结果。</span>计算完成后只能使用 get 方法来获取结果，如有必要，计算完成前可以阻塞此方法。<span style="color:red">取消则由cancel方法来执行。</span>还提供了其他方法，以确定任务是正常完成还是被取消了。一旦计算完成，就不能再取消计算。如果为了可取消性而使用 Future 但又不提供可用的结果，则可以声明 Future&lt;?&gt; 形式类型、并返回 null 作为底层任务的结果。<br><a id="more"></a><br>方法：<br>（1）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">boolean</span> cancel(<span class="keyword">boolean</span> mayInterruptIfRunning)</div></pre></td></tr></table></figure>
+
+<p>试图取消对此任务的执行。如果任务已完成、或已取消，或者由于某些其他原因而无法取消，则此尝试将失败。当调用 cancel 时，如果调用成功，而此任务尚未启动，则此任务将永不运行。如果任务已经启动，则 mayInterruptIfRunning 参数确定<span style="color:red">是否应该以试图停止任务的方式来中断执行此任务的线程。</span> 此方法返回后，对 isDone() 的后续调用将始终返回 true。如果此方法返回 true，则对 isCancelled() 的后续调用将始终返回 true。<br>(2)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">boolean</span> isCancelled()</div></pre></td></tr></table></figure>
+
+<p>如果在任务正常完成前将其取消，则返回 true。<br>(3)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">boolean</span> isDone()</div></pre></td></tr></table></figure>
+
+<p>如果任务已完成，则返回 true。 可能由于正常终止、异常或取消而完成，在所有这些情况中，此方法都将返回 true。<br>(4)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">V get() <span class="keyword">throws</span> InterruptedException,ExecutionException</div></pre></td></tr></table></figure>
+
+<p>如有必要，等待计算完成，然后<span style="color:red">获取其结果。</span><br>(5)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">V get(<span class="keyword">long</span> timeout,TimeUnit unit) <span class="keyword">throws</span> InterruptedException,ExecutionException,TimeoutException</div></pre></td></tr></table></figure>
+
+<p>如有必要，最多等待为使计算完成所给定的时间之后，获取其结果（如果结果可用）。 </p>
+<h2 id="2-_RunnableFuture接口">2. RunnableFuture接口</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">RunnableFuture</span>&lt;<span class="title">V</span>&gt; <span class="keyword">extends</span> <span class="title">Runnable</span>, <span class="title">Future</span>&lt;<span class="title">V</span>&gt;</span></div></pre></td></tr></table></figure>
+
+<p>作为 Runnable 的 Future。成功执行 run 方法可以完成 Future 并允许访问其结果。</p>
+<p>继承了Runnable方法和Future方法，所以实现了这个接口的类可以被多线程下执行，并且能够异步的取得结果。</p>
+<h2 id="3-_Callable接口">3. Callable接口</h2>
+<p>callable接口与Runnable接口非常相似，他们都是为潜在的可能被多线程调用的类所设计。但是callable的call（）方法是有返回值的，而且可以抛出一个Check Exception异常。</p>
+<h2 id="4-_Runnable接口">4. Runnable接口</h2>
+<p>Runnable接口：这个接口是我们非常熟悉的，在这个接口中只有一个run（）方法，在这个方法中我们可以实现我们的计算逻辑。但是没有返回值，也就是说runnable接口只管运行，不管运行结果。</p>
+<h2 id="5-_FutureTask">5. FutureTask</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FutureTask</span>&lt;<span class="title">V</span>&gt; <span class="keyword">extends</span> <span class="title">Object</span> <span class="keyword">implements</span> <span class="title">RunnableFuture</span>&lt;<span class="title">V</span>&gt;</span></div></pre></td></tr></table></figure>
+
+<p>FutureTask类是Future的一个实现，并实现了Runnable，所以可通过 Excutor和Thread对象执行。</p>
+<p>下面的例子可以做为参考：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.concurrent.Callable;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Changgong</span> <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">Integer</span>&gt;</span>{</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> hours=<span class="number">12</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> amount;</div><div class="line">    </div><div class="line">    <span class="keyword">public</span> Integer <span class="title">call</span>() <span class="keyword">throws</span> Exception {</div><div class="line">        <span class="keyword">while</span>(hours&gt;<span class="number">0</span>){</div><div class="line">            System.out.println(<span class="string">"I'm working......  "</span>+hours+<span class="string">" hours"</span>);</div><div class="line">            amount ++;</div><div class="line">            hours--;</div><div class="line">            Thread.sleep(<span class="number">1000</span>);</div><div class="line">        }</div><div class="line">        <span class="keyword">return</span> amount;</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.concurrent.ExecutionException;</div><div class="line"><span class="keyword">import</span> java.util.concurrent.FutureTask;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dizhu</span> </span>{</div><div class="line">        </div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(String args[]){</div><div class="line">        Changgong worker = <span class="keyword">new</span> Changgong();</div><div class="line">        FutureTask&lt;Integer&gt; jiangong = <span class="keyword">new</span> FutureTask&lt;Integer&gt;(worker);</div><div class="line">        <span class="keyword">new</span> Thread(jiangong).start();</div><div class="line">        <span class="keyword">while</span>(!jiangong.isDone()){</div><div class="line">            <span class="keyword">try</span> {</div><div class="line">                System.out.println(<span class="string">"看长工做完了没..."</span>);</div><div class="line">                Thread.sleep(<span class="number">1000</span>);</div><div class="line">            } <span class="keyword">catch</span> (InterruptedException e) {</div><div class="line">                <span class="comment">// TODO Auto-generated catch block</span></div><div class="line">                e.printStackTrace();</div><div class="line">            }</div><div class="line">        }</div><div class="line">        <span class="keyword">int</span> amount;</div><div class="line">        <span class="keyword">try</span> {</div><div class="line">            amount = jiangong.get();</div><div class="line">            System.out.println(<span class="string">"工作做完了,上交了"</span>+amount);</div><div class="line">        } <span class="keyword">catch</span> (InterruptedException e) {</div><div class="line">            <span class="comment">// TODO Auto-generated catch block</span></div><div class="line">            e.printStackTrace();</div><div class="line">        } <span class="keyword">catch</span> (ExecutionException e) {</div><div class="line">            <span class="comment">// TODO Auto-generated catch block</span></div><div class="line">            e.printStackTrace();</div><div class="line">        }</div><div class="line">        </div><div class="line">        </div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>运行结果：<br>看长工做完了没…<br>I’m working……  12 hours<br>看长工做完了没…<br>I’m working……  11 hours<br>看长工做完了没…<br>I’m working……  10 hours<br>看长工做完了没…<br>I’m working……  9 hours<br>看长工做完了没…<br>I’m working……  8 hours<br>看长工做完了没…<br>I’m working……  7 hours<br>看长工做完了没…<br>I’m working……  6 hours<br>看长工做完了没…<br>I’m working……  5 hours<br>看长工做完了没…<br>I’m working……  4 hours<br>看长工做完了没…<br>I’m working……  3 hours<br>看长工做完了没…<br>I’m working……  2 hours<br>看长工做完了没…<br>I’m working……  1 hours<br>看长工做完了没…<br>工作做完了,上交了12</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/java高级/">java高级</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/201410/">201410</a>
+  </div>
+
+       <div class="bdsharebuttonbox">
+   <a href="#" class="bds_more" data-cmd="more"></a>
+   <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+   <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+   <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+   <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+   <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+  </div> 
+  <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<nav id="pagination" >
+    
+    <a href="/2014/10/28/Java-多线程-一/" class="alignleft prev" >上一页</a>
+    
+    
+    <a href="/2014/10/28/spring揭秘-一/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+<section id="comment">
+   <ul class="ds-recent-comments" data-num-items="10" data-show-avatars="1" data-show-time="1" data-show-admin="1" data-excerpt-length="70"></ul>
+<!--多说js加载开始，一个页面只需要加载一次 -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"jiangnan31.github.io"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+<!--多说js加载结束，一个页面只需要加载一次 -->
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:jiangnan31.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Hadoop/">Hadoop</a><small>2</small></li>
+  
+    <li><a href="/categories/JavaScript/">JavaScript</a><small>1</small></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/categories/java高级/">java高级</a><small>7</small></li>
+  
+    <li><a href="/categories/leetCode/">leetCode</a><small>1</small></li>
+  
+    <li><a href="/categories/java高级/多线程/">多线程</a><small>4</small></li>
+  
+    <li><a href="/categories/扯犊子/">扯犊子</a><small>1</small></li>
+  
+    <li><a href="/categories/JavaScript/笔记/">笔记</a><small>1</small></li>
+  
+    <li><a href="/categories/Linux/笔记/">笔记</a><small>1</small></li>
+  
+    <li><a href="/categories/java高级/多线程/笔记/">笔记</a><small>4</small></li>
+  
+    <li><a href="/categories/java高级/笔记/">笔记</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/201410/">201410</a><small>9</small></li>
+  
+    <li><a href="/tags/201411/">201411</a><small>2</small></li>
+  
+    <li><a href="/tags/201412/">201412</a><small>1</small></li>
+  
+    <li><a href="/tags/代码/">代码</a><small>1</small></li>
+  
+    <li><a href="/tags/转载/">转载</a><small>7</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 JiangNan
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

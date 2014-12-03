@@ -1,0 +1,366 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>单点Hadoop搭建过程中错误 | JiangNan&#39;s Blog</title>
+  <meta name="author" content="JiangNan">
+  
+  <meta name="description" content="筚路蓝缕，以启山林">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="单点Hadoop搭建过程中错误"/>
+  <meta property="og:site_name" content="JiangNan&#39;s Blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="JiangNan&#39;s Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">JiangNan&#39;s Blog</a></h1>
+  <h2><a href="/">筚路蓝缕，以启山林</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">全部文章</a></li>
+    
+      <li><a href="/about">关于我</a></li>
+    
+      <li><a href="/feature">规划页</a></li>
+    
+	<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//qzone.haoduoge.com/music/48A09O38IG846DBF4FD1889F31315A6A8B2F9.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>音乐</a> </li>
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-11-05T08:49:29.000Z"><a href="/2014/11/05/单点Hadoop搭建过程中错误/">11月 5 2014</a></time>
+      
+      
+  
+    <h1 class="title">单点Hadoop搭建过程中错误</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>Hadoop 安装过程中问题 </p>
+<h2 id="A_fatal_error_has_been_detected_by_the_Java_Runtime_Environment:">A fatal error has been detected by the Java Runtime Environment:</h2>
+<p>参考: <a href="http://blog.163.com/wf_shunqiziran/blog/static/17630720920125286153575/" target="_blank" rel="external">http://blog.163.com/wf_shunqiziran/blog/static/17630720920125286153575/</a>中的方法二</p>
+<p><a id="more"></a></p>
+<h2 id="java-io-IOException:_File_/user/root/input_could_only_be_replicated_to_0_nodes,_instead_of_1">java.io.IOException: File /user/root/input could only be replicated to 0 nodes, instead of 1</h2>
+<p>参考: <a href="http://www.linuxidc.com/Linux/2012-03/56220.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2012-03/56220.htm</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div></pre></td><td class="code"><pre><div class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com hadoop-1.2.1]$ bin/<span class="operator"><span class="keyword">stop</span>-<span class="keyword">all</span>.sh</span></div><div class="line">Warning: $HADOOP_HOME <span class="keyword">is</span> deprecated.</div><div class="line"></div><div class="line">stopping jobtracker</div><div class="line">jiangnan04@localhost<span class="string">'s password: </span></div><div class="line">localhost: stopping tasktracker</div><div class="line">stopping namenode</div><div class="line">jiangnan04@localhost's <span class="keyword">password</span>: </div><div class="line">localhost: <span class="keyword">no</span> datanode <span class="keyword">to</span> <span class="keyword">stop</span></div><div class="line">jiangnan04@localhost<span class="string">'s password: </span></div><div class="line">localhost: stopping secondarynamenode</div><div class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com hadoop-1.2.1]$ bin/start-all.sh</div><div class="line">Warning: $HADOOP_HOME is deprecated.</div><div class="line"></div><div class="line">starting namenode, logging to /home/users/jiangnan04/tools/hadoop-1.2.1/libexec/../logs/hadoop-jiangnan04-namenode-cp01-rdqa-dev361.cp01.baidu.com.out</div><div class="line">jiangnan04@localhost's <span class="keyword">password</span>: </div><div class="line">localhost: <span class="keyword">starting</span> datanode, logging <span class="keyword">to</span> /home/users/jiangnan04/tools/hadoop-<span class="number">1.2</span><span class="number">.1</span>/libexec/../<span class="keyword">logs</span>/hadoop-jiangnan04-datanode-cp01-rdqa-dev361.cp01.baidu.com.out</div><div class="line">jiangnan04@localhost<span class="string">'s password: </span></div><div class="line">localhost: starting secondarynamenode, logging to /home/users/jiangnan04/tools/hadoop-1.2.1/libexec/../logs/hadoop-jiangnan04-secondarynamenode-cp01-rdqa-dev361.cp01.baidu.com.out</div><div class="line">starting jobtracker, logging to /home/users/jiangnan04/tools/hadoop-1.2.1/libexec/../logs/hadoop-jiangnan04-jobtracker-cp01-rdqa-dev361.cp01.baidu.com.out</div><div class="line">jiangnan04@localhost's <span class="keyword">password</span>: </div><div class="line">localhost: <span class="keyword">starting</span> tasktracker, logging <span class="keyword">to</span> /home/users/jiangnan04/tools/hadoop-<span class="number">1.2</span><span class="number">.1</span>/libexec/../<span class="keyword">logs</span>/hadoop-jiangnan04-tasktracker-cp01-rdqa-dev361.cp01.baidu.com.out</div><div class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com hadoop-<span class="number">1.2</span><span class="number">.1</span>]$ <span class="keyword">bin</span>/hadoop fs -put conf <span class="keyword">input</span></div><div class="line">Warning: $HADOOP_HOME <span class="keyword">is</span> deprecated.</div><div class="line"></div><div class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com hadoop-<span class="number">1.2</span><span class="number">.1</span>]$ <span class="keyword">bin</span>/hadoop jar hadoop-examples-*.jar grep <span class="keyword">input</span> <span class="keyword">output</span> <span class="string">'dfs[a-z.]+'</span></div><div class="line">Warning: $HADOOP_HOME <span class="keyword">is</span> deprecated.</div><div class="line"></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">23</span> WARN util.NativeCodeLoader: Unable <span class="keyword">to</span> <span class="keyword">load</span> native-hadoop library <span class="keyword">for</span> your platform... <span class="keyword">using</span> builtin-java classes <span class="keyword">where</span> applicable</div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">23</span> WARN snappy.LoadSnappy: Snappy native library <span class="keyword">not</span> loaded</div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">23</span> INFO mapred.FileInputFormat: Total <span class="keyword">input</span> paths <span class="keyword">to</span> process : <span class="number">21</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">24</span> INFO mapred.JobClient: Running job: job_201411051640_0001</div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">25</span> INFO mapred.JobClient:  map <span class="number">0</span>% reduce <span class="number">0</span>%</div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">30</span> INFO mapred.JobClient:  map <span class="number">9</span>% reduce <span class="number">0</span>%</div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">32</span> INFO mapred.JobClient:  map <span class="number">19</span>% reduce <span class="number">0</span>%</div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">33</span> INFO mapred.JobClient:  map <span class="number">28</span>% reduce <span class="number">0</span>%</div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">35</span> INFO mapred.JobClient:  map <span class="number">38</span>% reduce <span class="number">0</span>%</div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">37</span> INFO mapred.JobClient:  map <span class="number">47</span>% reduce <span class="number">12</span>%</div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">39</span> INFO mapred.JobClient:  map <span class="number">57</span>% reduce <span class="number">12</span>%</div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">41</span> INFO mapred.JobClient:  map <span class="number">66</span>% reduce <span class="number">12</span>%</div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">42</span> INFO mapred.JobClient:  map <span class="number">76</span>% reduce <span class="number">12</span>%</div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">44</span> INFO mapred.JobClient:  map <span class="number">85</span>% reduce <span class="number">12</span>%</div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">46</span> INFO mapred.JobClient:  map <span class="number">95</span>% reduce <span class="number">22</span>%</div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">48</span> INFO mapred.JobClient:  map <span class="number">100</span>% reduce <span class="number">22</span>%</div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">52</span> INFO mapred.JobClient:  map <span class="number">100</span>% reduce <span class="number">33</span>%</div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:  map <span class="number">100</span>% reduce <span class="number">100</span>%</div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient: Job complete: job_201411051640_0001</div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient: Counters: <span class="number">30</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:   Job Counters </div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:     Launched reduce tasks=<span class="number">1</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:     SLOTS_MILLIS_MAPS=<span class="number">36382</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:     Total <span class="keyword">time</span> spent <span class="keyword">by</span> <span class="keyword">all</span> reduces waiting <span class="keyword">after</span> reserving slots (ms)=<span class="number">0</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:     Total <span class="keyword">time</span> spent <span class="keyword">by</span> <span class="keyword">all</span> maps waiting <span class="keyword">after</span> reserving slots (ms)=<span class="number">0</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:     Launched map tasks=<span class="number">21</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:     <span class="keyword">Data</span>-<span class="keyword">local</span> map tasks=<span class="number">21</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:     SLOTS_MILLIS_REDUCES=<span class="number">23896</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:   File <span class="keyword">Input</span> <span class="keyword">Format</span> Counters </div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:     Bytes <span class="keyword">Read</span>=<span class="number">37815</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:   File <span class="keyword">Output</span> <span class="keyword">Format</span> Counters </div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:     Bytes Written=<span class="number">180</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:   FileSystemCounters</div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:     FILE_BYTES_READ=<span class="number">82</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:     HDFS_BYTES_READ=<span class="number">40197</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:     FILE_BYTES_WRITTEN=<span class="number">1305144</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:     HDFS_BYTES_WRITTEN=<span class="number">180</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:   Map-Reduce Framework</div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:     Map <span class="keyword">output</span> materialized bytes=<span class="number">202</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:     Map <span class="keyword">input</span> records=<span class="number">1061</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:     Reduce shuffle bytes=<span class="number">202</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:     Spilled Records=<span class="number">6</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:     Map <span class="keyword">output</span> bytes=<span class="number">70</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:     Total committed heap <span class="keyword">usage</span> (bytes)=<span class="number">4421976064</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:     CPU <span class="keyword">time</span> spent (ms)=<span class="number">10760</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:     Map <span class="keyword">input</span> bytes=<span class="number">37815</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:     SPLIT_RAW_BYTES=<span class="number">2382</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:     Combine <span class="keyword">input</span> records=<span class="number">3</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:     Reduce <span class="keyword">input</span> records=<span class="number">3</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:     Reduce <span class="keyword">input</span> groups=<span class="number">3</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:     Combine <span class="keyword">output</span> records=<span class="number">3</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:     Physical memory (bytes) <span class="keyword">snapshot</span>=<span class="number">4446228480</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:     Reduce <span class="keyword">output</span> records=<span class="number">3</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:     Virtual memory (bytes) <span class="keyword">snapshot</span>=<span class="number">11182075904</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient:     Map <span class="keyword">output</span> records=<span class="number">3</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.FileInputFormat: Total <span class="keyword">input</span> paths <span class="keyword">to</span> process : <span class="number">1</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">54</span> INFO mapred.JobClient: Running job: job_201411051640_0002</div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">55</span> INFO mapred.JobClient:  map <span class="number">0</span>% reduce <span class="number">0</span>%</div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">42</span>:<span class="number">59</span> INFO mapred.JobClient:  map <span class="number">100</span>% reduce <span class="number">0</span>%</div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">07</span> INFO mapred.JobClient:  map <span class="number">100</span>% reduce <span class="number">33</span>%</div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">08</span> INFO mapred.JobClient:  map <span class="number">100</span>% reduce <span class="number">100</span>%</div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient: Job complete: job_201411051640_0002</div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient: Counters: <span class="number">30</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:   Job Counters </div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:     Launched reduce tasks=<span class="number">1</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:     SLOTS_MILLIS_MAPS=<span class="number">4483</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:     Total <span class="keyword">time</span> spent <span class="keyword">by</span> <span class="keyword">all</span> reduces waiting <span class="keyword">after</span> reserving slots (ms)=<span class="number">0</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:     Total <span class="keyword">time</span> spent <span class="keyword">by</span> <span class="keyword">all</span> maps waiting <span class="keyword">after</span> reserving slots (ms)=<span class="number">0</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:     Launched map tasks=<span class="number">1</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:     <span class="keyword">Data</span>-<span class="keyword">local</span> map tasks=<span class="number">1</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:     SLOTS_MILLIS_REDUCES=<span class="number">8602</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:   File <span class="keyword">Input</span> <span class="keyword">Format</span> Counters </div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:     Bytes <span class="keyword">Read</span>=<span class="number">180</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:   File <span class="keyword">Output</span> <span class="keyword">Format</span> Counters </div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:     Bytes Written=<span class="number">52</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:   FileSystemCounters</div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:     FILE_BYTES_READ=<span class="number">82</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:     HDFS_BYTES_READ=<span class="number">301</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:     FILE_BYTES_WRITTEN=<span class="number">116951</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:     HDFS_BYTES_WRITTEN=<span class="number">52</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:   Map-Reduce Framework</div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:     Map <span class="keyword">output</span> materialized bytes=<span class="number">82</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:     Map <span class="keyword">input</span> records=<span class="number">3</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:     Reduce shuffle bytes=<span class="number">82</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:     Spilled Records=<span class="number">6</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:     Map <span class="keyword">output</span> bytes=<span class="number">70</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:     Total committed heap <span class="keyword">usage</span> (bytes)=<span class="number">401997824</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:     CPU <span class="keyword">time</span> spent (ms)=<span class="number">1750</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:     Map <span class="keyword">input</span> bytes=<span class="number">94</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:     SPLIT_RAW_BYTES=<span class="number">121</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:     Combine <span class="keyword">input</span> records=<span class="number">0</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:     Reduce <span class="keyword">input</span> records=<span class="number">3</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:     Reduce <span class="keyword">input</span> groups=<span class="number">1</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:     Combine <span class="keyword">output</span> records=<span class="number">0</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:     Physical memory (bytes) <span class="keyword">snapshot</span>=<span class="number">325132288</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:     Reduce <span class="keyword">output</span> records=<span class="number">3</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:     Virtual memory (bytes) <span class="keyword">snapshot</span>=<span class="number">1023143936</span></div><div class="line"><span class="number">14</span>/<span class="number">11</span>/<span class="number">05</span> <span class="number">16</span>:<span class="number">43</span>:<span class="number">09</span> INFO mapred.JobClient:     Map <span class="keyword">output</span> records=<span class="number">3</span></div><div class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com hadoop-<span class="number">1.2</span><span class="number">.1</span>]$ <span class="keyword">bin</span>/hadoop fs -<span class="keyword">get</span> <span class="keyword">output</span> <span class="keyword">output</span></div><div class="line">Warning: $HADOOP_HOME <span class="keyword">is</span> deprecated.</div><div class="line"></div><div class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com hadoop-<span class="number">1.2</span><span class="number">.1</span>]$ cat <span class="keyword">output</span><span class="comment">/*</span></div><div class="line">cat: output/_logs: Is a directory</div><div class="line">1	dfs.replication</div><div class="line">1	dfs.server.namenode.</div><div class="line">1	dfsadmin</div></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/Hadoop/">Hadoop</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/201411/">201411</a>
+  </div>
+
+       <div class="bdsharebuttonbox">
+   <a href="#" class="bds_more" data-cmd="more"></a>
+   <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+   <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+   <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+   <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+   <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+  </div> 
+  <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<nav id="pagination" >
+    
+    <a href="/2014/12/03/function-this-in-JavaScript/" class="alignleft prev" >上一页</a>
+    
+    
+    <a href="/2014/11/05/grep及正则表达式/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+<section id="comment">
+   <ul class="ds-recent-comments" data-num-items="10" data-show-avatars="1" data-show-time="1" data-show-admin="1" data-excerpt-length="70"></ul>
+<!--多说js加载开始，一个页面只需要加载一次 -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"jiangnan31.github.io"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+<!--多说js加载结束，一个页面只需要加载一次 -->
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:jiangnan31.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Hadoop/">Hadoop</a><small>2</small></li>
+  
+    <li><a href="/categories/JavaScript/">JavaScript</a><small>1</small></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/categories/java高级/">java高级</a><small>7</small></li>
+  
+    <li><a href="/categories/leetCode/">leetCode</a><small>1</small></li>
+  
+    <li><a href="/categories/java高级/多线程/">多线程</a><small>4</small></li>
+  
+    <li><a href="/categories/扯犊子/">扯犊子</a><small>1</small></li>
+  
+    <li><a href="/categories/JavaScript/笔记/">笔记</a><small>1</small></li>
+  
+    <li><a href="/categories/Linux/笔记/">笔记</a><small>1</small></li>
+  
+    <li><a href="/categories/java高级/多线程/笔记/">笔记</a><small>4</small></li>
+  
+    <li><a href="/categories/java高级/笔记/">笔记</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/201410/">201410</a><small>9</small></li>
+  
+    <li><a href="/tags/201411/">201411</a><small>2</small></li>
+  
+    <li><a href="/tags/201412/">201412</a><small>1</small></li>
+  
+    <li><a href="/tags/代码/">代码</a><small>1</small></li>
+  
+    <li><a href="/tags/转载/">转载</a><small>7</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 JiangNan
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

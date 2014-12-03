@@ -1,0 +1,485 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>function &amp; this in JavaScript | JiangNan&#39;s Blog</title>
+  <meta name="author" content="JiangNan">
+  
+  <meta name="description" content="筚路蓝缕，以启山林">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="function &amp; this in JavaScript"/>
+  <meta property="og:site_name" content="JiangNan&#39;s Blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="JiangNan&#39;s Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">JiangNan&#39;s Blog</a></h1>
+  <h2><a href="/">筚路蓝缕，以启山林</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">全部文章</a></li>
+    
+      <li><a href="/about">关于我</a></li>
+    
+      <li><a href="/feature">规划页</a></li>
+    
+	<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//qzone.haoduoge.com/music/48A09O38IG846DBF4FD1889F31315A6A8B2F9.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>音乐</a> </li>
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-12-03T10:48:53.000Z"><a href="/2014/12/03/function-this-in-JavaScript/">12月 3 2014</a></time>
+      
+      
+  
+    <h1 class="title">function &amp; this in JavaScript</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="简介">简介</h2>
+<p>javascript中的函数不同于其他的语言，每个函数都是作为一个对象被维护和运行的。通过函数对象的性质，可以很方便的将一个函数赋值给一个变量或者将函数作为参数传递。在继续讲述之前，先看一下函数的使用语法：</p>
+<p>以下是引用片段：</p>
+<figure class="highlight JavaScript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">func1</span><span class="params">(…)</span></span>{…}</div><div class="line"><span class="keyword">var</span> func2=<span class="function"><span class="keyword">function</span><span class="params">(…)</span></span>{…};</div><div class="line"><span class="keyword">var</span> func3=<span class="function"><span class="keyword">function</span> <span class="title">func4</span><span class="params">(…)</span></span>{…};</div><div class="line"><span class="keyword">var</span> func5=<span class="keyword">new</span> <span class="built_in">Function</span>();</div></pre></td></tr></table></figure>
+
+<p>这些都是声明函数的正确语法。它们和其他语言中常见的函数或之前介绍的函数定义方式有着很大的区别。那么在JavaScript中为什么能这么写？它所遵循的语法是什么呢？下面将介绍这些内容：</p>
+<p><a id="more"></a></p>
+<h2 id="认识函数对象（Function_Object）">认识函数对象（Function Object）</h2>
+<p>可以用function关键字定义一个函数，并为每个函数指定一个函数名，通过函数名来进行调用。在JavaScript解释执行时，函数都是被维护为一个对象，这就是要介绍的函数对象（Function Object）。</p>
+<p><span style="color:red">函数对象与其他用户所定义的对象有着本质的区别，这一类对象被称之为内部对象</span>，例如日期对象（Date）、数组对象（Array）、字符串对象 （String）都属于内部对象。这些内置对象的构造器是由JavaScript本身所定义的：通过执行new Array()这样的语句返回一个对象，<span style="color:red">JavaScript内部有一套机制来初始化返回的对象，而不是由用户来指定对象的构造方式。</span></p>
+<p>在JavaScript中，函数对象对应的类型是Function，正如数组对象对应的类型是Array，日期对象对应的类型是Date一样，可以通过 new Function()来创建一个函数对象，也可以通过function关键字来创建一个对象。为了便于理解，我们比较函数对象的创建和数组对象的创建。先 看数组对象：下面两行代码都是创建一个数组对象myArray：</p>
+<p>以下是引用片段：</p>
+<figure class="highlight JavaScript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myArray=[];</div><div class="line"><span class="comment">//等价于</span></div><div class="line"><span class="keyword">var</span> myArray=<span class="keyword">new</span> <span class="built_in">Array</span>();</div></pre></td></tr></table></figure>
+
+<p>同样，下面的两段代码也都是创建一个函数myFunction：</p>
+<figure class="highlight JavaScript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span><span class="params">(a,b)</span></span>{</div><div class="line">    <span class="keyword">return</span> a+b;</div><div class="line">}</div><div class="line"><span class="comment">//等价于</span></div><div class="line"><span class="keyword">var</span> myFunction=<span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"return a+b"</span>);</div></pre></td></tr></table></figure>
+
+<p>通过和构造数组对象语句的比较，可以清楚的看到函数对象本质，前面介绍的函数声明是上述代码的第一种方式，而<span style="color:red">在解释器内部，当遇到这种语法时，就会自动构 造一个Function对象，将函数作为一个内部的对象来存储和运行。从这里也可以看到，一个函数对象名称（函数变量）和一个普通变量名称具有同样的规 范，都可以通过变量名来引用这个变量，但是函数变量名后面可以跟上括号和参数列表来进行函数调用。</span></p>
+<p>用new Function()的形式来创建一个函数不常见，因为一个函数体通常会有多条语句，如果将它们以一个字符串的形式作为参数传递，代码的可读性差。下面介绍一下其使用语法：</p>
+<p>以下是引用片段：</p>
+<figure class="highlight JavaScript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> funcName=<span class="keyword">new</span> <span class="built_in">Function</span>(p1,p2,...,pn,body);</div></pre></td></tr></table></figure>
+
+<p>参数的类型都是字符串，p1到pn表示所创建函数的参数名称列表，body表示所创建函数的函数体语句，funcName就是所创建函数的名称。可以不指定任何参数创建一个空函数，不指定funcName创建一个无名函数，当然那样的函数没有任何意义。</p>
+<p>需要注意的是，p1到pn是参数名称的列表，即p1不仅能代表一个参数，它也可以是一个逗号隔开的参数列表，例如下面的定义是等价的：</p>
+<p>以下是引用片段：</p>
+<figure class="highlight JavaScript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span>  <span class="built_in">Function</span>(<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"return a+b+c"</span>)</div><div class="line"><span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"a, b, c"</span>, <span class="string">"return a+b+c"</span>)</div><div class="line"><span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"a,b"</span>, <span class="string">"c"</span>, <span class="string">"return a+b+c"</span>)</div></pre></td></tr></table></figure>
+
+<p>JavaScript引入Function类型并提供new Function()这样的语法是因为函数对象添加属性和方法就必须借助于Function这个类型。</p>
+<p>函数的本质是一个内部对象，由JavaScript解释器决定其运行方式。通过上述代码创建的函数，在程序中可以使用函数名进行调用。本节开头列出的函数定义问题也得到了解释。<span style="color:red">注意可直接在函数声明后面加上括号就表示创建完成后立即进行函数调用</span>，例如：</p>
+<p>以下是引用片段：</p>
+<figure class="highlight JavaScript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> i=<span class="function"><span class="keyword">function</span> <span class="params">(a,b)</span></span>{</div><div class="line"><span class="keyword">return</span> a+b;</div><div class="line">}(<span class="number">1</span>,<span class="number">2</span>);</div><div class="line">alert(i);</div></pre></td></tr></table></figure>
+
+<p>这段代码会显示变量i的值等于3。i是表示返回的值，而不是创建的函数，因为<span style="color:red">括号“(”比等号“=”有更高的优先级。</span>这样的代码可能并不常用，但当用户想在很长的代码段中进行模块化设计或者想避免命名冲突，这是一个不错的解决办法。</p>
+<p>需要注意的是，尽管下面两种创建函数的方法是等价的：</p>
+<p>以下是引用片段：</p>
+<figure class="highlight JavaScript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">funcName</span><span class="params">()</span></span>{</div><div class="line"><span class="comment">//函数体</span></div><div class="line">}</div><div class="line"><span class="comment">//等价于</span></div><div class="line"><span class="keyword">var</span> funcName=<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{</div><div class="line"><span class="comment">//函数体</span></div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p><span style="color:red">但前面一种方式创建的是有名函数，而后面是创建了一个无名函数，只是让一个变量指向了这个无名函数。在使用上仅有一点区别，就是：对于有名函数，它可以出现在调用之后再定义；而对于无名函数，它必须是在调用之前就已经定义。</span><br>例如：</p>
+<p>以下是引用片段：</p>
+<figure class="highlight JavaScript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;script language=<span class="string">"JavaScript"</span> type=<span class="string">"text/javascript"</span>&gt;</div><div class="line"><span class="xml"><span class="comment">&lt;!--</span></span></div><div class="line">func();</div><div class="line">var func=function(){</div><div class="line">alert(1)</div><div class="line">}</div><div class="line">//--&gt;</div><div class="line"><span class="tag">&lt;/<span class="title">script</span>&gt;</span></div></pre></td></tr></table></figure>
+
+<p>这段语句将产生func未定义的错误，而：</p>
+<p>以下是引用片段：</p>
+<figure class="highlight JavaScript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;script language=<span class="string">"JavaScript"</span> type=<span class="string">"text/javascript"</span>&gt;</div><div class="line"><span class="xml"><span class="comment">&lt;!--</span></span></div><div class="line">func();</div><div class="line">function func(){</div><div class="line">alert(1)</div><div class="line">}</div><div class="line">//--&gt;</div><div class="line"><span class="tag">&lt;/<span class="title">script</span>&gt;</span></div></pre></td></tr></table></figure>
+
+<p>则能够正确执行，下面的语句也能正确执行：</p>
+<p>以下是引用片段：</p>
+<figure class="highlight JavaScript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;script language=<span class="string">"JavaScript"</span> type=<span class="string">"text/javascript"</span>&gt;</div><div class="line"><span class="xml"><span class="comment">&lt;!--</span></span></div><div class="line">func();</div><div class="line">var someFunc=function func(){</div><div class="line">alert(1)</div><div class="line">}</div><div class="line">//--&gt;</div><div class="line"><span class="tag">&lt;/<span class="title">script</span>&gt;</span></div></pre></td></tr></table></figure>
+
+<p><span style="color:red">由此可见，尽管JavaScript是一门解释型的语言，但它会在函数调用时，检查整个代码中是否存在相应的函数定义，这个函数名只有是通过function funcName()形式定义的才会有效，而不能是匿名函数。</span></p>
+<h2 id="函数对象和其他内部对象的关系">函数对象和其他内部对象的关系</h2>
+<p>除了函数对象，还有很多内部对象，比如：Object、Array、Date、RegExp、Math、Error。这些名称实际上表示一个类型，可以通 过new操作符返回一个对象。然而函数对象和其他对象不同，当用typeof得到一个函数对象的类型时，它仍然会返回字符串“function”，而 typeof一个数组对象或其他的对象时，它会返回字符串“object”。</p>
+<p>下面的代码示例了typeof不同类型的情况：</p>
+<p>以下是引用片段：</p>
+<figure class="highlight JavaScript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">alert(<span class="keyword">typeof</span>(<span class="built_in">Function</span>));</div><div class="line">alert(<span class="keyword">typeof</span>(<span class="keyword">new</span> <span class="built_in">Function</span>()));</div><div class="line">alert(<span class="keyword">typeof</span>(<span class="built_in">Array</span>));</div><div class="line">alert(<span class="keyword">typeof</span>(<span class="built_in">Object</span>));</div><div class="line">alert(<span class="keyword">typeof</span>(<span class="keyword">new</span> <span class="built_in">Array</span>()));</div><div class="line">alert(<span class="keyword">typeof</span>(<span class="keyword">new</span> <span class="built_in">Date</span>()));</div><div class="line">alert(<span class="keyword">typeof</span>(<span class="keyword">new</span> <span class="built_in">Object</span>()));</div></pre></td></tr></table></figure>
+
+<p>运行这段代码可以发现：前面4条语句都会显示“function”，而后面3条语句则显示“object”，可见new一个function实际上是返回 一个函数。这与其他的对象有很大的不同。其他的类型Array、Object等都会通过new操作符返回一个普通对象。  (<strong>可以在控制台中进行测试</strong>)<br>尽管函数本身也是一个对象，但它与 普通的对象还是有区别的，因为它同时也是对象构造器，也就是说，可以new一个函数来返回一个对象，这在前面已经介绍。所有typeof返回 “function”的对象都是函数对象。也称这样的对象为构造器（constructor），因而，所有的构造器都是对象，但不是所有的对象都是构造 器。</p>
+<p><span style="color:red">既然函数本身也是一个对象，它们的类型是function，联想到C++、Java等面向对象语言的类定义，可以猜测到Function类型的作用所在， 那就是可以给函数对象本身定义一些方法和属性，借助于函数的prototype对象，可以很方便地修改和扩充Function类型的定义。</span></p>
+<p>例如下面扩展了 函数类型Function，为其增加了method1方法，作用是弹出对话框显示”function”：</p>
+<p>以下是引用片段：</p>
+<figure class="highlight JavaScript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Function</span>.prototype.method1=<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{</div><div class="line">    alert(<span class="string">"function"</span>);</div><div class="line">}</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">func1</span><span class="params">(a,b,c)</span></span>{</div><div class="line">    <span class="keyword">return</span> a+b+c;</div><div class="line">}</div><div class="line">func1.method1();</div><div class="line">func1.method1.method1();</div></pre></td></tr></table></figure>
+
+<p>注意最后一个语句：func1.method1.mehotd1()，它调用了method1这个函数对象的method1方法。虽然看上去有点容易混 淆，但仔细观察一下语法还是很明确的：这是一个递归的定义。因为method1本身也是一个函数，所以它同样具有函数对象的属性和方法，所有对 Function类型的方法扩充都具有这样的递归性质。</p>
+<p>Function是所有函数对象的基础，而Object则是所有对象（包括函数对象）的基础。在JavaScript中，任何一个对象都是 Object的实例，因此，可以修改Object这个类型来让所有的对象具有一些通用的属性和方法，修改Object类型是通过prototype来完成 的：</p>
+<p>以下是引用片段：</p>
+<figure class="highlight JavaScript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.prototype.getType=<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{</div><div class="line"><span class="keyword">return</span> <span class="keyword">typeof</span>(<span class="keyword">this</span>);</div><div class="line">}</div><div class="line"><span class="keyword">var</span> array1=<span class="keyword">new</span> <span class="built_in">Array</span>();</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">func1</span><span class="params">(a,b)</span></span>{</div><div class="line"><span class="keyword">return</span> a+b;</div><div class="line">}</div><div class="line">alert(array1.getType());  <span class="comment">//object</span></div><div class="line">alert(func1.getType());   <span class="comment">//function</span></div></pre></td></tr></table></figure>
+
+<p>上面的代码为所有的对象添加了getType方法，作用是返回该对象的类型。两条alert语句分别会显示“object”和“function”。</p>
+<h2 id="将函数作为参数传递">将函数作为参数传递</h2>
+<p><span style="color:red">在前面已经介绍了函数对象本质，每个函数都被表示为一个特殊的对象，可以方便的将其赋值给一个变量，再通过这个变量名进行函数调用。作为一个变量，它可以 以参数的形式传递给另一个函数。</span><br>这在前面介绍JavaScript事件处理机制中已经看到过这样的用法，例如下面的程序将func1作为参数传递给 func2：</p>
+<p>以下是引用片段：</p>
+<figure class="highlight JavaScript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">func1</span><span class="params">(theFunc)</span></span>{</div><div class="line">theFunc();</div><div class="line">}</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">func2</span><span class="params">()</span></span>{</div><div class="line">alert(<span class="string">"ok"</span>);</div><div class="line">}</div><div class="line">func1(func2);</div></pre></td></tr></table></figure>
+
+<p>在最后一条语句中，func2作为一个对象传递给了func1的形参theFunc，再由func1内部进行theFunc的调用。<span style="color:red">事实上，将函数作为参数传递，或者是将函数赋值给其他变量是所有事件机制的基础。</span></p>
+<p>例如，如果需要在页面载入时进行一些初始化工作，可以先定义一个init的初始化函数，再通过window.onload=init;语句将其绑定到页面载入完成的事件。这里的init就是一个函数对象，它可以加入window的onload事件列表。</p>
+<h2 id="传递给函数的隐含参数：arguments">传递给函数的隐含参数：arguments</h2>
+<p>当进行函数调用时，除了指定的参数外，还创建一个隐含的对象——arguments。arguments是一个类似数组但不是数组的对象，说它类似是因为 它具有数组一样的访问性质，可以用arguments[index]这样的语法取值，拥有数组长度属性length。arguments对象存储的是实际传递给函数的参数，而不局限于函数声明所定义的参数列表，例如：</p>
+<p>以下是引用片段：</p>
+<figure class="highlight JavaScript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span><span class="params">(a,b)</span></span>{</div><div class="line">    alert(a);</div><div class="line">    alert(b);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="built_in">arguments</span>.length;i++){</div><div class="line">         alert(<span class="built_in">arguments</span>[i]);</div><div class="line">    }</div><div class="line">}</div><div class="line">func(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);</div></pre></td></tr></table></figure>
+
+<p>代码运行时会依次显示：1，2，1，2，3。因此，在定义函数的时候，即使不指定参数列表，仍然可以通过arguments引用到所获得的参数，这给编程 带来了很大的灵活性。<span style="color:red">arguments对象的另一个属性是callee，它表示对函数对象本身的引用，这有利于实现无名函数的递归或者保证函数的封装性。</span></p>
+<p>例如使用递归来计算1到n的自然数之和：</p>
+<p>以下是引用片段：</p>
+<figure class="highlight JavaScript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> sum=<span class="function"><span class="keyword">function</span><span class="params">(n)</span></span>{</div><div class="line">    <span class="keyword">if</span>(<span class="number">1</span>==n) {</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    }</div><div class="line">    <span class="keyword">else</span> {</div><div class="line">       <span class="keyword">return</span> n+sum(n-<span class="number">1</span>);</div><div class="line">    }</div><div class="line">}</div><div class="line">alert(sum(<span class="number">100</span>));</div></pre></td></tr></table></figure>
+
+<p>其中函数内部包含了对sum自身的调用，然而对于JavaScript来说，函数名仅仅是一个变量名，在函数内部调用sum即相当于调用一个全局变量，不能很好的体现出是调用自身，所以使用arguments.callee属性会是一个较好的办法：</p>
+<p>以下是引用片段：</p>
+<figure class="highlight JavaScript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> sum=<span class="function"><span class="keyword">function</span><span class="params">(n)</span></span>{</div><div class="line">    <span class="keyword">if</span>(<span class="number">1</span>==n) {</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    }</div><div class="line">    <span class="keyword">else</span> {</div><div class="line">        <span class="keyword">return</span> n+<span class="built_in">arguments</span>.callee(n-<span class="number">1</span>);</div><div class="line">    } </div><div class="line">}</div><div class="line">alert(sum(<span class="number">100</span>));</div></pre></td></tr></table></figure>
+
+<p><span style="color:red">callee属性并不是arguments不同于数组对象的惟一特征</span></p>
+<p>下面的代码说明了arguments不是由Array类型创建：</p>
+<p>以下是引用片段：</p>
+<figure class="highlight JavaScript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Array</span>.prototype.p1=<span class="number">1</span>;</div><div class="line">alert(<span class="keyword">new</span> <span class="built_in">Array</span>().p1);</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span><span class="params">()</span></span>{</div><div class="line">    alert(<span class="built_in">arguments</span>.p1);</div><div class="line">}</div><div class="line">func();</div></pre></td></tr></table></figure>
+
+<p>运行代码可以发现，第一个alert语句显示为1，即表示数组对象拥有属性p1，而func调用则显示为“undefined”，即p1不是arguments的属性，由此可见，<span style="color:red">arguments并不是一个数组对象。</span></p>
+<h2 id="函数的apply、call方法和length属性">函数的apply、call方法和length属性</h2>
+<p><span style="color:red">JavaScript为函数对象定义了两个方法：apply和call，它们的作用都是将函数绑定到另外一个对象上去运行</span>，两者仅在定义参数的方式有所区别：</p>
+<p>以下是引用片段：</p>
+<figure class="highlight JavaScript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Function</span>.prototype.apply(thisArg,argArray);</div><div class="line"><span class="built_in">Function</span>.prototype.call(thisArg[,arg1[,arg2…]]);</div></pre></td></tr></table></figure>
+
+<p>从函数原型可以看到，<span style="color:red">第一个参数都被取名为thisArg，即所有函数内部的this指针都会被赋值为thisArg，这就实现了将函数作为另外一个对象 的方法运行的目的。两个方法除了thisArg参数，都是为Function对象传递的参数。</span></p>
+<p>下面的代码说明了apply和call方法的工作方式：</p>
+<p>以下是引用片段：</p>
+<figure class="highlight JavaScript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//定义一个函数func1，具有属性p和方法A</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">func1</span><span class="params">()</span></span>{</div><div class="line">    <span class="keyword">this</span>.p=<span class="string">"func1-"</span>;</div><div class="line">    <span class="keyword">this</span>.A=<span class="function"><span class="keyword">function</span><span class="params">(arg)</span></span>{</div><div class="line">        alert(<span class="string">"A: "</span>+<span class="keyword">this</span>.p+arg);</div><div class="line">    }</div><div class="line">}</div><div class="line"><span class="comment">//定义一个函数func2，具有属性p和方法B</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">func2</span><span class="params">()</span></span>{</div><div class="line">    <span class="keyword">this</span>.p=<span class="string">"func2-"</span>;</div><div class="line">    <span class="keyword">this</span>.B=<span class="function"><span class="keyword">function</span><span class="params">(arg)</span></span>{</div><div class="line">        alert(<span class="string">"B: "</span>+<span class="keyword">this</span>.p+arg);</div><div class="line">    }</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">//Function.prototype.apply(thisArg,argArray);</span></div><div class="line"><span class="comment">//Function.prototype.call(thisArg[,arg1[,arg2…]]); </span></div><div class="line"></div><div class="line"><span class="keyword">var</span> obj1=<span class="keyword">new</span> func1();</div><div class="line"><span class="keyword">var</span> obj2=<span class="keyword">new</span> func2();</div><div class="line">obj1.A(<span class="string">"byA"</span>);    <span class="comment">//显示 A: func1-byA</span></div><div class="line">obj2.B(<span class="string">"byB"</span>);    <span class="comment">//显示 B: func2-byB</span></div><div class="line">obj1.A.apply(obj2,[<span class="string">"byA"</span>]); <span class="comment">//显示 A: func2-byA，其中[“byA”]是仅有一个元素的数组，下同</span></div><div class="line">obj2.B.apply(obj1,[<span class="string">"byB"</span>]); <span class="comment">//显示 B: func1-byB</span></div><div class="line">obj1.A.call(obj2,<span class="string">"byA"</span>);  <span class="comment">//显示   A: func2-byA</span></div><div class="line">obj2.B.call(obj1,<span class="string">"byB"</span>);  <span class="comment">//显示   B: func1-byB</span></div></pre></td></tr></table></figure>
+
+<p>可以看出，obj1的方法A被绑定到obj2运行后，整个函数A的运行环境就转移到了obj2，即this指针指向了obj2。同样obj2的函数B也可以绑定到obj1对象去运行。代码的最后4行显示了apply和call函数参数形式的区别。</p>
+<p><span style="color:red">与arguments的length属性不同，函数对象还有一个属性length，它表示函数定义时所指定参数的个数，而非调用时实际传递的参数个数。</span></p>
+<p>例如下面的代码将显示2：</p>
+<p>以下是引用片段：</p>
+<figure class="highlight JavaScript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span><span class="params">(a,b)</span></span>{</div><div class="line">    <span class="keyword">return</span> a+b;</div><div class="line">}</div><div class="line">alert(sum.length);</div></pre></td></tr></table></figure>
+
+<h2 id="深入认识JavaScript中的this指针">深入认识JavaScript中的this指针</h2>
+<p>this指针是面向对象程序设计中的一项重要概念，它表示当前运行的对象。在实现对象的方法时，可以使用this指针来获得该对象自身的引用。</p>
+<p><span style="color:red">和其他面向对象的语言不同，JavaScript中的this指针是一个动态的变量，一个方法内的this指针并不是始终指向定义该方法的对象的</span>，在上一节讲函数的apply和call方法时已经有过这样的例子。<br>为了方便理解，再来看下面的例子：</p>
+<p>以下是引用片段：</p>
+<figure class="highlight JavaScript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;script language=<span class="string">"JavaScript"</span> type=<span class="string">"text/javascript"</span>&gt;</div><div class="line"><span class="xml"><span class="comment">&lt;!--</span></span></div><div class="line">//创建两个空对象</div><div class="line">var obj1=new Object();</div><div class="line">var obj2=new Object();</div><div class="line">//给两个对象都添加属性p，并分别等于1和2</div><div class="line">obj1.p=1;</div><div class="line">obj2.p=2;</div><div class="line">//给obj1添加方法，用于显示p的值</div><div class="line">obj1.getP=function(){</div><div class="line">alert(this.p); //表面上this指针指向的是obj1</div><div class="line">}</div><div class="line">//调用obj1的getP方法</div><div class="line">obj1.getP();</div><div class="line">//使obj2的getP方法等于obj1的getP方法</div><div class="line">obj2.getP=obj1.getP;</div><div class="line">//调用obj2的getP方法</div><div class="line">obj2.getP();</div><div class="line">//--&gt;</div><div class="line"><span class="tag">&lt;/<span class="title">script</span>&gt;</span></div></pre></td></tr></table></figure>
+
+<p>从代码的执行结果看，分别弹出对话框显示1和2。由此可见，getP函数仅定义了一次，在不同的场合运行，显示了不同的运行结果，这是有this指针的变 化所决定的。在obj1的getP方法中，this就指向了obj1对象，而在obj2的getP方法中，this就指向了obj2对象，并通过 this指针引用到了两个对象都具有的属性p。</p>
+<p>由此可见，JavaScript中的this指针是一个动态变化的变量，它表明了当前运行该函数的对象。由this指针的性质，也可以更好的理解 JavaScript中对象的本质：<span style="color:red">一个对象就是由一个或多个属性（方法）组成的集合。每个集合元素不是仅能属于一个集合，而是可以动态的属于多个集合。 这样，一个方法（集合元素）由谁调用，this指针就指向谁。实际上，前面介绍的apply方法和call方法都是通过强制改变this指针的值来实现 的，使this指针指向参数所指定的对象，从而达到将一个对象的方法作为另一个对象的方法运行。</span></p>
+<p>每个对象集合的元素（即属性或方法）也是一个独立的部分，全局函数和作为一个对象方法定义的函数之间没有任何区别，因为可以把全局函数和变量看作为 window对象的方法和属性。也可以使用new操作符来操作一个对象的方法来返回一个对象，这样一个对象的方法也就可以定义为类的形式，其中的this 指针则会指向新创建的对象。在后面可以看到，这时对象名可以起到一个命名空间的作用，这是使用JavaScript进行面向对象程序设计的一个技巧。例 如：</p>
+<p>以下是引用片段：</p>
+<figure class="highlight JavaScript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> namespace1=<span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">namespace1.class1=<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{</div><div class="line"><span class="comment">//初始化对象的代码</span></div><div class="line">}</div><div class="line"><span class="keyword">var</span> obj1=<span class="keyword">new</span> namespace1.class1();</div></pre></td></tr></table></figure>
+
+<p>这里就可以把namespace1看成一个命名空间。</p>
+<p>由于对象属性（方法）的动态变化特性，一个对象的两个属性（方法）之间的互相引用，必须要通过this指针，而其他语言中，this关键字是可以省略的。<br>如上面的例子中：</p>
+<p>以下是引用片段：</p>
+<figure class="highlight JavaScript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">obj1.getP=<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{</div><div class="line">alert(<span class="keyword">this</span>.p); <span class="comment">//表面上this指针指向的是obj1</span></div></pre></td></tr></table></figure>
+
+<p>转载自：<a href="http://www.cnblogs.com/yuzhongwusan/archive/2012/04/09/2438569.html" target="_blank" rel="external">http://www.cnblogs.com/yuzhongwusan/archive/2012/04/09/2438569.html</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/JavaScript/">JavaScript</a>, <a href="/categories/JavaScript/笔记/">笔记</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/201412/">201412</a>, <a href="/tags/转载/">转载</a>
+  </div>
+
+       <div class="bdsharebuttonbox">
+   <a href="#" class="bds_more" data-cmd="more"></a>
+   <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+   <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+   <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+   <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+   <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+  </div> 
+  <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<nav id="pagination" >
+    
+    
+    <a href="/2014/11/05/单点Hadoop搭建过程中错误/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+<section id="comment">
+   <ul class="ds-recent-comments" data-num-items="10" data-show-avatars="1" data-show-time="1" data-show-admin="1" data-excerpt-length="70"></ul>
+<!--多说js加载开始，一个页面只需要加载一次 -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"jiangnan31.github.io"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+<!--多说js加载结束，一个页面只需要加载一次 -->
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:jiangnan31.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Hadoop/">Hadoop</a><small>2</small></li>
+  
+    <li><a href="/categories/JavaScript/">JavaScript</a><small>1</small></li>
+  
+    <li><a href="/categories/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/categories/java高级/">java高级</a><small>7</small></li>
+  
+    <li><a href="/categories/leetCode/">leetCode</a><small>1</small></li>
+  
+    <li><a href="/categories/java高级/多线程/">多线程</a><small>4</small></li>
+  
+    <li><a href="/categories/扯犊子/">扯犊子</a><small>1</small></li>
+  
+    <li><a href="/categories/JavaScript/笔记/">笔记</a><small>1</small></li>
+  
+    <li><a href="/categories/Linux/笔记/">笔记</a><small>1</small></li>
+  
+    <li><a href="/categories/java高级/多线程/笔记/">笔记</a><small>4</small></li>
+  
+    <li><a href="/categories/java高级/笔记/">笔记</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/201410/">201410</a><small>9</small></li>
+  
+    <li><a href="/tags/201411/">201411</a><small>2</small></li>
+  
+    <li><a href="/tags/201412/">201412</a><small>1</small></li>
+  
+    <li><a href="/tags/代码/">代码</a><small>1</small></li>
+  
+    <li><a href="/tags/转载/">转载</a><small>7</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 JiangNan
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
