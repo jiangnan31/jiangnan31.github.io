@@ -1,0 +1,381 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>java 多线程&lt;八&gt; 并发协作 生产者消费者模型&amp;&amp;死锁 | JiangNan&#39;s Blog</title>
+  <meta name="author" content="JiangNan">
+  
+  <meta name="description" content="筚路蓝缕，以启山林">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="java 多线程&lt;八&gt; 并发协作 生产者消费者模型&amp;&amp;死锁"/>
+  <meta property="og:site_name" content="JiangNan&#39;s Blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="JiangNan&#39;s Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">JiangNan&#39;s Blog</a></h1>
+  <h2><a href="/">筚路蓝缕，以启山林</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">全部文章</a></li>
+    
+      <li><a href="/about">关于我</a></li>
+    
+      <li><a href="/feature">规划页</a></li>
+    
+	<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//qzone.haoduoge.com/music/48A09O38IG846DBF4FD1889F31315A6A8B2F9.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>音乐</a> </li>
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-12-10T06:34:25.000Z"><a href="/2014/12/10/java-多线程-八/">12月 10 2014</a></time>
+      
+      
+  
+    <h1 class="title">java 多线程&lt;八&gt; 并发协作 生产者消费者模型&amp;&amp;死锁</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h1 id="并发协作-生产者消费者模型">并发协作-生产者消费者模型</h1>
+<p>对于多线程程序来说，不管任何编程语言，生产者和消费者模型都是最经典的。就像学习每一门编程语言一样，Hello World！都是最经典的例子。</p>
+<p>实际上，准确说应该是“生产者-消费者-仓储”模型，离开了仓储，生产者消费者模型就显得没有说服力了。<br>对于此模型，应该明确一下几点：</p>
+<blockquote>
+<ul>
+<li>1、生产者仅仅在仓储未满时候生产，仓满则停止生产。</li>
+<li>2、消费者仅仅在仓储有产品时候才能消费，仓空则等待。</li>
+<li><span style="color:red"> 3、当消费者发现仓储没产品可消费时候会通知生产者生产。</span></li>
+<li>4、生产者在生产出可消费产品时候，应该通知等待的消费者去消费。<br> </li>
+</ul>
+</blockquote>
+<p>此模型将要结合java.lang.Object的wait与notify、notifyAll方法来实现以上的需求。这是非常重要的。<br><a id="more"></a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div></pre></td><td class="code"><pre><div class="line"><span class="javadoc">/**</span></div><div class="line"> * 仓库</div><div class="line"> */</div><div class="line">class Godown {</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> max_size = <span class="number">100</span>; <span class="comment">// 最大库存量</span></div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span> curnum; <span class="comment">// 当前库存量</span></div><div class="line"></div><div class="line">	Godown() {</div><div class="line">	}</div><div class="line"></div><div class="line">	Godown(<span class="keyword">int</span> curnum) {</div><div class="line">		<span class="keyword">this</span>.curnum = curnum;</div><div class="line">	}</div><div class="line"></div><div class="line">	<span class="javadoc">/**</span></div><div class="line">	 * 生产指定数量的产品</div><div class="line">	 * </div><div class="line">	 *<span class="javadoctag"> @param</span> neednum</div><div class="line">	 */</div><div class="line">	<span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">produce</span>(<span class="keyword">int</span> neednum) {</div><div class="line">		<span class="comment">// 测试是否需要生产</span></div><div class="line">		<span class="keyword">while</span> (neednum + curnum &gt; max_size) {</div><div class="line">			System.out.println(<span class="string">"要生产的产品数量"</span> + neednum + <span class="string">"超过剩余仓库空间"</span></div><div class="line">					+ (max_size - curnum) + <span class="string">"，暂时不能执行生产任务!"</span>);</div><div class="line">			<span class="keyword">try</span> {</div><div class="line">				<span class="comment">// 当前的生产线程等待</span></div><div class="line">				wait();</div><div class="line">			} <span class="keyword">catch</span> (InterruptedException e) {</div><div class="line">				e.printStackTrace();</div><div class="line">			}</div><div class="line">		}</div><div class="line">		<span class="comment">// 满足生产条件，则进行生产，这里简单的更改当前库存量</span></div><div class="line">		curnum += neednum;</div><div class="line">		System.out.println(<span class="string">"已经生产了"</span> + neednum + <span class="string">"个产品，现仓储量为"</span> + curnum);</div><div class="line">		<span class="comment">// 唤醒在此对象监视器上等待的所有线程</span></div><div class="line">		notifyAll();</div><div class="line">	}</div><div class="line"></div><div class="line">	<span class="javadoc">/**</span></div><div class="line">	 * 消费指定数量的产品</div><div class="line">	 * </div><div class="line">	 *<span class="javadoctag"> @param</span> neednum</div><div class="line">	 */</div><div class="line">	<span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">consume</span>(<span class="keyword">int</span> neednum) {</div><div class="line">		<span class="comment">// 测试是否可消费</span></div><div class="line">		<span class="keyword">while</span> (curnum &lt; neednum) {</div><div class="line">			System.out.println(<span class="string">"欲消费量"</span>+neednum+<span class="string">" 超过库存量"</span>+curnum+<span class="string">"，不可进行消费"</span>);</div><div class="line">			<span class="keyword">try</span> {</div><div class="line">				<span class="comment">// 当前的生产线程等待</span></div><div class="line">				wait();</div><div class="line">			} <span class="keyword">catch</span> (InterruptedException e) {</div><div class="line">				e.printStackTrace();</div><div class="line">			}</div><div class="line">		}</div><div class="line">		<span class="comment">// 满足消费条件，则进行消费，这里简单的更改当前库存量</span></div><div class="line">		curnum -= neednum;</div><div class="line">		System.out.println(<span class="string">"已经消费了"</span> + neednum + <span class="string">"个产品，现仓储量为"</span> + curnum);</div><div class="line">		<span class="comment">// 唤醒在此对象监视器上等待的所有线程</span></div><div class="line">		notifyAll();</div><div class="line">	}</div><div class="line">}</div><div class="line"></div><div class="line"><span class="javadoc">/**</span></div><div class="line"> * 生产者</div><div class="line"> */</div><div class="line">class Producer extends Thread {</div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> neednum; <span class="comment">// 生产产品的数量</span></div><div class="line">	<span class="keyword">private</span> Godown godown; <span class="comment">// 仓库</span></div><div class="line"></div><div class="line">	Producer(<span class="keyword">int</span> neednum, Godown godown) {</div><div class="line">		<span class="keyword">this</span>.neednum = neednum;</div><div class="line">		<span class="keyword">this</span>.godown = godown;</div><div class="line">	}</div><div class="line"></div><div class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>() {</div><div class="line">		<span class="comment">// 生产指定数量的产品</span></div><div class="line">		godown.produce(neednum);</div><div class="line">	}</div><div class="line">}</div><div class="line"></div><div class="line"><span class="javadoc">/**</span></div><div class="line"> * 消费者</div><div class="line"> */</div><div class="line">class Consumer extends Thread {</div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> neednum; <span class="comment">// 生产产品的数量</span></div><div class="line">	<span class="keyword">private</span> Godown godown; <span class="comment">// 仓库</span></div><div class="line"></div><div class="line">	Consumer(<span class="keyword">int</span> neednum, Godown godown) {</div><div class="line">		<span class="keyword">this</span>.neednum = neednum;</div><div class="line">		<span class="keyword">this</span>.godown = godown;</div><div class="line">	}</div><div class="line"></div><div class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>() {</div><div class="line">		<span class="comment">// 消费指定数量的产品</span></div><div class="line">		godown.consume(neednum);</div><div class="line">	}</div><div class="line">}</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>{</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(String[] args) {</div><div class="line">		Godown godown = <span class="keyword">new</span> Godown(<span class="number">30</span>);</div><div class="line">		Consumer c1 = <span class="keyword">new</span> Consumer(<span class="number">50</span>, godown);</div><div class="line">		Consumer c2 = <span class="keyword">new</span> Consumer(<span class="number">20</span>, godown);</div><div class="line">		Consumer c3 = <span class="keyword">new</span> Consumer(<span class="number">30</span>, godown);</div><div class="line">		Producer p1 = <span class="keyword">new</span> Producer(<span class="number">10</span>, godown);</div><div class="line">		Producer p2 = <span class="keyword">new</span> Producer(<span class="number">10</span>, godown);</div><div class="line">		Producer p3 = <span class="keyword">new</span> Producer(<span class="number">10</span>, godown);</div><div class="line">		Producer p4 = <span class="keyword">new</span> Producer(<span class="number">10</span>, godown);</div><div class="line">		Producer p5 = <span class="keyword">new</span> Producer(<span class="number">10</span>, godown);</div><div class="line">		Producer p6 = <span class="keyword">new</span> Producer(<span class="number">10</span>, godown);</div><div class="line">		Producer p7 = <span class="keyword">new</span> Producer(<span class="number">80</span>, godown);</div><div class="line"></div><div class="line">		c1.start();</div><div class="line">		c2.start();</div><div class="line">		c3.start();</div><div class="line">		p1.start();</div><div class="line">		p2.start();</div><div class="line">		p3.start();</div><div class="line">		p4.start();</div><div class="line">		p5.start();</div><div class="line">		p6.start();</div><div class="line">		p7.start();</div><div class="line">	}</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p><strong>Result:</strong><br>欲消费量50 超过库存量30，不可进行消费<br>已经生产了10个产品，现仓储量为40<br>已经生产了10个产品，现仓储量为50<br>已经消费了30个产品，现仓储量为20<br>已经生产了10个产品，现仓储量为30<br>已经消费了20个产品，现仓储量为10<br>已经生产了10个产品，现仓储量为20<br>已经生产了10个产品，现仓储量为30<br>欲消费量50 超过库存量30，不可进行消费<br>已经生产了10个产品，现仓储量为40<br>欲消费量50 超过库存量40，不可进行消费<br>要生产的产品数量80超过剩余仓库空间60，暂时不能执行生产任务!</p>
+<p>说明：<br>对于本例，要说明的是当发现不能满足生产或者消费条件的时候，调用对象的wait方法，wait方法的作用是释放当前线程的所获得的锁，并调用对象的notifyAll() 方法，通知（唤醒）该对象上其他等待线程，使得其继续执行。这样，整个生产者、消费者线程得以正确的协作执行。<br><span style="color:red">notifyAll() 方法，起到的是一个通知作用，不释放锁，也不获取锁。只是告诉该对象上等待的线程“可以竞争执行了，都醒来去执行吧”。</span></p>
+<p>本例仅仅是生产者消费者模型中最简单的一种表示，本例中，如果消费者消费的仓储量达不到满足，而又没有生产者，则程序会一直处于等待状态，这当然是不对的。实际上可以将此例进行修改，修改为，根据消费驱动生产，同时生产兼顾仓库，如果仓不满就生产，并对每次最大消费量做个限制，这样就不存在此问题了，当然这样的例子更复杂，更难以说明这样一个简单模型。</p>
+<h1 id="并发协作-死锁">并发协作-死锁</h1>
+<p>线程发生死锁可能性很小，即使看似可能发生死锁的代码，在运行时发生死锁的可能性也是小之又小。</p>
+<p>发生死锁的原因一般是两个对象的锁相互等待造成的。</p>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line">class MyThread extends Thread {</div><div class="line">	<span class="keyword">private</span> DeadlockRisk dead;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> a, b;</div><div class="line"></div><div class="line">	MyThread(DeadlockRisk dead, <span class="keyword">int</span> a, <span class="keyword">int</span> b) {</div><div class="line">		<span class="keyword">this</span>.dead = dead;</div><div class="line">		<span class="keyword">this</span>.a = a;</div><div class="line">		<span class="keyword">this</span>.b = b;</div><div class="line">	}</div><div class="line"></div><div class="line">	<span class="annotation">@Override</span></div><div class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>() {</div><div class="line">		dead.read();</div><div class="line">		dead.write(a, b);</div><div class="line">	}</div><div class="line">}</div><div class="line"></div><div class="line">class DeadlockRisk {</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Resource</span> </span>{</div><div class="line">		<span class="keyword">public</span> <span class="keyword">int</span> value;</div><div class="line">	}</div><div class="line"></div><div class="line">	<span class="keyword">private</span> Resource resourceA = <span class="keyword">new</span> Resource();</div><div class="line">	<span class="keyword">private</span> Resource resourceB = <span class="keyword">new</span> Resource();</div><div class="line"></div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span> <span class="title">read</span>() {</div><div class="line">		<span class="keyword">synchronized</span> (resourceA) {</div><div class="line">			System.out.println(<span class="string">"read():"</span> + Thread.currentThread().getName()</div><div class="line">					+ <span class="string">"获取了resourceA的锁！"</span>);</div><div class="line">			<span class="keyword">synchronized</span> (resourceB) {</div><div class="line">				System.out.println(<span class="string">"read():"</span> + Thread.currentThread().getName()</div><div class="line">						+ <span class="string">"获取了resourceB的锁！"</span>);</div><div class="line">				<span class="keyword">return</span> resourceB.value + resourceA.value;</div><div class="line">			}</div><div class="line">		}</div><div class="line">	}</div><div class="line"></div><div class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title">write</span>(<span class="keyword">int</span> a, <span class="keyword">int</span> b) {</div><div class="line">		<span class="keyword">synchronized</span> (resourceB) {</div><div class="line">			System.out.println(<span class="string">"write():"</span> + Thread.currentThread().getName()</div><div class="line">					+ <span class="string">"获取了resourceA的锁！"</span>);</div><div class="line">			<span class="keyword">synchronized</span> (resourceA) {</div><div class="line">				System.out.println(<span class="string">"write():"</span></div><div class="line">						+ Thread.currentThread().getName() + <span class="string">"获取了resourceB的锁！"</span>);</div><div class="line">				resourceA.value = a;</div><div class="line">				resourceB.value = b;</div><div class="line">			}</div><div class="line">		}</div><div class="line">	}</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test2</span> </span>{</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(String[] args) {</div><div class="line">		DeadlockRisk dead = <span class="keyword">new</span> DeadlockRisk();</div><div class="line">		MyThread t1 = <span class="keyword">new</span> MyThread(dead, <span class="number">1</span>, <span class="number">2</span>);</div><div class="line">		MyThread t2 = <span class="keyword">new</span> MyThread(dead, <span class="number">3</span>, <span class="number">4</span>);</div><div class="line">		MyThread t3 = <span class="keyword">new</span> MyThread(dead, <span class="number">5</span>, <span class="number">6</span>);</div><div class="line">		MyThread t4 = <span class="keyword">new</span> MyThread(dead, <span class="number">7</span>, <span class="number">8</span>);</div><div class="line"></div><div class="line">		t1.start();</div><div class="line">		t2.start();</div><div class="line">		t3.start();</div><div class="line">		t4.start();</div><div class="line">	}</div><div class="line"></div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p><strong>Result:</strong><br>read():Thread-0获取了resourceA的锁！<br>read():Thread-0获取了resourceB的锁！<br>write():Thread-0获取了resourceA的锁！<br>read():Thread-3获取了resourceA的锁！</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/笔记/">笔记</a>, <a href="/categories/笔记/java高级/">java高级</a>, <a href="/categories/笔记/java高级/多线程/">多线程</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/201410/">201410</a>, <a href="/tags/转载/">转载</a>
+  </div>
+
+       <div class="bdsharebuttonbox">
+   <a href="#" class="bds_more" data-cmd="more"></a>
+   <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+   <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+   <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+   <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+   <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+  </div> 
+  <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<nav id="pagination" >
+    
+    <a href="/2015/03/08/Zookeepe学习与使用/" class="alignleft prev" >上一页</a>
+    
+    
+    <a href="/2014/12/10/java-多线程-七/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+<section id="comment">
+   <ul class="ds-recent-comments" data-num-items="10" data-show-avatars="1" data-show-time="1" data-show-admin="1" data-excerpt-length="70"></ul>
+<!--多说js加载开始，一个页面只需要加载一次 -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"jiangnan31.github.io"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+<!--多说js加载结束，一个页面只需要加载一次 -->
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:jiangnan31.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Hadoop/">Hadoop</a><small>2</small></li>
+  
+    <li><a href="/categories/笔记/JavaScript/">JavaScript</a><small>1</small></li>
+  
+    <li><a href="/categories/笔记/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/categories/笔记/java高级/">java高级</a><small>11</small></li>
+  
+    <li><a href="/categories/leetCode/">leetCode</a><small>1</small></li>
+  
+    <li><a href="/categories/笔记/分布式/">分布式</a><small>1</small></li>
+  
+    <li><a href="/categories/笔记/java高级/多线程/">多线程</a><small>8</small></li>
+  
+    <li><a href="/categories/扯犊子/">扯犊子</a><small>1</small></li>
+  
+    <li><a href="/categories/笔记/">笔记</a><small>15</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/201410/">201410</a><small>11</small></li>
+  
+    <li><a href="/tags/201411/">201411</a><small>2</small></li>
+  
+    <li><a href="/tags/201412/">201412</a><small>3</small></li>
+  
+    <li><a href="/tags/201503/">201503</a><small>1</small></li>
+  
+    <li><a href="/tags/代码/">代码</a><small>1</small></li>
+  
+    <li><a href="/tags/总结/">总结</a><small>1</small></li>
+  
+    <li><a href="/tags/转载/">转载</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2015 JiangNan
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

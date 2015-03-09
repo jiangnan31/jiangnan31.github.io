@@ -1,0 +1,382 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>java 多线程&lt;七&gt; 线程的同步 同步方法&amp;同步块 | JiangNan&#39;s Blog</title>
+  <meta name="author" content="JiangNan">
+  
+  <meta name="description" content="筚路蓝缕，以启山林">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="java 多线程&lt;七&gt; 线程的同步 同步方法&amp;同步块"/>
+  <meta property="og:site_name" content="JiangNan&#39;s Blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="JiangNan&#39;s Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">JiangNan&#39;s Blog</a></h1>
+  <h2><a href="/">筚路蓝缕，以启山林</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">全部文章</a></li>
+    
+      <li><a href="/about">关于我</a></li>
+    
+      <li><a href="/feature">规划页</a></li>
+    
+	<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//qzone.haoduoge.com/music/48A09O38IG846DBF4FD1889F31315A6A8B2F9.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>音乐</a> </li>
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-12-10T02:55:06.000Z"><a href="/2014/12/10/java-多线程-七/">12月 10 2014</a></time>
+      
+      
+  
+    <h1 class="title">java 多线程&lt;七&gt; 线程的同步 同步方法&amp;同步块</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h1 id="线程的同步-同步方法">线程的同步-同步方法</h1>
+<p>线程的同步是<span style="color:red">保证多线程安全访问竞争资源的一种手段。</span><br>线程的同步是Java多线程编程的难点，往往开发者搞不清楚什么是竞争资源、什么时候需要考虑同步，怎么同步等等问题，当然，这些问题没有很明确的答案，但有些原则问题需要考虑，是否有竞争资源被同时改动的问题？</p>
+<p>在本文之前，请参阅《Java线程：线程的同步与锁》，本文是在此基础上所写的。<br><a id="more"></a><br>对于同步，在具体的Java代码中需要完成一下两个操作：<br><span style="color:red"><br>把竞争访问的资源标识为private；<br>同步哪些修改变量的代码，使用synchronized关键字同步方法或代码。<br>当然这不是唯一控制并发安全的途径。<br></span></p>
+<p>synchronized关键字使用说明<br>synchronized只能标记非抽象的方法，不能标识成员变量。</p>
+<p>为了演示同步方法的使用，构建了一个信用卡账户，起初信用额为100w，然后模拟透支、存款等多个操作。显然银行账户User对象是个竞争资源，而多个并发操作的是账户方法oper(int x)，当然应该在此方法上加上同步，并将账户的余额设为私有变量，禁止直接访问。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line">class User {</div><div class="line">	<span class="keyword">private</span> String code;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> cash;</div><div class="line"></div><div class="line">	User(String code, <span class="keyword">int</span> cash) {</div><div class="line">		<span class="keyword">this</span>.code = code;</div><div class="line">		<span class="keyword">this</span>.cash = cash;</div><div class="line">	}</div><div class="line"></div><div class="line">	<span class="keyword">public</span> String <span class="title">getCode</span>() {</div><div class="line">		<span class="keyword">return</span> code;</div><div class="line">	}</div><div class="line"></div><div class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCode</span>(String code) {</div><div class="line">		<span class="keyword">this</span>.code = code;</div><div class="line">	}</div><div class="line"></div><div class="line">	<span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">oper</span>(<span class="keyword">int</span> x) {</div><div class="line">		<span class="keyword">try</span> {</div><div class="line">			Thread.sleep(<span class="number">10</span>L);</div><div class="line">			<span class="keyword">this</span>.cash += x;</div><div class="line">			System.out.println(Thread.currentThread().getName() + <span class="string">"运行结束，增加“"</span></div><div class="line">					+ x + <span class="string">"”，当前用户账户余额为："</span> + cash);</div><div class="line">			Thread.sleep(<span class="number">10</span>L);</div><div class="line">		} <span class="keyword">catch</span> (InterruptedException e) {</div><div class="line">			e.printStackTrace();</div><div class="line">		}</div><div class="line">	}</div><div class="line"></div><div class="line">	<span class="annotation">@Override</span></div><div class="line">	<span class="keyword">public</span> String <span class="title">toString</span>() {</div><div class="line">		<span class="keyword">return</span> <span class="string">"User{"</span> + <span class="string">"code='"</span> + code + <span class="string">'\''</span> + <span class="string">", cash="</span> + cash + <span class="string">'}'</span>;</div><div class="line">	}</div><div class="line">}</div><div class="line"></div><div class="line">class MyThread extends Thread {</div><div class="line">	<span class="keyword">private</span> User u;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> y = <span class="number">0</span>;</div><div class="line"></div><div class="line">	MyThread(String name, User u, <span class="keyword">int</span> y) {</div><div class="line">		<span class="keyword">super</span>(name);</div><div class="line">		<span class="keyword">this</span>.u = u;</div><div class="line">		<span class="keyword">this</span>.y = y;</div><div class="line">	}</div><div class="line"></div><div class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>() {</div><div class="line">		u.oper(y);</div><div class="line">	}</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestSynchronized</span> </span>{</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(String[] args) {</div><div class="line">		User u = <span class="keyword">new</span> User(<span class="string">"张三"</span>, <span class="number">100</span>);</div><div class="line">		MyThread t1 = <span class="keyword">new</span> MyThread(<span class="string">"线程A"</span>, u, <span class="number">20</span>);</div><div class="line">		MyThread t2 = <span class="keyword">new</span> MyThread(<span class="string">"线程B"</span>, u, -<span class="number">60</span>);</div><div class="line">		MyThread t3 = <span class="keyword">new</span> MyThread(<span class="string">"线程C"</span>, u, -<span class="number">80</span>);</div><div class="line">		MyThread t4 = <span class="keyword">new</span> MyThread(<span class="string">"线程D"</span>, u, -<span class="number">30</span>);</div><div class="line">		MyThread t5 = <span class="keyword">new</span> MyThread(<span class="string">"线程E"</span>, u, <span class="number">32</span>);</div><div class="line">		MyThread t6 = <span class="keyword">new</span> MyThread(<span class="string">"线程F"</span>, u, <span class="number">21</span>);</div><div class="line"></div><div class="line">		t1.start();</div><div class="line">		t2.start();</div><div class="line">		t3.start();</div><div class="line">		t4.start();</div><div class="line">		t5.start();</div><div class="line">		t6.start();</div><div class="line">	}</div><div class="line">}</div></pre></td></tr></table></figure>
+
+
+<p>输出结果：<br>线程A运行结束，增加“20”，当前用户账户余额为：120<br>线程F运行结束，增加“21”，当前用户账户余额为：141<br>线程E运行结束，增加“32”，当前用户账户余额为：173<br>线程C运行结束，增加“-80”，当前用户账户余额为：93<br>线程B运行结束，增加“-60”，当前用户账户余额为：33<br>线程D运行结束，增加“-30”，当前用户账户余额为：3 </p>
+<p>反面教材，不同步的情况，也就是去掉oper(int x)方法的synchronized修饰符，然后运行程序，结果如下：<br>线程A运行结束，增加“20”，当前用户账户余额为：61<br>线程D运行结束，增加“-30”，当前用户账户余额为：63<br>线程B运行结束，增加“-60”，当前用户账户余额为：3<br>线程F运行结束，增加“21”，当前用户账户余额为：61<br>线程E运行结束，增加“32”，当前用户账户余额为：93<br>线程C运行结束，增加“-80”，当前用户账户余额为：61 </p>
+<p>很显然，上面的结果是错误的，导致错误的原因是多个线程并发访问了竞争资源u，并对u的属性做了改动。</p>
+<p>可见同步的重要性。</p>
+<p>注意：<br>通过前文可知，线程退出同步方法时将释放掉方法所属对象的锁，但还应该注意的是，同步方法中还可以使用特定的方法对线程进行调度。这些方法来自于java.lang.Object类。</p>
+<p>void notify()<br>                    唤醒在此对象监视器上等待的单个线程。<br>void notifyAll()<br>                    唤醒在此对象监视器上等待的所有线程。<br>void wait()<br>                    导致当前的线程等待，直到其他线程调用此对象的 notify() 方法或 notifyAll() 方法。<br>void wait(long timeout)<br>                    导致当前的线程等待，直到其他线程调用此对象的 notify() 方法或 notifyAll() 方法，或者超过指定的时间量。<br>void wait(long timeout, int nanos)<br>                    导致当前的线程等待，直到其他线程调用此对象的 notify() 方法或 notifyAll() 方法，或者其他某个线程中断当前线程，或者已超过某个实际时间量。</p>
+<p>结合以上方法，处理多线程同步与互斥问题非常重要，著名的生产者-消费者例子就是一个经典的例子，任何语言多线程必学的例子。</p>
+<h1 id="线程的同步-同步块">线程的同步-同步块</h1>
+<p>对于同步，除了同步方法外，还可以使用同步代码块，有时候同步代码块会带来比同步方法更好的效果。</p>
+<p>追其同步的根本的目的，是控制竞争资源的正确的访问，因此只要在访问竞争资源的时候保证同一时刻只能一个线程访问即可，因此Java引入了同步代码快的策略，以提高性能。</p>
+<p>在上个例子的基础上，对oper方法做了改动，由同步方法改为同步代码块模式，程序的执行逻辑并没有问题。</p>
+<figure class="highlight Java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line">class User2 {</div><div class="line">	<span class="keyword">private</span> String code;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> cash;</div><div class="line"></div><div class="line">	User2(String code, <span class="keyword">int</span> cash) {</div><div class="line">		<span class="keyword">this</span>.code = code;</div><div class="line">		<span class="keyword">this</span>.cash = cash;</div><div class="line">	}</div><div class="line"></div><div class="line">	<span class="keyword">public</span> String <span class="title">getCode</span>() {</div><div class="line">		<span class="keyword">return</span> code;</div><div class="line">	}</div><div class="line"></div><div class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCode</span>(String code) {</div><div class="line">		<span class="keyword">this</span>.code = code;</div><div class="line">	}</div><div class="line"></div><div class="line">	<span class="javadoc">/**</span></div><div class="line">	 * 业务方法</div><div class="line">	 * </div><div class="line">	 *<span class="javadoctag"> @param</span> x</div><div class="line">	 *            添加x万元</div><div class="line">	 */</div><div class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title">oper</span>(<span class="keyword">int</span> x) {</div><div class="line">		<span class="keyword">try</span> {</div><div class="line">			Thread.sleep(<span class="number">10</span>L);</div><div class="line">			<span class="keyword">synchronized</span> (<span class="keyword">this</span>) {</div><div class="line">				<span class="keyword">this</span>.cash += x;</div><div class="line">				System.out.println(Thread.currentThread().getName()</div><div class="line">						+ <span class="string">"运行结束，增加“"</span> + x + <span class="string">"”，当前用户账户余额为："</span> + cash);</div><div class="line">			}</div><div class="line">			Thread.sleep(<span class="number">10</span>L);</div><div class="line">		} <span class="keyword">catch</span> (InterruptedException e) {</div><div class="line">			e.printStackTrace();</div><div class="line">		}</div><div class="line">	}</div><div class="line"></div><div class="line">	<span class="annotation">@Override</span></div><div class="line">	<span class="keyword">public</span> String <span class="title">toString</span>() {</div><div class="line">		<span class="keyword">return</span> <span class="string">"User{"</span> + <span class="string">"code='"</span> + code + <span class="string">'\''</span> + <span class="string">", cash="</span> + cash + <span class="string">'}'</span>;</div><div class="line">	}</div><div class="line">}</div><div class="line"></div><div class="line">class MyThread2 extends Thread {</div><div class="line">	<span class="keyword">private</span> User2 u;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> y = <span class="number">0</span>;</div><div class="line"></div><div class="line">	MyThread2(String name, User2 u, <span class="keyword">int</span> y) {</div><div class="line">		<span class="keyword">super</span>(name);</div><div class="line">		<span class="keyword">this</span>.u = u;</div><div class="line">		<span class="keyword">this</span>.y = y;</div><div class="line">	}</div><div class="line"></div><div class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>() {</div><div class="line">		u.oper(y);</div><div class="line">	}</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestSynchronized2</span> </span>{</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(String[] args) {</div><div class="line">		User2 u = <span class="keyword">new</span> User2(<span class="string">"张三"</span>, <span class="number">100</span>);</div><div class="line">		MyThread2 t1 = <span class="keyword">new</span> MyThread2(<span class="string">"线程A"</span>, u, <span class="number">20</span>);</div><div class="line">		MyThread2 t2 = <span class="keyword">new</span> MyThread2(<span class="string">"线程B"</span>, u, -<span class="number">60</span>);</div><div class="line">		MyThread2 t3 = <span class="keyword">new</span> MyThread2(<span class="string">"线程C"</span>, u, -<span class="number">80</span>);</div><div class="line">		MyThread2 t4 = <span class="keyword">new</span> MyThread2(<span class="string">"线程D"</span>, u, -<span class="number">30</span>);</div><div class="line">		MyThread2 t5 = <span class="keyword">new</span> MyThread2(<span class="string">"线程E"</span>, u, <span class="number">32</span>);</div><div class="line">		MyThread2 t6 = <span class="keyword">new</span> MyThread2(<span class="string">"线程F"</span>, u, <span class="number">21</span>);</div><div class="line"></div><div class="line">		t1.start();</div><div class="line">		t2.start();</div><div class="line">		t3.start();</div><div class="line">		t4.start();</div><div class="line">		t5.start();</div><div class="line">		t6.start();</div><div class="line">	}</div><div class="line">}</div></pre></td></tr></table></figure>
+
+
+<p>线程E运行结束，增加“32”，当前用户账户余额为：132<br>线程B运行结束，增加“-60”，当前用户账户余额为：72<br>线程D运行结束，增加“-30”，当前用户账户余额为：42<br>线程F运行结束，增加“21”，当前用户账户余额为：63<br>线程C运行结束，增加“-80”，当前用户账户余额为：-17<br>线程A运行结束，增加“20”，当前用户账户余额为：3 </p>
+<p>注意：<br>在使用synchronized关键字时候，应该尽可能避免在synchronized方法或synchronized块中使用sleep或者yield方法，因为synchronized程序块占有着对象锁，你休息那么其他的线程只能一边等着你醒来执行完了才能执行。不但严重影响效率，也不合逻辑。<br>同样，在同步程序块内调用yeild方法让出CPU资源也没有意义，因为你占用着锁，其他互斥线程还是无法访问同步程序块。当然与同步程序块无关的线程可以获得更多的执行时间。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/笔记/">笔记</a>, <a href="/categories/笔记/java高级/">java高级</a>, <a href="/categories/笔记/java高级/多线程/">多线程</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/201410/">201410</a>, <a href="/tags/转载/">转载</a>
+  </div>
+
+       <div class="bdsharebuttonbox">
+   <a href="#" class="bds_more" data-cmd="more"></a>
+   <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+   <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+   <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+   <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+   <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+  </div> 
+  <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<nav id="pagination" >
+    
+    <a href="/2014/12/10/java-多线程-八/" class="alignleft prev" >上一页</a>
+    
+    
+    <a href="/2014/12/09/java-多线程-六/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+<section id="comment">
+   <ul class="ds-recent-comments" data-num-items="10" data-show-avatars="1" data-show-time="1" data-show-admin="1" data-excerpt-length="70"></ul>
+<!--多说js加载开始，一个页面只需要加载一次 -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"jiangnan31.github.io"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+<!--多说js加载结束，一个页面只需要加载一次 -->
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:jiangnan31.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Hadoop/">Hadoop</a><small>2</small></li>
+  
+    <li><a href="/categories/笔记/JavaScript/">JavaScript</a><small>1</small></li>
+  
+    <li><a href="/categories/笔记/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/categories/笔记/java高级/">java高级</a><small>11</small></li>
+  
+    <li><a href="/categories/leetCode/">leetCode</a><small>1</small></li>
+  
+    <li><a href="/categories/笔记/分布式/">分布式</a><small>1</small></li>
+  
+    <li><a href="/categories/笔记/java高级/多线程/">多线程</a><small>8</small></li>
+  
+    <li><a href="/categories/扯犊子/">扯犊子</a><small>1</small></li>
+  
+    <li><a href="/categories/笔记/">笔记</a><small>15</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/201410/">201410</a><small>11</small></li>
+  
+    <li><a href="/tags/201411/">201411</a><small>2</small></li>
+  
+    <li><a href="/tags/201412/">201412</a><small>3</small></li>
+  
+    <li><a href="/tags/201503/">201503</a><small>1</small></li>
+  
+    <li><a href="/tags/代码/">代码</a><small>1</small></li>
+  
+    <li><a href="/tags/总结/">总结</a><small>1</small></li>
+  
+    <li><a href="/tags/转载/">转载</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2015 JiangNan
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
