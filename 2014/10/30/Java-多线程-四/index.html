@@ -37,162 +37,12 @@
     
       <li><a href="/">首页</a></li>
     
-      <li><a href="/archives">全部文章</a></li>
+      <li><a href="/archives">归档</a></li>
     
       <li><a href="/about">关于我</a></li>
     
       <li><a href="/feature">规划页</a></li>
     
-	<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
-	function c() {
-		var e = document.createElement("link");
-		e.setAttribute("type", "text/css");
-		e.setAttribute("rel", "stylesheet");
-		e.setAttribute("href", f);
-		e.setAttribute("class", l);
-		document.body.appendChild(e)
-	}
- 
-	function h() {
-		var e = document.getElementsByClassName(l);
-		for (var t = 0; t < e.length; t++) {
-			document.body.removeChild(e[t])
-		}
-	}
- 
-	function p() {
-		var e = document.createElement("div");
-		e.setAttribute("class", a);
-		document.body.appendChild(e);
-		setTimeout(function() {
-			document.body.removeChild(e)
-		}, 100)
-	}
- 
-	function d(e) {
-		return {
-			height : e.offsetHeight,
-			width : e.offsetWidth
-		}
-	}
- 
-	function v(i) {
-		var s = d(i);
-		return s.height > e && s.height < n && s.width > t && s.width < r
-	}
- 
-	function m(e) {
-		var t = e;
-		var n = 0;
-		while (!!t) {
-			n += t.offsetTop;
-			t = t.offsetParent
-		}
-		return n
-	}
- 
-	function g() {
-		var e = document.documentElement;
-		if (!!window.innerWidth) {
-			return window.innerHeight
-		} else if (e && !isNaN(e.clientHeight)) {
-			return e.clientHeight
-		}
-		return 0
-	}
- 
-	function y() {
-		if (window.pageYOffset) {
-			return window.pageYOffset
-		}
-		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
-	}
- 
-	function E(e) {
-		var t = m(e);
-		return t >= w && t <= b + w
-	}
- 
-	function S() {
-		var e = document.createElement("audio");
-		e.setAttribute("class", l);
-		e.src = i;
-		e.loop = false;
-		e.addEventListener("canplay", function() {
-			setTimeout(function() {
-				x(k)
-			}, 500);
-			setTimeout(function() {
-				N();
-				p();
-				for (var e = 0; e < O.length; e++) {
-					T(O[e])
-				}
-			}, 15500)
-		}, true);
-		e.addEventListener("ended", function() {
-			N();
-			h()
-		}, true);
-		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
-		document.body.appendChild(e);
-		e.play()
-	}
- 
-	function x(e) {
-		e.className += " " + s + " " + o
-	}
- 
-	function T(e) {
-		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
-	}
- 
-	function N() {
-		var e = document.getElementsByClassName(s);
-		var t = new RegExp("\\b" + s + "\\b");
-		for (var n = 0; n < e.length; ) {
-			e[n].className = e[n].className.replace(t, "")
-		}
-	}
- 
-	var e = 30;
-	var t = 30;
-	var n = 350;
-	var r = 350;
-	var i = "//qzone.haoduoge.com/music/48A09O38IG846DBF4FD1889F31315A6A8B2F9.mp3";
-	var s = "mw-harlem_shake_me";
-	var o = "im_first";
-	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
-	var a = "mw-strobe_light";
-	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
-	var l = "mw_added_css";
-	var b = g();
-	var w = y();
-	var C = document.getElementsByTagName("*");
-	var k = null;
-	for (var L = 0; L < C.length; L++) {
-		var A = C[L];
-		if (v(A)) {
-			if (E(A)) {
-				k = A;
-				break
-			}
-		}
-	}
-	if (A === null) {
-		console.warn("Could not find a node of the right size. Please try a different page.");
-		return
-	}
-	c();
-	S();
-	var O = [];
-	for (var L = 0; L < C.length; L++) {
-		var A = C[L];
-		if (v(A)) {
-			O.push(A)
-		}
-	}
-})()    '>音乐</a> </li>
   </ul>
   <div class="clearfix"></div>
 </nav>
@@ -204,7 +54,7 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-10-30T07:22:06.000Z"><a href="/2014/10/30/Java-多线程-四/">10月 30 2014</a></time>
+        <time datetime="2014-10-30T07:22:06.000Z"><a href="/2014/10/30/Java-多线程-四/">Oct 30 2014</a></time>
       
       
   
@@ -214,72 +64,70 @@
     </header>
     <div class="entry">
       
-        <h2 id="一、同步问题提出">一、同步问题提出</h2>
-<p>线程的同步是为了防止多个线程访问一个数据对象时，对数据造成的破坏。<br>例如：两个线程ThreadA、ThreadB都操作同一个对象Foo对象，并修改Foo对象上的数据。<br><a id="more"></a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>{ </div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> x = <span class="number">100</span>; </div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getX</span>() { </div><div class="line">        <span class="keyword">return</span> x; </div><div class="line">    } </div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fix</span>(<span class="keyword">int</span> y) { </div><div class="line">        x = x - y; </div><div class="line">        <span class="keyword">return</span> x; </div><div class="line">    } </div><div class="line">}</div><div class="line"> </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyRunnable</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>{ </div><div class="line">    <span class="keyword">private</span> Foo foo = <span class="keyword">new</span> Foo(); </div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(String[] args) { </div><div class="line">        MyRunnable r = <span class="keyword">new</span> MyRunnable(); </div><div class="line">        Thread ta = <span class="keyword">new</span> Thread(r, <span class="string">"Thread-A"</span>); </div><div class="line">        Thread tb = <span class="keyword">new</span> Thread(r, <span class="string">"Thread-B"</span>); </div><div class="line">        ta.start(); </div><div class="line">        tb.start(); </div><div class="line">    } </div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>() { </div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) { </div><div class="line">            <span class="keyword">this</span>.fix(<span class="number">30</span>); </div><div class="line">            <span class="keyword">try</span> { </div><div class="line">                Thread.sleep(<span class="number">1</span>); </div><div class="line">            } <span class="keyword">catch</span> (InterruptedException e) { </div><div class="line">                e.printStackTrace(); </div><div class="line">            } </div><div class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">" : 当前foo对象的x值= "</span> + foo.getX()); </div><div class="line">        } </div><div class="line">    } </div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fix</span>(<span class="keyword">int</span> y) { </div><div class="line">        <span class="keyword">return</span> foo.fix(y); </div><div class="line">    } </div><div class="line">}</div></pre></td></tr></table></figure>
-
+        <h2 id="一、同步问题提出">一、同步问题提出</h2><p>线程的同步是为了防止多个线程访问一个数据对象时，对数据造成的破坏。<br>例如：两个线程ThreadA、ThreadB都操作同一个对象Foo对象，并修改Foo对象上的数据。<br><a id="more"></a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123; </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> x = <span class="number">100</span>; </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getX</span><span class="params">()</span> </span>&#123; </span><br><span class="line">        <span class="keyword">return</span> x; </span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fix</span><span class="params">(<span class="keyword">int</span> y)</span> </span>&#123; </span><br><span class="line">        x = x - y; </span><br><span class="line">        <span class="keyword">return</span> x; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyRunnable</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123; </span><br><span class="line">    <span class="keyword">private</span> Foo foo = <span class="keyword">new</span> Foo(); </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123; </span><br><span class="line">        MyRunnable r = <span class="keyword">new</span> MyRunnable(); </span><br><span class="line">        Thread ta = <span class="keyword">new</span> Thread(r, <span class="string">"Thread-A"</span>); </span><br><span class="line">        Thread tb = <span class="keyword">new</span> Thread(r, <span class="string">"Thread-B"</span>); </span><br><span class="line">        ta.start(); </span><br><span class="line">        tb.start(); </span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123; </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123; </span><br><span class="line">            <span class="keyword">this</span>.fix(<span class="number">30</span>); </span><br><span class="line">            <span class="keyword">try</span> &#123; </span><br><span class="line">                Thread.sleep(<span class="number">1</span>); </span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123; </span><br><span class="line">                e.printStackTrace(); </span><br><span class="line">            &#125; </span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">" : 当前foo对象的x值= "</span> + foo.getX()); </span><br><span class="line">        &#125; </span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fix</span><span class="params">(<span class="keyword">int</span> y)</span> </span>&#123; </span><br><span class="line">        <span class="keyword">return</span> foo.fix(y); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>运行结果：<br>Thread-A : 当前foo对象的x值= 40<br>Thread-B : 当前foo对象的x值= 40<br>Thread-B : 当前foo对象的x值= -20<br>Thread-A : 当前foo对象的x值= -50<br>Thread-A : 当前foo对象的x值= -80<br>Thread-B : 当前foo对象的x值= -80 </p>
 <p>Process finished with exit code 0</p>
 <p>从结果发现，这样的输出值明显是不合理的。原因是两个线程不加控制的访问Foo对象并修改其数据所致。</p>
 <p>如果要保持结果的合理性，只需要达到一个目的，就是将对Foo的访问加以限制，每次只能有一个线程在访问。这样就能保证Foo对象中数据的合理性了。</p>
 <p>在具体的Java代码中需要完成一下两个操作：<br>把竞争访问的资源类Foo变量x标识为private；<br>同步哪些修改变量的代码，使用synchronized关键字同步方法或代码。</p>
-<h2 id="二、同步和锁定">二、同步和锁定</h2>
-<p>1、锁的原理</p>
+<h2 id="二、同步和锁定">二、同步和锁定</h2><p>1、锁的原理</p>
 <p><span style="color:red">Java中每个对象都有一个内置锁</span></p>
 <p><span style="color:red">当程序运行到非静态的synchronized同步方法上时，自动获得与正在执行代码类的当前实例（this实例）有关的锁。获得一个对象的锁也称为获取锁、锁定对象、在对象上锁定或在对象上同步。</span></p>
 <p>当程序运行到synchronized同步方法或代码块时才该对象锁才起作用。</p>
 <p>一个对象只有一个锁。所以，如果一个线程获得该锁，就没有其他线程可以获得锁，直到第一个线程释放（或返回）锁。这也意味着任何其他线程都不能进入该对象上的synchronized方法或代码块，直到该锁被释放。</p>
 <p><span style="color:red">释放锁是指持锁线程退出了synchronized同步方法或代码块。</span></p>
-<p>关于锁和同步，有一下几个要点：<br>1）、只能同步方法，而不能同步变量和类；<br>2）、每个对象只有一个锁；当提到同步时，应该清楚在什么上同步？也就是说，在哪个对象上同步？<br>3）、不必同步类中所有的方法，类可以同时拥有同步和非同步方法。<br>4）、如果两个线程要<span style="color:red">执行一个类中的synchronized方法，并且两个线程使用相同的实例来调用方法</span>，那么一次只能有一个线程能够执行方法，另一个需要等待，直到锁被释放。也就是说：如果一个线程在对象上获得一个锁，就没有任何其他线程可以进入（该对象的）类中的任何一个同步方法。<br>5）、如果线程拥有同步和非同步方法，则非同步方法可以被多个线程自由访问而不受锁的限制。<br>6）、线程睡眠时，它所持的任何锁都不会释放。<br>7）、线程可以获得多个锁。比如，在一个对象的同步方法里面调用另外一个对象的同步方法，则获取了两个对象的同步锁。<br>8）、同步损害并发性，应该尽可能缩小同步范围。同步不但可以同步整个方法，还可以同步方法中一部分代码块。<br>9）、在使用同步代码块时候，应该指定在哪个对象上同步，也就是说要获取哪个对象的锁。例如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fix</span>(<span class="keyword">int</span> y) {</div><div class="line">    <span class="keyword">synchronized</span> (<span class="keyword">this</span>) {</div><div class="line">        x = x - y;</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> x;</div><div class="line">}</div></pre></td></tr></table></figure>
-
-<p>当然，同步方法也可以改写为非同步方法，但功能完全一样的，例如：</p>
-<figure class="highlight Java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">int</span> <span class="title">getX</span>() {</div><div class="line">    <span class="keyword">return</span> x++;</div><div class="line">}</div></pre></td></tr></table></figure>
-
-<p>与</p>
-<figure class="highlight Java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getX</span>() {</div><div class="line">    <span class="keyword">synchronized</span> (<span class="keyword">this</span>) {</div><div class="line">        <span class="keyword">return</span> x; </div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
-
+<p>关于锁和同步，有一下几个要点：<br>1）、只能同步方法，而不能同步变量和类；<br>2）、每个对象只有一个锁；当提到同步时，应该清楚在什么上同步？也就是说，在哪个对象上同步？<br>3）、不必同步类中所有的方法，类可以同时拥有同步和非同步方法。<br>4）、如果两个线程要<span style="color:red">执行一个类中的synchronized方法，并且两个线程使用相同的实例来调用方法</span>，那么一次只能有一个线程能够执行方法，另一个需要等待，直到锁被释放。也就是说：如果一个线程在对象上获得一个锁，就没有任何其他线程可以进入（该对象的）类中的任何一个同步方法。<br>5）、如果线程拥有同步和非同步方法，则非同步方法可以被多个线程自由访问而不受锁的限制。<br>6）、线程睡眠时，它所持的任何锁都不会释放。<br>7）、线程可以获得多个锁。比如，在一个对象的同步方法里面调用另外一个对象的同步方法，则获取了两个对象的同步锁。<br>8）、同步损害并发性，应该尽可能缩小同步范围。同步不但可以同步整个方法，还可以同步方法中一部分代码块。<br>9）、在使用同步代码块时候，应该指定在哪个对象上同步，也就是说要获取哪个对象的锁。例如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fix</span><span class="params">(<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">        x = x - y;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>当然，同步方法也可以改写为非同步方法，但功能完全一样的，例如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">int</span> <span class="title">getX</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>与<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getX</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> x; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>效果是完全一样的。</p>
-<h2 id="三、静态方法同步">三、静态方法同步</h2>
-<p>要同步静态方法，需要一个用于整个类对象的锁，这个对象是就是这个类（XXX.class)。<br>例如：</p>
-<figure class="highlight Java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> <span class="keyword">int</span> <span class="title">setName</span>(String name){</div><div class="line">      Xxx.name = name;</div><div class="line">}</div></pre></td></tr></table></figure>
-
-<p>等价于</p>
-<figure class="highlight Java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">setName</span>(String name){</div><div class="line">      <span class="keyword">synchronized</span>(Xxx.class){</div><div class="line">            Xxx.name = name;</div><div class="line">      }</div><div class="line">}</div></pre></td></tr></table></figure>
-
-
-<h2 id="四、如果线程不能不能获得锁会怎么样">四、如果线程不能不能获得锁会怎么样</h2>
-<p>如果线程试图进入同步方法，而其锁已经被占用，则线程在该对象上被阻塞。实质上，线程进入该对象的的一种池中，必须在哪里等待，直到其锁被释放，该线程再次变为可运行或运行为止。</p>
+<h2 id="三、静态方法同步">三、静态方法同步</h2><p>要同步静态方法，需要一个用于整个类对象的锁，这个对象是就是这个类（XXX.class)。<br>例如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> <span class="keyword">int</span> <span class="title">setName</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">      Xxx.name = name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>等价于<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">setName</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">      <span class="keyword">synchronized</span>(Xxx.class)&#123;</span><br><span class="line">            Xxx.name = name;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="四、如果线程不能不能获得锁会怎么样">四、如果线程不能不能获得锁会怎么样</h2><p>如果线程试图进入同步方法，而其锁已经被占用，则线程在该对象上被阻塞。实质上，线程进入该对象的的一种池中，必须在哪里等待，直到其锁被释放，该线程再次变为可运行或运行为止。</p>
 <p>当考虑阻塞时，一定要注意哪个对象正被用于锁定：<br><span style="color:red">1、调用同一个对象中非静态同步方法的线程将彼此阻塞。如果是不同对象，则每个线程有自己的对象的锁，线程间彼此互不干预。</span></p>
 <p><span style="color:red">2、调用同一个类中的静态同步方法的线程将彼此阻塞，它们都是锁定在相同的Class对象上。</span></p>
 <p>3、静态同步方法和非静态同步方法将永远不会彼此阻塞，因为静态方法锁定在Class对象上，非静态方法锁定在该类的对象上。</p>
 <p><span style="color:red">4、对于同步代码块，要看清楚什么对象已经用于锁定（synchronized后面括号的内容）。在同一个对象上进行同步的线程将彼此阻塞，在不同对象上锁定的线程将永远不会彼此阻塞。</span></p>
-<h2 id="五、何时需要同步">五、何时需要同步</h2>
-<p>在多个线程同时访问互斥（可交换）数据时，应该同步以保护数据，<span style="color:red">确保两个线程不会同时修改它。</span></p>
+<h2 id="五、何时需要同步">五、何时需要同步</h2><p>在多个线程同时访问互斥（可交换）数据时，应该同步以保护数据，<span style="color:red">确保两个线程不会同时修改它。</span></p>
 <p>对于非静态字段中可更改的数据，通常使用非静态方法访问。<br>对于静态字段中可更改的数据，通常使用静态方法访问。</p>
 <p>如果需要在非静态方法中使用静态字段，或者在静态字段中调用非静态方法，问题将变得非常复杂。</p>
-<h2 id="六、线程安全类">六、线程安全类</h2>
-<p>当一个类已经很好的同步以保护它的数据时，这个类就称为“线程安全的”。</p>
+<h2 id="六、线程安全类">六、线程安全类</h2><p>当一个类已经很好的同步以保护它的数据时，这个类就称为“线程安全的”。</p>
 <p>即使是线程安全类，也应该特别小心，因为操作的线程是间仍然不一定安全。</p>
-<p>举个形象的例子，比如一个集合是线程安全的，有两个线程在操作同一个集合对象，当第一个线程查询集合非空后，删除集合中所有元素的时候。第二个线程也来执行与第一个线程相同的操作，也许在第一个线程查询后，第二个线程也查询出集合非空，但是当第一个执行清除后，第二个再执行删除显然是不对的，因为此时集合已经为空了。<br>看个代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">class NameList { </div><div class="line">    <span class="keyword">private</span> List nameList = Collections.synchronizedList(<span class="keyword">new</span> LinkedList()); </div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span>(String name) { </div><div class="line">        nameList.add(name); </div><div class="line">    } </div><div class="line"></div><div class="line">    <span class="keyword">public</span> String <span class="title">removeFirst</span>() { </div><div class="line">        <span class="keyword">if</span> (nameList.size() &gt; <span class="number">0</span>) { </div><div class="line">            <span class="keyword">return</span> (String) nameList.remove(<span class="number">0</span>); </div><div class="line">        } <span class="keyword">else</span> { </div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>; </div><div class="line">        } </div><div class="line">    } </div><div class="line">}</div><div class="line"> </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>{ </div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(String[] args) { </div><div class="line">        <span class="keyword">final</span> NameList nl = <span class="keyword">new</span> NameList(); </div><div class="line">        nl.add(<span class="string">"aaa"</span>); </div><div class="line">        class NameDropper extends Thread{ </div><div class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>(){ </div><div class="line">                String name = nl.removeFirst(); </div><div class="line">                System.out.println(name); </div><div class="line">            } </div><div class="line">        } </div><div class="line"></div><div class="line">        Thread t1 = <span class="keyword">new</span> NameDropper(); </div><div class="line">        Thread t2 = <span class="keyword">new</span> NameDropper(); </div><div class="line">        t1.start(); </div><div class="line">        t2.start(); </div><div class="line">    } </div><div class="line">}</div></pre></td></tr></table></figure>
-
+<p>举个形象的例子，比如一个集合是线程安全的，有两个线程在操作同一个集合对象，当第一个线程查询集合非空后，删除集合中所有元素的时候。第二个线程也来执行与第一个线程相同的操作，也许在第一个线程查询后，第二个线程也查询出集合非空，但是当第一个执行清除后，第二个再执行删除显然是不对的，因为此时集合已经为空了。<br>看个代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NameList</span> </span>&#123; </span><br><span class="line">    <span class="keyword">private</span> List nameList = Collections.synchronizedList(<span class="keyword">new</span> LinkedList()); </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(String name)</span> </span>&#123; </span><br><span class="line">        nameList.add(name); </span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">removeFirst</span><span class="params">()</span> </span>&#123; </span><br><span class="line">        <span class="keyword">if</span> (nameList.size() &gt; <span class="number">0</span>) &#123; </span><br><span class="line">            <span class="keyword">return</span> (String) nameList.remove(<span class="number">0</span>); </span><br><span class="line">        &#125; <span class="keyword">else</span> &#123; </span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>; </span><br><span class="line">        &#125; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123; </span><br><span class="line">        <span class="keyword">final</span> NameList nl = <span class="keyword">new</span> NameList(); </span><br><span class="line">        nl.add(<span class="string">"aaa"</span>); </span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">NameDropper</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123; </span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123; </span><br><span class="line">                String name = nl.removeFirst(); </span><br><span class="line">                System.out.println(name); </span><br><span class="line">            &#125; </span><br><span class="line">        &#125; </span><br><span class="line"></span><br><span class="line">        Thread t1 = <span class="keyword">new</span> NameDropper(); </span><br><span class="line">        Thread t2 = <span class="keyword">new</span> NameDropper(); </span><br><span class="line">        t1.start(); </span><br><span class="line">        t2.start(); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>虽然集合对象<br>    private List nameList = Collections.synchronizedList(new LinkedList());<br>是同步的，但是程序还不是线程安全的。<br>出现这种事件的原因是，上例中一个线程操作列表过程中无法阻止另外一个线程对列表的其他操作。</p>
-<p>解决上面问题的办法是，在操作集合对象的NameList上面做一个同步。改写后的代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NameList</span> </span>{ </div><div class="line">    <span class="keyword">private</span> List nameList = Collections.synchronizedList(<span class="keyword">new</span> LinkedList()); </div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">add</span>(String name) { </div><div class="line">        nameList.add(name); </div><div class="line">    } </div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">synchronized</span> String <span class="title">removeFirst</span>() { </div><div class="line">        <span class="keyword">if</span> (nameList.size() &gt; <span class="number">0</span>) { </div><div class="line">            <span class="keyword">return</span> (String) nameList.remove(<span class="number">0</span>); </div><div class="line">        } <span class="keyword">else</span> { </div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>; </div><div class="line">        } </div><div class="line">    } </div><div class="line">}</div></pre></td></tr></table></figure>
-
+<p>解决上面问题的办法是，在操作集合对象的NameList上面做一个同步。改写后的代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NameList</span> </span>&#123; </span><br><span class="line">    <span class="keyword">private</span> List nameList = Collections.synchronizedList(<span class="keyword">new</span> LinkedList()); </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(String name)</span> </span>&#123; </span><br><span class="line">        nameList.add(name); </span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> String <span class="title">removeFirst</span><span class="params">()</span> </span>&#123; </span><br><span class="line">        <span class="keyword">if</span> (nameList.size() &gt; <span class="number">0</span>) &#123; </span><br><span class="line">            <span class="keyword">return</span> (String) nameList.remove(<span class="number">0</span>); </span><br><span class="line">        &#125; <span class="keyword">else</span> &#123; </span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>; </span><br><span class="line">        &#125; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这样，当一个线程访问其中一个同步方法时，其他线程只有等待。</p>
-<h2 id="七、线程死锁">七、线程死锁</h2>
-<p>死锁对Java程序来说，是很复杂的，也很难发现问题。当两个线程被阻塞，每个线程在等待另一个线程时就发生死锁。</p>
+<h2 id="七、线程死锁">七、线程死锁</h2><p>死锁对Java程序来说，是很复杂的，也很难发现问题。当两个线程被阻塞，每个线程在等待另一个线程时就发生死锁。</p>
 <p>还是看一个比较直观的死锁例子：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DeadlockRisk</span> </span>{ </div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Resource</span> </span>{ </div><div class="line">        <span class="keyword">public</span> <span class="keyword">int</span> value; </div><div class="line">    } </div><div class="line"></div><div class="line">    <span class="keyword">private</span> Resource resourceA = <span class="keyword">new</span> Resource(); </div><div class="line">    <span class="keyword">private</span> Resource resourceB = <span class="keyword">new</span> Resource(); </div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span> <span class="title">read</span>() { </div><div class="line">        <span class="keyword">synchronized</span> (resourceA) { </div><div class="line">            <span class="keyword">synchronized</span> (resourceB) { </div><div class="line">                <span class="keyword">return</span> resourceB.value + resourceA.value; </div><div class="line">            } </div><div class="line">        } </div><div class="line">    } </div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">write</span>(<span class="keyword">int</span> a, <span class="keyword">int</span> b) { </div><div class="line">        <span class="keyword">synchronized</span> (resourceB) { </div><div class="line">            <span class="keyword">synchronized</span> (resourceA) { </div><div class="line">                resourceA.value = a; </div><div class="line">                resourceB.value = b; </div><div class="line">            } </div><div class="line">        } </div><div class="line">    } </div><div class="line">}</div></pre></td></tr></table></figure>
+<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DeadlockRisk</span> </span>{ 
+    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Resource</span> </span>{ 
+        <span class="keyword">public</span> <span class="keyword">int</span> value; 
+    } 
 
+    <span class="keyword">private</span> Resource resourceA = <span class="keyword">new</span> Resource(); 
+    <span class="keyword">private</span> Resource resourceB = <span class="keyword">new</span> Resource(); 
 
+    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>{ 
+        <span class="keyword">synchronized</span> (resourceA) { 
+            <span class="keyword">synchronized</span> (resourceB) { 
+                <span class="keyword">return</span> resourceB.value + resourceA.value; 
+            } 
+        } 
+    } 
+
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>{ 
+        <span class="keyword">synchronized</span> (resourceB) { 
+            <span class="keyword">synchronized</span> (resourceA) { 
+                resourceA.value = a; 
+                resourceB.value = b; 
+            } 
+        } 
+    } 
+}
+</code></pre>
 <p>假设read()方法由一个线程启动，write()方法由另外一个线程启动。读线程将拥有resourceA锁，写线程将拥有resourceB锁，两者都坚持等待的话就出现死锁。</p>
 <p>实际上，上面这个例子发生死锁的概率很小。因为在代码内的某个点，CPU必须从读线程切换到写线程，所以，死锁基本上不能发生。</p>
 <p>但是，无论代码中发生死锁的概率有多小，一旦发生死锁，程序就死掉。有一些设计方法能帮助避免死锁，包括始终按照预定义的顺序获取锁这一策略。</p>
-<h2 id="八、线程同步小结">八、线程同步小结</h2>
-<p>1、线程同步的目的是为了保护多个线程反问一个资源时对资源的破坏。<br>2、线程同步方法是通过锁来实现，<span style="color:red">每个对象都有切仅有一个锁，这个锁与一个特定的对象关联，线程一旦获取了对象锁，其他访问该对象的线程就无法再访问该对象的其他同步方法。</span><br>3、对于静态同步方法，锁是针对这个类的，锁对象是该类的Class对象。<span style="color:red">静态和非静态方法的锁互不干预。一个线程获得锁，当在一个同步方法中访问另外对象上的同步方法时，会获取这两个对象锁。</span><br>4、对于同步，要时刻清醒在哪个对象上同步，这是关键。<br>5、编写线程安全的类，需要时刻注意对多个线程竞争访问资源的逻辑和安全做出正确的判断，对“原子”操作做出分析，并保证原子操作期间别的线程无法访问竞争资源。<br>6、当多个线程等待一个对象锁时，没有获取到锁的线程将发生阻塞。<br>7、死锁是线程间相互等待锁锁造成的，在实际中发生的概率非常的小。真让你写个死锁程序，不一定好使，呵呵。但是，一旦程序发生死锁，程序将死掉。<br>转载自：<a href="http://lavasoft.blog.51cto.com/62575/27069/" target="_blank" rel="external">http://lavasoft.blog.51cto.com/62575/27069/</a></p>
+<h2 id="八、线程同步小结">八、线程同步小结</h2><p>1、线程同步的目的是为了保护多个线程反问一个资源时对资源的破坏。<br>2、线程同步方法是通过锁来实现，<span style="color:red">每个对象都有切仅有一个锁，这个锁与一个特定的对象关联，线程一旦获取了对象锁，其他访问该对象的线程就无法再访问该对象的其他同步方法。</span><br>3、对于静态同步方法，锁是针对这个类的，锁对象是该类的Class对象。<span style="color:red">静态和非静态方法的锁互不干预。一个线程获得锁，当在一个同步方法中访问另外对象上的同步方法时，会获取这两个对象锁。</span><br>4、对于同步，要时刻清醒在哪个对象上同步，这是关键。<br>5、编写线程安全的类，需要时刻注意对多个线程竞争访问资源的逻辑和安全做出正确的判断，对“原子”操作做出分析，并保证原子操作期间别的线程无法访问竞争资源。<br>6、当多个线程等待一个对象锁时，没有获取到锁的线程将发生阻塞。<br>7、死锁是线程间相互等待锁锁造成的，在实际中发生的概率非常的小。真让你写个死锁程序，不一定好使，呵呵。但是，一旦程序发生死锁，程序将死掉。<br>转载自：<a href="http://lavasoft.blog.51cto.com/62575/27069/" target="_blank" rel="external">http://lavasoft.blog.51cto.com/62575/27069/</a></p>
 
       
     </div>
@@ -288,24 +136,16 @@
         
   
   <div class="categories">
-    <a href="/categories/笔记/">笔记</a>, <a href="/categories/笔记/java高级/">java高级</a>, <a href="/categories/笔记/java高级/多线程/">多线程</a>
+    <a href="/categories/转载/">转载</a>
   </div>
 
         
   
   <div class="tags">
-    <a href="/tags/201410/">201410</a>, <a href="/tags/转载/">转载</a>
+    <a href="/tags/Concurrency/">Concurrency</a>
   </div>
 
-       <div class="bdsharebuttonbox">
-   <a href="#" class="bds_more" data-cmd="more"></a>
-   <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-   <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-   <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
-   <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
-   <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-  </div> 
-  <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        
       
       <div class="clearfix"></div>
     </footer>
@@ -313,7 +153,8 @@
 </article>
 
 
-<nav id="pagination" >
+	
+	<nav id="pagination" >
     
     <a href="/2014/11/03/服务器搭建参考/" class="alignleft prev" >上一页</a>
     
@@ -321,21 +162,21 @@
     <a href="/2014/10/30/Java-多线程-三/" class="alignright next" >下一页</a>
     
     <div class="clearfix"></div>
-</nav>
+	</nav>
+
 <section id="comment">
-   <ul class="ds-recent-comments" data-num-items="10" data-show-avatars="1" data-show-time="1" data-show-admin="1" data-excerpt-length="70"></ul>
-<!--多说js加载开始，一个页面只需要加载一次 -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"jiangnan31.github.io"};
-(function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = 'http://static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
-})();
-</script>
-<!--多说js加载结束，一个页面只需要加载一次 -->
+<div class="ds-thread" data-thread-key="/2014/10/30/Java-多线程-四/" data-title="Java 多线程<四> 线程的同步与锁(转载)" data-url="http://jiangnan31.github.io/2014/10/30/Java-多线程-四/"></div>
+  <script type="text/javascript">
+	var duoshuoQuery = {short_name:"jiangnan31"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
 </section>
 
 </div></div>
@@ -352,23 +193,13 @@ var duoshuoQuery = {short_name:"jiangnan31.github.io"};
   <h3 class="title">分类</h3>
   <ul class="entry">
   
-    <li><a href="/categories/Hadoop/">Hadoop</a><small>2</small></li>
-  
-    <li><a href="/categories/笔记/JavaScript/">JavaScript</a><small>1</small></li>
-  
-    <li><a href="/categories/笔记/Linux/">Linux</a><small>2</small></li>
-  
-    <li><a href="/categories/笔记/java高级/">java高级</a><small>11</small></li>
-  
-    <li><a href="/categories/leetCode/">leetCode</a><small>1</small></li>
-  
-    <li><a href="/categories/笔记/分布式/">分布式</a><small>1</small></li>
-  
-    <li><a href="/categories/笔记/java高级/多线程/">多线程</a><small>8</small></li>
+    <li><a href="/categories/Code/">Code</a><small>1</small></li>
   
     <li><a href="/categories/扯犊子/">扯犊子</a><small>1</small></li>
   
-    <li><a href="/categories/笔记/">笔记</a><small>15</small></li>
+    <li><a href="/categories/笔记/">笔记</a><small>4</small></li>
+  
+    <li><a href="/categories/转载/">转载</a><small>12</small></li>
   
   </ul>
 </div>
@@ -379,19 +210,21 @@ var duoshuoQuery = {short_name:"jiangnan31.github.io"};
   <h3 class="title">标签</h3>
   <ul class="entry">
   
-    <li><a href="/tags/201410/">201410</a><small>11</small></li>
+    <li><a href="/tags/Concurrency/">Concurrency</a><small>9</small></li>
   
-    <li><a href="/tags/201411/">201411</a><small>2</small></li>
+    <li><a href="/tags/Distributed/">Distributed</a><small>1</small></li>
   
-    <li><a href="/tags/201412/">201412</a><small>3</small></li>
+    <li><a href="/tags/Hadoop/">Hadoop</a><small>2</small></li>
   
-    <li><a href="/tags/201503/">201503</a><small>1</small></li>
+    <li><a href="/tags/JavaScript/">JavaScript</a><small>1</small></li>
   
-    <li><a href="/tags/代码/">代码</a><small>1</small></li>
+    <li><a href="/tags/LeetCode/">LeetCode</a><small>1</small></li>
   
-    <li><a href="/tags/总结/">总结</a><small>1</small></li>
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
   
-    <li><a href="/tags/转载/">转载</a><small>12</small></li>
+    <li><a href="/tags/RPC/">RPC</a><small>1</small></li>
+  
+    <li><a href="/tags/Regex/">Regex</a><small>1</small></li>
   
   </ul>
 </div>

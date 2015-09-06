@@ -37,162 +37,12 @@
     
       <li><a href="/">首页</a></li>
     
-      <li><a href="/archives">全部文章</a></li>
+      <li><a href="/archives">归档</a></li>
     
       <li><a href="/about">关于我</a></li>
     
       <li><a href="/feature">规划页</a></li>
     
-	<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
-	function c() {
-		var e = document.createElement("link");
-		e.setAttribute("type", "text/css");
-		e.setAttribute("rel", "stylesheet");
-		e.setAttribute("href", f);
-		e.setAttribute("class", l);
-		document.body.appendChild(e)
-	}
- 
-	function h() {
-		var e = document.getElementsByClassName(l);
-		for (var t = 0; t < e.length; t++) {
-			document.body.removeChild(e[t])
-		}
-	}
- 
-	function p() {
-		var e = document.createElement("div");
-		e.setAttribute("class", a);
-		document.body.appendChild(e);
-		setTimeout(function() {
-			document.body.removeChild(e)
-		}, 100)
-	}
- 
-	function d(e) {
-		return {
-			height : e.offsetHeight,
-			width : e.offsetWidth
-		}
-	}
- 
-	function v(i) {
-		var s = d(i);
-		return s.height > e && s.height < n && s.width > t && s.width < r
-	}
- 
-	function m(e) {
-		var t = e;
-		var n = 0;
-		while (!!t) {
-			n += t.offsetTop;
-			t = t.offsetParent
-		}
-		return n
-	}
- 
-	function g() {
-		var e = document.documentElement;
-		if (!!window.innerWidth) {
-			return window.innerHeight
-		} else if (e && !isNaN(e.clientHeight)) {
-			return e.clientHeight
-		}
-		return 0
-	}
- 
-	function y() {
-		if (window.pageYOffset) {
-			return window.pageYOffset
-		}
-		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
-	}
- 
-	function E(e) {
-		var t = m(e);
-		return t >= w && t <= b + w
-	}
- 
-	function S() {
-		var e = document.createElement("audio");
-		e.setAttribute("class", l);
-		e.src = i;
-		e.loop = false;
-		e.addEventListener("canplay", function() {
-			setTimeout(function() {
-				x(k)
-			}, 500);
-			setTimeout(function() {
-				N();
-				p();
-				for (var e = 0; e < O.length; e++) {
-					T(O[e])
-				}
-			}, 15500)
-		}, true);
-		e.addEventListener("ended", function() {
-			N();
-			h()
-		}, true);
-		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
-		document.body.appendChild(e);
-		e.play()
-	}
- 
-	function x(e) {
-		e.className += " " + s + " " + o
-	}
- 
-	function T(e) {
-		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
-	}
- 
-	function N() {
-		var e = document.getElementsByClassName(s);
-		var t = new RegExp("\\b" + s + "\\b");
-		for (var n = 0; n < e.length; ) {
-			e[n].className = e[n].className.replace(t, "")
-		}
-	}
- 
-	var e = 30;
-	var t = 30;
-	var n = 350;
-	var r = 350;
-	var i = "//qzone.haoduoge.com/music/48A09O38IG846DBF4FD1889F31315A6A8B2F9.mp3";
-	var s = "mw-harlem_shake_me";
-	var o = "im_first";
-	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
-	var a = "mw-strobe_light";
-	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
-	var l = "mw_added_css";
-	var b = g();
-	var w = y();
-	var C = document.getElementsByTagName("*");
-	var k = null;
-	for (var L = 0; L < C.length; L++) {
-		var A = C[L];
-		if (v(A)) {
-			if (E(A)) {
-				k = A;
-				break
-			}
-		}
-	}
-	if (A === null) {
-		console.warn("Could not find a node of the right size. Please try a different page.");
-		return
-	}
-	c();
-	S();
-	var O = [];
-	for (var L = 0; L < C.length; L++) {
-		var A = C[L];
-		if (v(A)) {
-			O.push(A)
-		}
-	}
-})()    '>音乐</a> </li>
   </ul>
   <div class="clearfix"></div>
 </nav>
@@ -204,7 +54,7 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-10-22T09:18:05.000Z"><a href="/2014/10/22/Thrift-java-使用实例/">10月 22 2014</a></time>
+        <time datetime="2014-10-22T09:18:05.000Z"><a href="/2014/10/22/Thrift-java-使用实例/">Oct 22 2014</a></time>
       
       
   
@@ -214,42 +64,21 @@
     </header>
     <div class="entry">
       
-        <h2 id="1-_Thirft简介">1. Thirft简介</h2>
-<p>根据Apache Thrift的官方站点的描述，Thrift是一个：<br>software framework, for scalable cross-language services development, combines a software stack with a code generation engine to build services that work efficiently and seamlessly between C++, Java, Python, PHP, Ruby, Erlang, Perl, Haskell, C#, Cocoa, JavaScript, Node.js, Smalltalk, OCaml and Delphi and other languages.<br>安装Thrift比较的烦，但是在Windows下官方编译了一个thrift.exe，下载就行了。点击一闪即逝 ，木有关系。<br>拷贝到c:\windows目录下(或者任何目录下)，然后就可以在dos环境下使用了</p>
-<h2 id="2-_写Thrift定义文件（-thrift_file）">2. 写Thrift定义文件（.thrift file）</h2>
-<p>示例定义文件（add.thrift）</p>
+        <h2 id="1-_Thirft简介">1. Thirft简介</h2><p>根据Apache Thrift的官方站点的描述，Thrift是一个：<br>software framework, for scalable cross-language services development, combines a software stack with a code generation engine to build services that work efficiently and seamlessly between C++, Java, Python, PHP, Ruby, Erlang, Perl, Haskell, C#, Cocoa, JavaScript, Node.js, Smalltalk, OCaml and Delphi and other languages.<br>安装Thrift比较的烦，但是在Windows下官方编译了一个thrift.exe，下载就行了。点击一闪即逝 ，木有关系。<br>拷贝到c:\windows目录下(或者任何目录下)，然后就可以在dos环境下使用了</p>
+<h2 id="2-_写Thrift定义文件（-thrift_file）">2. 写Thrift定义文件（.thrift file）</h2><p>示例定义文件（add.thrift）</p>
 <a id="more"></a>
-
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">namespace java com.samples.thrift.server  // defines the namespace   </div><div class="line">   </div><div class="line">typedef i32 int  //typedefs to get convenient names for your types  </div><div class="line">   </div><div class="line">service AdditionService {  // defines the service to add two numbers  </div><div class="line">        int add(1:int n1, 2:int n2), //defines a method  </div><div class="line">}</div></pre></td></tr></table></figure>
-
-<h2 id="3-_编译Thrift定义文件）">3. 编译Thrift定义文件）</h2>
-<p>下面的命令编译.thrift文件</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">thrift --gen &lt;language&gt; &lt;Thrift filename&gt;</div></pre></td></tr></table></figure>
-
-<p>对于我的例子来讲，命令是：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">thrift-<span class="number">0.9</span>.<span class="number">1</span> -gen java E:\workspace\ThriftTest\src\main\java\add.thrift</div></pre></td></tr></table></figure>
-
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">namespace java com.samples.thrift.server  // defines the namespace   </span><br><span class="line">   </span><br><span class="line">typedef i32 int  //typedefs to get convenient names for your types  </span><br><span class="line">   </span><br><span class="line">service AdditionService &#123;  // defines the service to add two numbers  </span><br><span class="line">        int add(1:int n1, 2:int n2), //defines a method  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-_编译Thrift定义文件）">3. 编译Thrift定义文件）</h2><p>下面的命令编译.thrift文件<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">thrift --gen &lt;language&gt; &lt;Thrift filename&gt;</span><br></pre></td></tr></table></figure></p>
+<p>对于我的例子来讲，命令是：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">thrift-<span class="number">0.9</span>.<span class="number">1</span> -gen java E:\workspace\ThriftTest\src\main\java\add.thrift</span><br></pre></td></tr></table></figure></p>
 <p><img src="/img/thrift_1.png" alt=""><br>在执行完代码后，在gen-java目录下你会发现构建RPC服务器和客户端有用的源代码。创建一个叫做AddtionService.java的java文件。</p>
-<h2 id="4-_创建Maven项目">4. 创建Maven项目</h2>
-<h3 id="4-1_pom-xml中添加所需jar包信息">4.1 pom.xml中添加所需jar包信息</h3>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="title">dependencies</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="title">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.apache.thrift<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>libthrift<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="title">version</span>&gt;</span>0.9.1<span class="tag">&lt;/<span class="title">version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="title">dependency</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="title">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.slf4j<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>slf4j-log4j12<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="title">version</span>&gt;</span>1.5.7<span class="tag">&lt;/<span class="title">version</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="title">dependency</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="title">dependencies</span>&gt;</span></div></pre></td></tr></table></figure>
-
-<h3 id="4-2_写一个_service_handler_AdditionServiceHandler-java">4.2 写一个 service handler AdditionServiceHandler.java</h3>
-<p>Service handler 类必须实现 AdditionService.Iface接口。<br>示例Service handler（AdditionServiceHandler.java）</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.samples.thrift.server;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.apache.thrift.TException;  </div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AdditionServiceHandler</span> <span class="keyword">implements</span> <span class="title">AdditionService</span>.<span class="title">Iface</span> </span>{  </div><div class="line">   </div><div class="line"> <span class="keyword">public</span> <span class="keyword">int</span> <span class="title">add</span>(<span class="keyword">int</span> n1, <span class="keyword">int</span> n2) <span class="keyword">throws</span> TException {  </div><div class="line">  <span class="keyword">return</span> n1 + n2;  </div><div class="line"> }  </div><div class="line">   </div><div class="line">}</div></pre></td></tr></table></figure>
-
-<h3 id="4-3_写一个简单的服务器_MyServer-java">4.3 写一个简单的服务器 MyServer.java</h3>
-<p>下面的示例代码是一个简单的Thrift服务器。可以看到下面的代码中有一段是注释了的，可以去掉注释来启用多线程服务器。<br>示例服务器（MyServer.java）</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.samples.thrift.server;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.apache.thrift.transport.TServerSocket;  </div><div class="line"><span class="keyword">import</span> org.apache.thrift.transport.TServerTransport;  </div><div class="line"><span class="keyword">import</span> org.apache.thrift.server.TServer;  </div><div class="line"><span class="keyword">import</span> org.apache.thrift.server.TServer.Args;  </div><div class="line"><span class="keyword">import</span> org.apache.thrift.server.TSimpleServer;  </div><div class="line">   </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyServer</span> </span>{  </div><div class="line">   </div><div class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">StartsimpleServer</span>(AdditionService.Processor&lt;AdditionServiceHandler&gt; processor) {  </div><div class="line">  <span class="keyword">try</span> {  </div><div class="line">   TServerTransport serverTransport = <span class="keyword">new</span> TServerSocket(<span class="number">4578</span>);  </div><div class="line">   TServer server = <span class="keyword">new</span> TSimpleServer(  </div><div class="line">     <span class="keyword">new</span> Args(serverTransport).processor(processor));  </div><div class="line">   </div><div class="line">   <span class="comment">// Use this for a multithreaded server  </span></div><div class="line">   <span class="comment">// TServer server = new TThreadPoolServer(new  </span></div><div class="line">   <span class="comment">// TThreadPoolServer.Args(serverTransport).processor(processor));  </span></div><div class="line">   </div><div class="line">   System.out.println(<span class="string">"Starting the simple server..."</span>);  </div><div class="line">   server.serve();  </div><div class="line">  } <span class="keyword">catch</span> (Exception e) {  </div><div class="line">   e.printStackTrace();  </div><div class="line">  }  </div><div class="line"> }  </div><div class="line">    </div><div class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(String[] args) {  </div><div class="line">  StartsimpleServer(<span class="keyword">new</span> AdditionService.Processor&lt;AdditionServiceHandler&gt;(<span class="keyword">new</span> AdditionServiceHandler()));  </div><div class="line"> }  </div><div class="line">   </div><div class="line">}</div></pre></td></tr></table></figure>
-
-<h3 id="4-4_写一个客户端_AdditionClient-java">4.4 写一个客户端  AdditionClient.java</h3>
-<p>下面的例子是一个使用Java写的客户端短使用AdditionService的服务。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.samples.thrift.server;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.apache.thrift.TException;  </div><div class="line"><span class="keyword">import</span> org.apache.thrift.protocol.TBinaryProtocol;  </div><div class="line"><span class="keyword">import</span> org.apache.thrift.protocol.TProtocol;  </div><div class="line"><span class="keyword">import</span> org.apache.thrift.transport.TSocket;  </div><div class="line"><span class="keyword">import</span> org.apache.thrift.transport.TTransport;  </div><div class="line"><span class="keyword">import</span> org.apache.thrift.transport.TTransportException;  </div><div class="line">   </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AdditionClient</span> </span>{  </div><div class="line">   </div><div class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(String[] args) {  </div><div class="line">   </div><div class="line">  <span class="keyword">try</span> {  </div><div class="line">   TTransport transport;  </div><div class="line">   </div><div class="line">   transport = <span class="keyword">new</span> TSocket(<span class="string">"localhost"</span>, <span class="number">4578</span>);  </div><div class="line">   transport.open();  </div><div class="line">   </div><div class="line">   TProtocol protocol = <span class="keyword">new</span> TBinaryProtocol(transport);  </div><div class="line">   AdditionService.Client client = <span class="keyword">new</span> AdditionService.Client(protocol);  </div><div class="line">   </div><div class="line">   System.out.println(client.add(<span class="number">100</span>, <span class="number">200</span>));  </div><div class="line">   </div><div class="line">   transport.close();  </div><div class="line">  } <span class="keyword">catch</span> (TTransportException e) {  </div><div class="line">   e.printStackTrace();  </div><div class="line">  } <span class="keyword">catch</span> (TException x) {  </div><div class="line">   x.printStackTrace();  </div><div class="line">  }  </div><div class="line"> }  </div><div class="line">   </div><div class="line">}</div></pre></td></tr></table></figure>
-
+<h2 id="4-_创建Maven项目">4. 创建Maven项目</h2><h3 id="4-1_pom-xml中添加所需jar包信息">4.1 pom.xml中添加所需jar包信息</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">dependencies</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">dependency</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.apache.thrift<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>libthrift<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">version</span>&gt;</span>0.9.1<span class="tag">&lt;/<span class="title">version</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="title">dependency</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">dependency</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.slf4j<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>slf4j-log4j12<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">version</span>&gt;</span>1.5.7<span class="tag">&lt;/<span class="title">version</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="title">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-2_写一个_service_handler_AdditionServiceHandler-java">4.2 写一个 service handler AdditionServiceHandler.java</h3><p>Service handler 类必须实现 AdditionService.Iface接口。<br>示例Service handler（AdditionServiceHandler.java）<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.samples.thrift.server;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.thrift.TException;  </span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AdditionServiceHandler</span> <span class="keyword">implements</span> <span class="title">AdditionService</span>.<span class="title">Iface</span> </span>&#123;  </span><br><span class="line">   </span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> n1, <span class="keyword">int</span> n2)</span> <span class="keyword">throws</span> TException </span>&#123;  </span><br><span class="line">  <span class="keyword">return</span> n1 + n2;  </span><br><span class="line"> &#125;  </span><br><span class="line">   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="4-3_写一个简单的服务器_MyServer-java">4.3 写一个简单的服务器 MyServer.java</h3><p>下面的示例代码是一个简单的Thrift服务器。可以看到下面的代码中有一段是注释了的，可以去掉注释来启用多线程服务器。<br>示例服务器（MyServer.java）<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.samples.thrift.server;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.thrift.transport.TServerSocket;  </span><br><span class="line"><span class="keyword">import</span> org.apache.thrift.transport.TServerTransport;  </span><br><span class="line"><span class="keyword">import</span> org.apache.thrift.server.TServer;  </span><br><span class="line"><span class="keyword">import</span> org.apache.thrift.server.TServer.Args;  </span><br><span class="line"><span class="keyword">import</span> org.apache.thrift.server.TSimpleServer;  </span><br><span class="line">   </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyServer</span> </span>&#123;  </span><br><span class="line">   </span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">StartsimpleServer</span><span class="params">(AdditionService.Processor&lt;AdditionServiceHandler&gt; processor)</span> </span>&#123;  </span><br><span class="line">  <span class="keyword">try</span> &#123;  </span><br><span class="line">   TServerTransport serverTransport = <span class="keyword">new</span> TServerSocket(<span class="number">4578</span>);  </span><br><span class="line">   TServer server = <span class="keyword">new</span> TSimpleServer(  </span><br><span class="line">     <span class="keyword">new</span> Args(serverTransport).processor(processor));  </span><br><span class="line">   </span><br><span class="line">   <span class="comment">// Use this for a multithreaded server  </span></span><br><span class="line">   <span class="comment">// TServer server = new TThreadPoolServer(new  </span></span><br><span class="line">   <span class="comment">// TThreadPoolServer.Args(serverTransport).processor(processor));  </span></span><br><span class="line">   </span><br><span class="line">   System.out.println(<span class="string">"Starting the simple server..."</span>);  </span><br><span class="line">   server.serve();  </span><br><span class="line">  &#125; <span class="keyword">catch</span> (Exception e) &#123;  </span><br><span class="line">   e.printStackTrace();  </span><br><span class="line">  &#125;  </span><br><span class="line"> &#125;  </span><br><span class="line">    </span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </span><br><span class="line">  StartsimpleServer(<span class="keyword">new</span> AdditionService.Processor&lt;AdditionServiceHandler&gt;(<span class="keyword">new</span> AdditionServiceHandler()));  </span><br><span class="line"> &#125;  </span><br><span class="line">   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="4-4_写一个客户端_AdditionClient-java">4.4 写一个客户端  AdditionClient.java</h3><p>下面的例子是一个使用Java写的客户端短使用AdditionService的服务。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.samples.thrift.server;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.thrift.TException;  </span><br><span class="line"><span class="keyword">import</span> org.apache.thrift.protocol.TBinaryProtocol;  </span><br><span class="line"><span class="keyword">import</span> org.apache.thrift.protocol.TProtocol;  </span><br><span class="line"><span class="keyword">import</span> org.apache.thrift.transport.TSocket;  </span><br><span class="line"><span class="keyword">import</span> org.apache.thrift.transport.TTransport;  </span><br><span class="line"><span class="keyword">import</span> org.apache.thrift.transport.TTransportException;  </span><br><span class="line">   </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AdditionClient</span> </span>&#123;  </span><br><span class="line">   </span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </span><br><span class="line">   </span><br><span class="line">  <span class="keyword">try</span> &#123;  </span><br><span class="line">   TTransport transport;  </span><br><span class="line">   </span><br><span class="line">   transport = <span class="keyword">new</span> TSocket(<span class="string">"localhost"</span>, <span class="number">4578</span>);  </span><br><span class="line">   transport.open();  </span><br><span class="line">   </span><br><span class="line">   TProtocol protocol = <span class="keyword">new</span> TBinaryProtocol(transport);  </span><br><span class="line">   AdditionService.Client client = <span class="keyword">new</span> AdditionService.Client(protocol);  </span><br><span class="line">   </span><br><span class="line">   System.out.println(client.add(<span class="number">100</span>, <span class="number">200</span>));  </span><br><span class="line">   </span><br><span class="line">   transport.close();  </span><br><span class="line">  &#125; <span class="keyword">catch</span> (TTransportException e) &#123;  </span><br><span class="line">   e.printStackTrace();  </span><br><span class="line">  &#125; <span class="keyword">catch</span> (TException x) &#123;  </span><br><span class="line">   x.printStackTrace();  </span><br><span class="line">  &#125;  </span><br><span class="line"> &#125;  </span><br><span class="line">   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>运行服务端代码（MyServer.java）将会看到下面的输出。</p>
-<pre><code><span class="variable">Starting</span> the simple server...
+<pre><code>Starting the simple <span class="keyword">server</span>...
 </code></pre><p>然后运行客户端代码（AdditionClient.java），将会看到如下输出。</p>
-<pre><code>300
+<pre><code><span class="number">300</span>
 </code></pre><hr>
 <p>参考文档：<br><a href="http://my.oschina.net/jack230230/blog/66041" target="_blank" rel="external">参考1</a><br><a href="http://www.cnblogs.com/liyonghui/archive/2013/07/12/3186140.html" target="_blank" rel="external">参考2</a><br><a href="http://gemantic.iteye.com/blog/1199214" target="_blank" rel="external">参考3</a><br><a href="https://thrift.apache.org/" target="_blank" rel="external">参考4</a></p>
 <p>网盘下载：<a href="http://pan.baidu.com/s/1sjI1S4l" target="_blank" rel="external">http://pan.baidu.com/s/1sjI1S4l</a><br><a href="http://blog.csdn.net/qiangweiloveforever/article/details/7195145" target="_blank" rel="external">http://blog.csdn.net/qiangweiloveforever/article/details/7195145</a>，除此之外，博客还有很多很有深度的文章</p>
@@ -261,24 +90,16 @@
         
   
   <div class="categories">
-    <a href="/categories/笔记/">笔记</a>, <a href="/categories/笔记/java高级/">java高级</a>
+    <a href="/categories/笔记/">笔记</a>
   </div>
 
         
   
   <div class="tags">
-    <a href="/tags/201410/">201410</a>
+    <a href="/tags/RPC/">RPC</a>
   </div>
 
-       <div class="bdsharebuttonbox">
-   <a href="#" class="bds_more" data-cmd="more"></a>
-   <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-   <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-   <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
-   <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
-   <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-  </div> 
-  <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        
       
       <div class="clearfix"></div>
     </footer>
@@ -286,7 +107,8 @@
 </article>
 
 
-<nav id="pagination" >
+	
+	<nav id="pagination" >
     
     <a href="/2014/10/22/leetCode系列-一/" class="alignleft prev" >上一页</a>
     
@@ -294,21 +116,21 @@
     <a href="/2014/10/20/博客说明/" class="alignright next" >下一页</a>
     
     <div class="clearfix"></div>
-</nav>
+	</nav>
+
 <section id="comment">
-   <ul class="ds-recent-comments" data-num-items="10" data-show-avatars="1" data-show-time="1" data-show-admin="1" data-excerpt-length="70"></ul>
-<!--多说js加载开始，一个页面只需要加载一次 -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"jiangnan31.github.io"};
-(function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = 'http://static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
-})();
-</script>
-<!--多说js加载结束，一个页面只需要加载一次 -->
+<div class="ds-thread" data-thread-key="/2014/10/22/Thrift-java-使用实例/" data-title="Thrift java 使用实例(修改版)" data-url="http://jiangnan31.github.io/2014/10/22/Thrift-java-使用实例/"></div>
+  <script type="text/javascript">
+	var duoshuoQuery = {short_name:"jiangnan31"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
 </section>
 
 </div></div>
@@ -325,23 +147,13 @@ var duoshuoQuery = {short_name:"jiangnan31.github.io"};
   <h3 class="title">分类</h3>
   <ul class="entry">
   
-    <li><a href="/categories/Hadoop/">Hadoop</a><small>2</small></li>
-  
-    <li><a href="/categories/笔记/JavaScript/">JavaScript</a><small>1</small></li>
-  
-    <li><a href="/categories/笔记/Linux/">Linux</a><small>2</small></li>
-  
-    <li><a href="/categories/笔记/java高级/">java高级</a><small>11</small></li>
-  
-    <li><a href="/categories/leetCode/">leetCode</a><small>1</small></li>
-  
-    <li><a href="/categories/笔记/分布式/">分布式</a><small>1</small></li>
-  
-    <li><a href="/categories/笔记/java高级/多线程/">多线程</a><small>8</small></li>
+    <li><a href="/categories/Code/">Code</a><small>1</small></li>
   
     <li><a href="/categories/扯犊子/">扯犊子</a><small>1</small></li>
   
-    <li><a href="/categories/笔记/">笔记</a><small>15</small></li>
+    <li><a href="/categories/笔记/">笔记</a><small>4</small></li>
+  
+    <li><a href="/categories/转载/">转载</a><small>12</small></li>
   
   </ul>
 </div>
@@ -352,19 +164,21 @@ var duoshuoQuery = {short_name:"jiangnan31.github.io"};
   <h3 class="title">标签</h3>
   <ul class="entry">
   
-    <li><a href="/tags/201410/">201410</a><small>11</small></li>
+    <li><a href="/tags/Concurrency/">Concurrency</a><small>9</small></li>
   
-    <li><a href="/tags/201411/">201411</a><small>2</small></li>
+    <li><a href="/tags/Distributed/">Distributed</a><small>1</small></li>
   
-    <li><a href="/tags/201412/">201412</a><small>3</small></li>
+    <li><a href="/tags/Hadoop/">Hadoop</a><small>2</small></li>
   
-    <li><a href="/tags/201503/">201503</a><small>1</small></li>
+    <li><a href="/tags/JavaScript/">JavaScript</a><small>1</small></li>
   
-    <li><a href="/tags/代码/">代码</a><small>1</small></li>
+    <li><a href="/tags/LeetCode/">LeetCode</a><small>1</small></li>
   
-    <li><a href="/tags/总结/">总结</a><small>1</small></li>
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
   
-    <li><a href="/tags/转载/">转载</a><small>12</small></li>
+    <li><a href="/tags/RPC/">RPC</a><small>1</small></li>
+  
+    <li><a href="/tags/Regex/">Regex</a><small>1</small></li>
   
   </ul>
 </div>

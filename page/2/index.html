@@ -37,162 +37,12 @@
     
       <li><a href="/">首页</a></li>
     
-      <li><a href="/archives">全部文章</a></li>
+      <li><a href="/archives">归档</a></li>
     
       <li><a href="/about">关于我</a></li>
     
       <li><a href="/feature">规划页</a></li>
     
-	<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
-	function c() {
-		var e = document.createElement("link");
-		e.setAttribute("type", "text/css");
-		e.setAttribute("rel", "stylesheet");
-		e.setAttribute("href", f);
-		e.setAttribute("class", l);
-		document.body.appendChild(e)
-	}
- 
-	function h() {
-		var e = document.getElementsByClassName(l);
-		for (var t = 0; t < e.length; t++) {
-			document.body.removeChild(e[t])
-		}
-	}
- 
-	function p() {
-		var e = document.createElement("div");
-		e.setAttribute("class", a);
-		document.body.appendChild(e);
-		setTimeout(function() {
-			document.body.removeChild(e)
-		}, 100)
-	}
- 
-	function d(e) {
-		return {
-			height : e.offsetHeight,
-			width : e.offsetWidth
-		}
-	}
- 
-	function v(i) {
-		var s = d(i);
-		return s.height > e && s.height < n && s.width > t && s.width < r
-	}
- 
-	function m(e) {
-		var t = e;
-		var n = 0;
-		while (!!t) {
-			n += t.offsetTop;
-			t = t.offsetParent
-		}
-		return n
-	}
- 
-	function g() {
-		var e = document.documentElement;
-		if (!!window.innerWidth) {
-			return window.innerHeight
-		} else if (e && !isNaN(e.clientHeight)) {
-			return e.clientHeight
-		}
-		return 0
-	}
- 
-	function y() {
-		if (window.pageYOffset) {
-			return window.pageYOffset
-		}
-		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
-	}
- 
-	function E(e) {
-		var t = m(e);
-		return t >= w && t <= b + w
-	}
- 
-	function S() {
-		var e = document.createElement("audio");
-		e.setAttribute("class", l);
-		e.src = i;
-		e.loop = false;
-		e.addEventListener("canplay", function() {
-			setTimeout(function() {
-				x(k)
-			}, 500);
-			setTimeout(function() {
-				N();
-				p();
-				for (var e = 0; e < O.length; e++) {
-					T(O[e])
-				}
-			}, 15500)
-		}, true);
-		e.addEventListener("ended", function() {
-			N();
-			h()
-		}, true);
-		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
-		document.body.appendChild(e);
-		e.play()
-	}
- 
-	function x(e) {
-		e.className += " " + s + " " + o
-	}
- 
-	function T(e) {
-		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
-	}
- 
-	function N() {
-		var e = document.getElementsByClassName(s);
-		var t = new RegExp("\\b" + s + "\\b");
-		for (var n = 0; n < e.length; ) {
-			e[n].className = e[n].className.replace(t, "")
-		}
-	}
- 
-	var e = 30;
-	var t = 30;
-	var n = 350;
-	var r = 350;
-	var i = "//qzone.haoduoge.com/music/48A09O38IG846DBF4FD1889F31315A6A8B2F9.mp3";
-	var s = "mw-harlem_shake_me";
-	var o = "im_first";
-	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
-	var a = "mw-strobe_light";
-	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
-	var l = "mw_added_css";
-	var b = g();
-	var w = y();
-	var C = document.getElementsByTagName("*");
-	var k = null;
-	for (var L = 0; L < C.length; L++) {
-		var A = C[L];
-		if (v(A)) {
-			if (E(A)) {
-				k = A;
-				break
-			}
-		}
-	}
-	if (A === null) {
-		console.warn("Could not find a node of the right size. Please try a different page.");
-		return
-	}
-	c();
-	S();
-	var O = [];
-	for (var L = 0; L < C.length; L++) {
-		var A = C[L];
-		if (v(A)) {
-			O.push(A)
-		}
-	}
-})()    '>音乐</a> </li>
   </ul>
   <div class="clearfix"></div>
 </nav>
@@ -205,7 +55,7 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-11-03T09:31:25.000Z"><a href="/2014/11/03/服务器搭建参考/">11月 3 2014</a></time>
+        <time datetime="2014-11-03T09:31:25.000Z"><a href="/2014/11/03/服务器搭建参考/">Nov 3 2014</a></time>
       
       
   
@@ -216,9 +66,7 @@
     <div class="entry">
       
         <p>阿里云的服务器被入侵，系统卡死。重新搭建服务器，为了防止再出问题记录一下：</p>
-<p>JDK安装：<a href="http://www.linuxidc.com/Linux/2014-03/98320.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2014-03/98320.htm</a><br>Mysql安装：(1)<a href="http://www.linuxidc.com/Linux/2013-01/78716p3.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2013-01/78716p3.htm</a><br> (2) <a href="http://blog.csdn.net/jiangnan_java/article/details/39255349" target="_blank" rel="external">http://blog.csdn.net/jiangnan_java/article/details/39255349</a><br>MySQL数据乱码的解决方法:<a href="http://blog.csdn.net/jiangnan_java/article/details/39255371" target="_blank" rel="external">http://blog.csdn.net/jiangnan_java/article/details/39255371</a><br>root密码重置: <a href="http://blog.csdn.net/jiangnan_java/article/details/39255323" target="_blank" rel="external">http://blog.csdn.net/jiangnan_java/article/details/39255323</a><br>tomcat: tomcat-users.xml中</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="title">tomcat-users</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">role</span> <span class="attribute">rolename</span>=<span class="value">"manager-gui"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">user</span> <span class="attribute">username</span>=<span class="value">"jiangnan05"</span> <span class="attribute">password</span>=<span class="value">"****"</span> <span class="attribute">roles</span>=<span class="value">"manager-gui"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">tomcat-users</span>&gt;</span></div></pre></td></tr></table></figure>
-
+<p>JDK安装：<a href="http://www.linuxidc.com/Linux/2014-03/98320.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2014-03/98320.htm</a><br>Mysql安装：(1)<a href="http://www.linuxidc.com/Linux/2013-01/78716p3.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2013-01/78716p3.htm</a><br> (2) <a href="http://blog.csdn.net/jiangnan_java/article/details/39255349" target="_blank" rel="external">http://blog.csdn.net/jiangnan_java/article/details/39255349</a><br>MySQL数据乱码的解决方法:<a href="http://blog.csdn.net/jiangnan_java/article/details/39255371" target="_blank" rel="external">http://blog.csdn.net/jiangnan_java/article/details/39255371</a><br>root密码重置: <a href="http://blog.csdn.net/jiangnan_java/article/details/39255323" target="_blank" rel="external">http://blog.csdn.net/jiangnan_java/article/details/39255323</a><br>tomcat: tomcat-users.xml中<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">tomcat-users</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">role</span> <span class="attribute">rolename</span>=<span class="value">"manager-gui"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">user</span> <span class="attribute">username</span>=<span class="value">"jiangnan05"</span> <span class="attribute">password</span>=<span class="value">"****"</span> <span class="attribute">roles</span>=<span class="value">"manager-gui"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">tomcat-users</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -241,7 +89,7 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-10-30T07:22:06.000Z"><a href="/2014/10/30/Java-多线程-四/">10月 30 2014</a></time>
+        <time datetime="2014-10-30T07:22:06.000Z"><a href="/2014/10/30/Java-多线程-四/">Oct 30 2014</a></time>
       
       
   
@@ -251,8 +99,7 @@
     </header>
     <div class="entry">
       
-        <h2 id="一、同步问题提出">一、同步问题提出</h2>
-<p>线程的同步是为了防止多个线程访问一个数据对象时，对数据造成的破坏。<br>例如：两个线程ThreadA、ThreadB都操作同一个对象Foo对象，并修改Foo对象上的数据。<br>
+        <h2 id="一、同步问题提出">一、同步问题提出</h2><p>线程的同步是为了防止多个线程访问一个数据对象时，对数据造成的破坏。<br>例如：两个线程ThreadA、ThreadB都操作同一个对象Foo对象，并修改Foo对象上的数据。<br>
       
     </div>
     <footer>
@@ -278,7 +125,7 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-10-30T02:09:36.000Z"><a href="/2014/10/30/Java-多线程-三/">10月 30 2014</a></time>
+        <time datetime="2014-10-30T02:09:36.000Z"><a href="/2014/10/30/Java-多线程-三/">Oct 30 2014</a></time>
       
       
   
@@ -288,8 +135,7 @@
     </header>
     <div class="entry">
       
-        <h1 id="一、_线程栈模型与线程的变量">一、 线程栈模型与线程的变量</h1>
-<p>要理解线程调度的原理，以及线程执行过程，必须理解线程栈模型。<span style="color:red">(线程调用start()方法之后会启动新的执行线程，他具有新的调用栈)</span><br>线程栈是指某时刻时内存中线程调度的栈信息，<span style="color:red">当前调用的方法总是位于栈顶</span>。线程栈的内容是随着程序的运行动态变化的，因此研究线程栈必须选择一个运行的时刻（实际上指代码运行到什么地方)。</p>
+        <h1 id="一、_线程栈模型与线程的变量">一、 线程栈模型与线程的变量</h1><p>要理解线程调度的原理，以及线程执行过程，必须理解线程栈模型。<span style="color:red">(线程调用start()方法之后会启动新的执行线程，他具有新的调用栈)</span><br>线程栈是指某时刻时内存中线程调度的栈信息，<span style="color:red">当前调用的方法总是位于栈顶</span>。线程栈的内容是随着程序的运行动态变化的，因此研究线程栈必须选择一个运行的时刻（实际上指代码运行到什么地方)。</p>
 <p>下面通过一个示例性的代码说明线程（调用）栈的变化过程。<br>
       
     </div>
@@ -316,7 +162,7 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-10-29T12:58:29.000Z"><a href="/2014/10/29/Java-多线程-二/">10月 29 2014</a></time>
+        <time datetime="2014-10-29T12:58:29.000Z"><a href="/2014/10/29/Java-多线程-二/">Oct 29 2014</a></time>
       
       
   
@@ -326,11 +172,7 @@
     </header>
     <div class="entry">
       
-        <h2 id="一、定义线程">一、定义线程</h2>
-<h3 id="1、扩展java-lang-Thread类。">1、扩展java.lang.Thread类。</h3>
-<p>此类中有个run()方法，应该注意其用法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>()</div></pre></td></tr></table></figure>
-
+        <h2 id="一、定义线程">一、定义线程</h2><h3 id="1、扩展java-lang-Thread类。">1、扩展java.lang.Thread类。</h3><p>此类中有个run()方法，应该注意其用法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure></p>
 <p>如果该线程是使用独立的 Runnable 运行对象构造的，启动该线程则调用该 Runnable 对象的 run 方法；否则，该方法不执行任何操作并返回。（<span style="color:red">怎么样算使用非独立的 Runnable 运行对象构造？</span>）<br>
       
     </div>
@@ -357,7 +199,7 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-10-29T08:24:49.000Z"><a href="/2014/10/29/HDFS架构简介/">10月 29 2014</a></time>
+        <time datetime="2014-10-29T08:24:49.000Z"><a href="/2014/10/29/HDFS架构简介/">Oct 29 2014</a></time>
       
       
   
@@ -367,8 +209,7 @@
     </header>
     <div class="entry">
       
-        <h2 id="一-_HDFS框架简述">一. HDFS框架简述</h2>
-<p><img src="/img/Hadoop/1.jpg" alt=""><br>
+        <h2 id="一-_HDFS框架简述">一. HDFS框架简述</h2><p><img src="/img/Hadoop/1.jpg" alt=""><br>
       
     </div>
     <footer>
@@ -394,7 +235,7 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-10-28T10:11:13.000Z"><a href="/2014/10/28/Java-多线程-一/">10月 28 2014</a></time>
+        <time datetime="2014-10-28T10:11:13.000Z"><a href="/2014/10/28/Java-多线程-一/">Oct 28 2014</a></time>
       
       
   
@@ -404,8 +245,7 @@
     </header>
     <div class="entry">
       
-        <h2 id="一、操作系统中线程和进程的概念">一、操作系统中线程和进程的概念</h2>
-<p>现在的操作系统是多任务操作系统。多线程是实现多任务的一种方式。</p>
+        <h2 id="一、操作系统中线程和进程的概念">一、操作系统中线程和进程的概念</h2><p>现在的操作系统是多任务操作系统。多线程是实现多任务的一种方式。</p>
 <p>进程是指一个内存中运行的应用程序，每个进程都有自己独立的一块内存空间，一个进程中可以启动多个线程。比如在Windows系统中，一个运行的exe就是一个进程。</p>
 <p>线程是指进程中的一个执行流程，一个进程中可以运行多个线程。比如java.exe进程中可以运行很多线程。线程总是属于某个进程，进程中的多个线程共享进程的内存。“同时”执行是人的感觉，在线程之间实际上轮换执行。<br>
       
@@ -433,7 +273,7 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-10-28T06:13:50.000Z"><a href="/2014/10/28/Future、FutureTask、Callable/">10月 28 2014</a></time>
+        <time datetime="2014-10-28T06:13:50.000Z"><a href="/2014/10/28/Future、FutureTask、Callable/">Oct 28 2014</a></time>
       
       
   
@@ -443,10 +283,7 @@
     </header>
     <div class="entry">
       
-        <h2 id="1-_Future接口">1. Future接口</h2>
-<p>JDK API中的说明</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Future</span> &lt;<span class="title">V</span>&gt;</span></div></pre></td></tr></table></figure>
-
+        <h2 id="1-_Future接口">1. Future接口</h2><p>JDK API中的说明<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Future</span> &lt;<span class="title">V</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p> Future表示异步计算的结果。<span style="color:red">它提供了检查计算是否完成的方法，以等待计算的完成，并获取计算的结果。</span>计算完成后只能使用 get 方法来获取结果，如有必要，计算完成前可以阻塞此方法。<span style="color:red">取消则由cancel方法来执行。</span>还提供了其他方法，以确定任务是正常完成还是被取消了。一旦计算完成，就不能再取消计算。如果为了可取消性而使用 Future 但又不提供可用的结果，则可以声明 Future&lt;?&gt; 形式类型、并返回 null 作为底层任务的结果。<br>
       
     </div>
@@ -473,17 +310,17 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-10-28T04:05:02.000Z"><a href="/2014/10/28/spring揭秘-一/">10月 28 2014</a></time>
+        <time datetime="2014-10-22T12:32:12.000Z"><a href="/2014/10/22/leetCode系列-一/">Oct 22 2014</a></time>
       
       
   
-    <h1 class="title"><a href="/2014/10/28/spring揭秘-一/">spring揭秘&lt;一&gt; IOC</a></h1>
+    <h1 class="title"><a href="/2014/10/22/leetCode系列-一/">leetCode系列&lt;一&gt;</a></h1>
   
 
     </header>
     <div class="entry">
       
-        
+        <h2 id="1-_Two_Sum">1. Two Sum</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * </span><br><span class="line">* <span class="doctag">@ClassName</span>: TwoSumTest</span><br><span class="line">* <span class="doctag">@add</span> date  2011-03-13</span><br><span class="line">* <span class="doctag">@Description</span>: Given an array of integers, find two numbers such that they add up to a specific target number.</span><br><span class="line">* The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2. Please note that your returned answers (both index1 and index2) are not zero-based.</span><br><span class="line">* You may assume that each input would have exactly one solution.</span><br><span class="line">* Input: numbers=&#123;2, 7, 11, 15&#125;, target=9</span><br><span class="line">* Output: index1=1, index2=2</span><br><span class="line">* <span class="doctag">@author</span> jiangnan04 </span><br><span class="line">* <span class="doctag">@date</span> 2014-10-22 下午08:44:15 </span><br><span class="line">*</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TwoSumTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) &#123;</span><br><span class="line">    	 HashMap&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();  </span><br><span class="line">         <span class="keyword">int</span> n = numbers.length;  </span><br><span class="line">         <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];  </span><br><span class="line">         <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numbers.length; i++)  </span><br><span class="line">         &#123;  </span><br><span class="line">             <span class="keyword">if</span> (map.containsKey(target - numbers[i]))  </span><br><span class="line">             &#123;  </span><br><span class="line">                 result[<span class="number">0</span>] = map.get(target-numbers[i]) + <span class="number">1</span>;  </span><br><span class="line">                 result[<span class="number">1</span>] = i + <span class="number">1</span>;  </span><br><span class="line">                 <span class="keyword">break</span>;  </span><br><span class="line">             &#125;  </span><br><span class="line">             <span class="keyword">else</span>  </span><br><span class="line">             &#123;  </span><br><span class="line">                 map.put(numbers[i], i);  </span><br><span class="line">             &#125;  </span><br><span class="line">         &#125;  </span><br><span class="line">         <span class="keyword">return</span> result; </span><br><span class="line">    &#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		TwoSumTest t1 = <span class="keyword">new</span> TwoSumTest();</span><br><span class="line">		<span class="comment">//int []numbers=&#123;2, 7, 11, 15&#125;;</span></span><br><span class="line">		<span class="keyword">int</span> []numbers=&#123;<span class="number">0</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">0</span>&#125;;</span><br><span class="line">		<span class="comment">//int [] numbers=&#123;5,75,25&#125;;</span></span><br><span class="line">		<span class="keyword">int</span> target=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span>[] reslut = t1.twoSum(numbers,target);</span><br><span class="line">		System.out.println(reslut[<span class="number">0</span>]+<span class="string">"  "</span>+ reslut[<span class="number">1</span>]);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer>
@@ -522,23 +359,13 @@
   <h3 class="title">分类</h3>
   <ul class="entry">
   
-    <li><a href="/categories/Hadoop/">Hadoop</a><small>2</small></li>
-  
-    <li><a href="/categories/笔记/JavaScript/">JavaScript</a><small>1</small></li>
-  
-    <li><a href="/categories/笔记/Linux/">Linux</a><small>2</small></li>
-  
-    <li><a href="/categories/笔记/java高级/">java高级</a><small>11</small></li>
-  
-    <li><a href="/categories/leetCode/">leetCode</a><small>1</small></li>
-  
-    <li><a href="/categories/笔记/分布式/">分布式</a><small>1</small></li>
-  
-    <li><a href="/categories/笔记/java高级/多线程/">多线程</a><small>8</small></li>
+    <li><a href="/categories/Code/">Code</a><small>1</small></li>
   
     <li><a href="/categories/扯犊子/">扯犊子</a><small>1</small></li>
   
-    <li><a href="/categories/笔记/">笔记</a><small>15</small></li>
+    <li><a href="/categories/笔记/">笔记</a><small>4</small></li>
+  
+    <li><a href="/categories/转载/">转载</a><small>12</small></li>
   
   </ul>
 </div>
@@ -549,19 +376,21 @@
   <h3 class="title">标签</h3>
   <ul class="entry">
   
-    <li><a href="/tags/201410/">201410</a><small>11</small></li>
+    <li><a href="/tags/Concurrency/">Concurrency</a><small>9</small></li>
   
-    <li><a href="/tags/201411/">201411</a><small>2</small></li>
+    <li><a href="/tags/Distributed/">Distributed</a><small>1</small></li>
   
-    <li><a href="/tags/201412/">201412</a><small>3</small></li>
+    <li><a href="/tags/Hadoop/">Hadoop</a><small>2</small></li>
   
-    <li><a href="/tags/201503/">201503</a><small>1</small></li>
+    <li><a href="/tags/JavaScript/">JavaScript</a><small>1</small></li>
   
-    <li><a href="/tags/代码/">代码</a><small>1</small></li>
+    <li><a href="/tags/LeetCode/">LeetCode</a><small>1</small></li>
   
-    <li><a href="/tags/总结/">总结</a><small>1</small></li>
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
   
-    <li><a href="/tags/转载/">转载</a><small>12</small></li>
+    <li><a href="/tags/RPC/">RPC</a><small>1</small></li>
+  
+    <li><a href="/tags/Regex/">Regex</a><small>1</small></li>
   
   </ul>
 </div>

@@ -37,162 +37,12 @@
     
       <li><a href="/">首页</a></li>
     
-      <li><a href="/archives">全部文章</a></li>
+      <li><a href="/archives">归档</a></li>
     
       <li><a href="/about">关于我</a></li>
     
       <li><a href="/feature">规划页</a></li>
     
-	<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
-	function c() {
-		var e = document.createElement("link");
-		e.setAttribute("type", "text/css");
-		e.setAttribute("rel", "stylesheet");
-		e.setAttribute("href", f);
-		e.setAttribute("class", l);
-		document.body.appendChild(e)
-	}
- 
-	function h() {
-		var e = document.getElementsByClassName(l);
-		for (var t = 0; t < e.length; t++) {
-			document.body.removeChild(e[t])
-		}
-	}
- 
-	function p() {
-		var e = document.createElement("div");
-		e.setAttribute("class", a);
-		document.body.appendChild(e);
-		setTimeout(function() {
-			document.body.removeChild(e)
-		}, 100)
-	}
- 
-	function d(e) {
-		return {
-			height : e.offsetHeight,
-			width : e.offsetWidth
-		}
-	}
- 
-	function v(i) {
-		var s = d(i);
-		return s.height > e && s.height < n && s.width > t && s.width < r
-	}
- 
-	function m(e) {
-		var t = e;
-		var n = 0;
-		while (!!t) {
-			n += t.offsetTop;
-			t = t.offsetParent
-		}
-		return n
-	}
- 
-	function g() {
-		var e = document.documentElement;
-		if (!!window.innerWidth) {
-			return window.innerHeight
-		} else if (e && !isNaN(e.clientHeight)) {
-			return e.clientHeight
-		}
-		return 0
-	}
- 
-	function y() {
-		if (window.pageYOffset) {
-			return window.pageYOffset
-		}
-		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
-	}
- 
-	function E(e) {
-		var t = m(e);
-		return t >= w && t <= b + w
-	}
- 
-	function S() {
-		var e = document.createElement("audio");
-		e.setAttribute("class", l);
-		e.src = i;
-		e.loop = false;
-		e.addEventListener("canplay", function() {
-			setTimeout(function() {
-				x(k)
-			}, 500);
-			setTimeout(function() {
-				N();
-				p();
-				for (var e = 0; e < O.length; e++) {
-					T(O[e])
-				}
-			}, 15500)
-		}, true);
-		e.addEventListener("ended", function() {
-			N();
-			h()
-		}, true);
-		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
-		document.body.appendChild(e);
-		e.play()
-	}
- 
-	function x(e) {
-		e.className += " " + s + " " + o
-	}
- 
-	function T(e) {
-		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
-	}
- 
-	function N() {
-		var e = document.getElementsByClassName(s);
-		var t = new RegExp("\\b" + s + "\\b");
-		for (var n = 0; n < e.length; ) {
-			e[n].className = e[n].className.replace(t, "")
-		}
-	}
- 
-	var e = 30;
-	var t = 30;
-	var n = 350;
-	var r = 350;
-	var i = "//qzone.haoduoge.com/music/48A09O38IG846DBF4FD1889F31315A6A8B2F9.mp3";
-	var s = "mw-harlem_shake_me";
-	var o = "im_first";
-	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
-	var a = "mw-strobe_light";
-	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
-	var l = "mw_added_css";
-	var b = g();
-	var w = y();
-	var C = document.getElementsByTagName("*");
-	var k = null;
-	for (var L = 0; L < C.length; L++) {
-		var A = C[L];
-		if (v(A)) {
-			if (E(A)) {
-				k = A;
-				break
-			}
-		}
-	}
-	if (A === null) {
-		console.warn("Could not find a node of the right size. Please try a different page.");
-		return
-	}
-	c();
-	S();
-	var O = [];
-	for (var L = 0; L < C.length; L++) {
-		var A = C[L];
-		if (v(A)) {
-			O.push(A)
-		}
-	}
-})()    '>音乐</a> </li>
   </ul>
   <div class="clearfix"></div>
 </nav>
@@ -204,7 +54,7 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-10-30T02:09:36.000Z"><a href="/2014/10/30/Java-多线程-三/">10月 30 2014</a></time>
+        <time datetime="2014-10-30T02:09:36.000Z"><a href="/2014/10/30/Java-多线程-三/">Oct 30 2014</a></time>
       
       
   
@@ -214,52 +64,24 @@
     </header>
     <div class="entry">
       
-        <h1 id="一、_线程栈模型与线程的变量">一、 线程栈模型与线程的变量</h1>
-<p>要理解线程调度的原理，以及线程执行过程，必须理解线程栈模型。<span style="color:red">(线程调用start()方法之后会启动新的执行线程，他具有新的调用栈)</span><br>线程栈是指某时刻时内存中线程调度的栈信息，<span style="color:red">当前调用的方法总是位于栈顶</span>。线程栈的内容是随着程序的运行动态变化的，因此研究线程栈必须选择一个运行的时刻（实际上指代码运行到什么地方)。</p>
+        <h1 id="一、_线程栈模型与线程的变量">一、 线程栈模型与线程的变量</h1><p>要理解线程调度的原理，以及线程执行过程，必须理解线程栈模型。<span style="color:red">(线程调用start()方法之后会启动新的执行线程，他具有新的调用栈)</span><br>线程栈是指某时刻时内存中线程调度的栈信息，<span style="color:red">当前调用的方法总是位于栈顶</span>。线程栈的内容是随着程序的运行动态变化的，因此研究线程栈必须选择一个运行的时刻（实际上指代码运行到什么地方)。</p>
 <p>下面通过一个示例性的代码说明线程（调用）栈的变化过程。<br><a id="more"></a><br><img src="/img/thread/3_1.png" alt=""></p>
 <p>这幅图描述在代码执行到两个不同时刻1、2时候，虚拟机线程调用栈示意图。</p>
 <p>当程序执行到t.start();时候，程序多出一个分支（增加了一个调用栈B），这样，栈A、栈B并行执行。</p>
 <p>从这里就可以看出方法调用和线程启动的区别了。</p>
-<h1 id="二、_线程状态的转换">二、 线程状态的转换</h1>
-<h2 id="一、线程状态">一、线程状态</h2>
-<p>线程的状态转换是线程控制的基础。线程状态总的可分为五大状态：分别是生、死、可运行、运行、等待/阻塞。用一个图来描述如下：<br><img src="/img/thread/3_2.png" alt=""><br>1、新状态：线程对象已经创建，还没有在其上调用start()方法。</p>
+<h1 id="二、_线程状态的转换">二、 线程状态的转换</h1><h2 id="一、线程状态">一、线程状态</h2><p>线程的状态转换是线程控制的基础。线程状态总的可分为五大状态：分别是生、死、可运行、运行、等待/阻塞。用一个图来描述如下：<br><img src="/img/thread/3_2.png" alt=""><br>1、新状态：线程对象已经创建，还没有在其上调用start()方法。</p>
 <p>2、可运行状态：当线程有资格运行，但调度程序还没有把它选定为运行线程时线程所处的状态。<span style="color:red">当start()方法调用时，线程首先进入可运行状态。</span>在线程运行之后或者从阻塞、等待或睡眠状态回来后，也返回到可运行状态。</p>
 <p>3、运行状态：<span style="color:red">线程调度程序</span>从可运行池中选择一个线程作为运行线程时，它所处的状态。这也是线程进入运行状态的唯一一种方式。</p>
 <p>4、等待/阻塞/睡眠状态：这是线程有资格运行时它所处的状态。实际上这个三状态组合为一种，其共同点是：线程仍旧是活的，但是当前没有条件运行。换句话说，它是可运行的，但是如果某件事件出现，他可能返回到可运行状态。</p>
 <p>5、死亡态：当线程的run()方法完成时就认为它死去。这个线程对象也许是活的，但是，它已经不是一个单独执行的线程。线程一旦死亡，就不能复生。 如果在一个死去的线程上调用start()方法，会抛出java.lang.IllegalThreadStateException异常。</p>
 <p>有关详细状态转换图：<br>线程在一定条件下，状态会发生变化。线程变化的状态转换图如下：<br><img src="/img/thread/3_3.png" alt=""><br>1、新建状态（New）：新创建了一个线程对象。<br>2、就绪状态（Runnable）：线程对象创建后，其他线程调用了该对象的start()方法。该状态的线程位于可运行线程池中，变得可运行，等待获取CPU的使用权。<br>3、运行状态（Running）：就绪状态的线程获取了CPU，执行程序代码。<br>4、阻塞状态（Blocked）：阻塞状态是线程因为某种原因放弃CPU使用权，暂时停止运行。直到线程进入就绪状态，才有机会转到运行状态。<br>阻塞的情况分三种：<br>（一）、<span style="color:red">等待阻塞</span>：运行的线程执行<span style="color:red">wait()</span>方法，JVM会把该线程放入等待池中。<br>（二）、<span style="color:red">同步阻塞</span>：运行的线程在获取对象的同步锁时，若该<span style="color:red">同步锁</span>被别的线程占用，则JVM会把该线程放入锁池中。<br>（三）、<span style="color:red">其他阻塞</span>：运行的线程<span style="color:red">执行sleep()或join()方法，或者发出了I/O请求时</span>，JVM会把该线程置为阻塞状态。当sleep()状态超时、join()等待线程终止或者超时、或者I/O处理完毕时，线程重新转入就绪状态。<br>5、死亡状态（Dead）：线程执行完了或者因异常退出了run()方法，该线程结束生命周期。</p>
-<h2 id="二、阻止线程执行">二、阻止线程执行</h2>
-<p>对于线程的阻止，考虑一下三个方面，不考虑IO阻塞的情况：<br>睡眠；<br>等待；<br>因为需要一个对象的锁定而被阻塞。</p>
-<h3 id="1、睡眠">1、睡眠</h3>
-<p>Thread.sleep(long millis)和Thread.sleep(long millis, int nanos)静态方法强制当前正在执行的线程休眠（暂停执行），以“减慢线程”。当线程睡眠时，它入睡在某个地方，在苏醒之前不会返回到可运行状态。<span style="color:red">当睡眠时间到期，则返回到可运行状态。</span></p>
-<p>线程睡眠的原因：线程执行太快，或者需要强制进入下一轮，因为Java规范不保证合理的轮换。<br>睡眠的实现：调用静态方法。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span> {</div><div class="line">    Thread.sleep(<span class="number">123</span>);</div><div class="line">} <span class="keyword">catch</span> (InterruptedException e) {</div><div class="line">    e.printStackTrace();  </div><div class="line">}</div></pre></td></tr></table></figure>
-
-
-<p>睡眠的位置：为了让其他线程有机会执行，可以将Thread.sleep()的调用放线程run()之内。这样才能保证该线程执行过程中会睡眠。</p>
-<p>我们可以将一个耗时的操作改为睡眠，以减慢线程的执行。这样，线程在每次执行过程中，总会睡眠3毫秒，睡眠了，其他的线程就有机会执行了。<br>注意：<br>1、<span style="color:red">线程睡眠是帮助所有线程获得运行机会的最好方法。</span><br>2、线程睡眠到期自动苏醒，并返回到<span style="color:red">可运行状态</span>，不是运行状态。sleep()中指定的时间是线程不会运行的最短时间。因此，sleep()方法不能保证该线程睡眠到期后就开始执行。<br>3、<span style="color:red">sleep()是静态方法，只能控制当前正在运行的线程。</span></p>
-<h3 id="2、线程的优先级和线程让步yield()">2、线程的优先级和线程让步yield()</h3>
-<p>线程的让步是通过Thread.yield()来实现的。<span style="color:red">yield()</span>方法的作用是：<span style="color:red">暂停当前正在执行的线程对象，并执行其他线程。</span></p>
-<p>要理解yield()，必须了解线程的优先级的概念。线程总是存在优先级，优先级范围在1~10之间。JVM线程调度程序是基于优先级的抢先调度机制。在大多数情况下，当前运行的线程优先级将大于或等于线程池中任何线程的优先级。但这仅仅是大多数情况。</p>
-<p><span style="color:red">注意</span>：当设计多线程应用程序的时候，一定不要依赖于线程的优先级。因为线程调度优先级操作是没有保障的，只能把线程优先级作用作为一种提高程序效率的方法，但是要保证程序不依赖这种操作。</p>
-<p>当线程池中线程都具有相同的优先级，调度程序的JVM实现自由选择它喜欢的线程。这时候调度程序的操作有两种可能：一是<span style="color:red">选择一个线程运行，直到它阻塞或者运行完成为止。</span>二是<span style="color:red">时间分片，为池内的每个线程提供均等的运行机会。</span></p>
-<p>设置线程的优先级：线程默认的优先级是创建它的执行线程的优先级。可以通过setPriority(int newPriority)更改线程的优先级。例如：<br>        Thread t = new MyThread();<br>        t.setPriority(8);<br>        t.start();<br>线程优先级为1~10之间的正整数，JVM从不会改变一个线程的优先级。然而，1~10之间的值是没有保证的。一些JVM可能不能识别10个不同的值，而将这些优先级进行每两个或多个合并，变成少于10个的优先级，则两个或多个优先级的线程可能被映射为一个优先级。</p>
-<p>线程默认优先级是5，Thread类中有三个常量，定义线程优先级范围：<br>static int MAX_PRIORITY         线程可以具有的最高优先级。<br>static int MIN_PRIORITY         线程可以具有的最低优先级。<br>static int NORM_PRIORITY        分配给线程的默认优先级。</p>
-<h3 id="3、Thread-yield()方法详解">3、Thread.yield()方法详解</h3>
-<p>Thread.yield()方法作用是：暂停当前正在执行的线程对象，并执行其他线程。<br>yield()应该做的是让当前运行线程回到可运行状态，以允许具有相同优先级的其他线程获得运行机会。因此，使用yield()的目的是让相同优先级的线程之间能适当的轮转执行。但是，实际中无法保证yield()达到让步目的，因为让步的线程还有可能被线程调度程序再次选中。<br>结论：yield()从未导致线程转到等待/睡眠/阻塞状态。<span style="color:red">在大多数情况下，yield()将导致线程从运行状态转到可运行状态，但有可能没有效果。</span></p>
-<h3 id="4、join()方法">4、join()方法</h3>
-<p> 在JDk的API里对于join()方法是：</p>
-<p>join<br>public final void join() throws InterruptedException Waits for this thread to die. Throws: InterruptedException  - if any thread has interrupted the current thread. The interrupted status of the current thread is cleared when this exception is thrown.</p>
-<p><span style="color:red">即join()的作用是：“等待该线程终止”，这里需要理解的就是该线程是指的主线程等待子线程的终止。也就是在子线程调用了join()方法后面的代码，只有等到子线程结束了才能执行。</span></p>
-<p>Thread的非静态方法join()让一个主线程B“加入”到另外一个子线程A的尾部。在A执行完毕之前，B不能工作。例如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">      Thread A = <span class="keyword">new</span> MyThread();</div><div class="line">      A.start();</div><div class="line">      A.join();</div><div class="line">...</div></pre></td></tr></table></figure>
-
+<h2 id="二、阻止线程执行">二、阻止线程执行</h2><p>对于线程的阻止，考虑一下三个方面，不考虑IO阻塞的情况：<br>睡眠；<br>等待；<br>因为需要一个对象的锁定而被阻塞。</p>
+<h3 id="1、睡眠">1、睡眠</h3><p>Thread.sleep(long millis)和Thread.sleep(long millis, int nanos)静态方法强制当前正在执行的线程休眠（暂停执行），以“减慢线程”。当线程睡眠时，它入睡在某个地方，在苏醒之前不会返回到可运行状态。<span style="color:red">当睡眠时间到期，则返回到可运行状态。</span></p>
+<p>线程睡眠的原因：线程执行太快，或者需要强制进入下一轮，因为Java规范不保证合理的轮换。<br>睡眠的实现：调用静态方法。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">        try &#123;</span><br><span class="line">            Thread.sleep(123);</span><br><span class="line">        &#125; catch (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();  </span><br><span class="line">        &#125;</span><br><span class="line">``` </span><br><span class="line">睡眠的位置：为了让其他线程有机会执行，可以将Thread.sleep()的调用放线程run()之内。这样才能保证该线程执行过程中会睡眠。</span><br><span class="line"></span><br><span class="line">我们可以将一个耗时的操作改为睡眠，以减慢线程的执行。这样，线程在每次执行过程中，总会睡眠3毫秒，睡眠了，其他的线程就有机会执行了。</span><br><span class="line">注意：</span><br><span class="line">1、&lt;span style="color:red"&gt;线程睡眠是帮助所有线程获得运行机会的最好方法。&lt;/span&gt;</span><br><span class="line">2、线程睡眠到期自动苏醒，并返回到&lt;span style="color:red"&gt;可运行状态&lt;/span&gt;，不是运行状态。sleep()中指定的时间是线程不会运行的最短时间。因此，sleep()方法不能保证该线程睡眠到期后就开始执行。</span><br><span class="line">3、&lt;span style="color:red"&gt;sleep()是静态方法，只能控制当前正在运行的线程。&lt;/span&gt;</span><br><span class="line">###2、线程的优先级和线程让步yield()</span><br><span class="line">线程的让步是通过Thread.yield()来实现的。&lt;span style="color:red"&gt;yield()&lt;/span&gt;方法的作用是：&lt;span style="color:red"&gt;暂停当前正在执行的线程对象，并执行其他线程。&lt;/span&gt;</span><br><span class="line"> </span><br><span class="line">要理解yield()，必须了解线程的优先级的概念。线程总是存在优先级，优先级范围在1~10之间。JVM线程调度程序是基于优先级的抢先调度机制。在大多数情况下，当前运行的线程优先级将大于或等于线程池中任何线程的优先级。但这仅仅是大多数情况。</span><br><span class="line"> </span><br><span class="line">&lt;span style="color:red"&gt;注意&lt;/span&gt;：当设计多线程应用程序的时候，一定不要依赖于线程的优先级。因为线程调度优先级操作是没有保障的，只能把线程优先级作用作为一种提高程序效率的方法，但是要保证程序不依赖这种操作。</span><br><span class="line"> </span><br><span class="line">当线程池中线程都具有相同的优先级，调度程序的JVM实现自由选择它喜欢的线程。这时候调度程序的操作有两种可能：一是&lt;span style="color:red"&gt;选择一个线程运行，直到它阻塞或者运行完成为止。&lt;/span&gt;二是&lt;span style="color:red"&gt;时间分片，为池内的每个线程提供均等的运行机会。&lt;/span&gt;</span><br><span class="line"> </span><br><span class="line">设置线程的优先级：线程默认的优先级是创建它的执行线程的优先级。可以通过setPriority(int newPriority)更改线程的优先级。例如：</span><br><span class="line">        Thread t = new MyThread();</span><br><span class="line">        t.setPriority(8);</span><br><span class="line">        t.start();</span><br><span class="line">线程优先级为1~10之间的正整数，JVM从不会改变一个线程的优先级。然而，1~10之间的值是没有保证的。一些JVM可能不能识别10个不同的值，而将这些优先级进行每两个或多个合并，变成少于10个的优先级，则两个或多个优先级的线程可能被映射为一个优先级。</span><br><span class="line"> </span><br><span class="line">线程默认优先级是5，Thread类中有三个常量，定义线程优先级范围：</span><br><span class="line">static int MAX_PRIORITY         线程可以具有的最高优先级。 </span><br><span class="line">static int MIN_PRIORITY         线程可以具有的最低优先级。 </span><br><span class="line">static int NORM_PRIORITY        分配给线程的默认优先级。</span><br><span class="line">### 3、Thread.yield()方法详解</span><br><span class="line"> </span><br><span class="line">Thread.yield()方法作用是：暂停当前正在执行的线程对象，并执行其他线程。</span><br><span class="line">yield()应该做的是让当前运行线程回到可运行状态，以允许具有相同优先级的其他线程获得运行机会。因此，使用yield()的目的是让相同优先级的线程之间能适当的轮转执行。但是，实际中无法保证yield()达到让步目的，因为让步的线程还有可能被线程调度程序再次选中。</span><br><span class="line">结论：yield()从未导致线程转到等待/睡眠/阻塞状态。&lt;span style="color:red"&gt;在大多数情况下，yield()将导致线程从运行状态转到可运行状态，但有可能没有效果。&lt;/spn&gt;</span><br><span class="line"> </span><br><span class="line">### 4、join()方法</span><br><span class="line"> 在JDk的API里对于join()方法是：</span><br><span class="line"></span><br><span class="line">join</span><br><span class="line">public final void join() throws InterruptedException Waits for this thread to die. Throws: InterruptedException  - if any thread has interrupted the current thread. The interrupted status of the current thread is cleared when this exception is thrown.</span><br><span class="line"></span><br><span class="line">&lt;span style="color:red"&gt;即join()的作用是：“等待该线程终止”，这里需要理解的就是该线程是指的主线程等待子线程的终止。也就是在子线程调用了join()方法后面的代码，只有等到子线程结束了才能执行。&lt;/spn&gt;</span><br><span class="line"></span><br><span class="line">Thread的非静态方法join()让一个主线程B“加入”到另外一个子线程A的尾部。在A执行完毕之前，B不能工作。例如：</span><br><span class="line">```java</span><br><span class="line">        Thread A = new MyThread();</span><br><span class="line">        A.start();</span><br><span class="line">        A.join();</span><br><span class="line">		...</span><br></pre></td></tr></table></figure></p>
 <p>说明： <a href="http://www.open-open.com/lib/view/open1371741636171.html" target="_blank" rel="external">这里</a> <a href="http://www.blogjava.net/jnbzwm/articles/330549.html" target="_blank" rel="external">这里</a><br>另外，join()方法还有带超时限制的重载版本。 例如t.join(5000);则让线程等待5000毫秒，如果超过这个时间，则停止等待，变为可运行状态。</p>
 <p>线程的加入join()对线程栈导致的结果是<span style="color:red">线程栈</span>发生了变化，当然这些变化都是瞬时的。</p>
 <p><img src="/img/thread/3_4.png" alt=""></p>
-<p>代码说明：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.test6.Thread;</div><div class="line">class MyThread extends Thread {</div><div class="line">	 <span class="keyword">public</span> <span class="title">MyThread</span>(String name) { </div><div class="line">	        <span class="keyword">super</span>(name); </div><div class="line">	    } </div><div class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>() {</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">10</span>; i++) {</div><div class="line">			<span class="keyword">try</span> {</div><div class="line">				Thread.sleep(<span class="number">150</span>);</div><div class="line">			} <span class="keyword">catch</span> (InterruptedException ex) {</div><div class="line">				ex.printStackTrace();</div><div class="line">			}</div><div class="line">			System.out.println(<span class="keyword">this</span>.getName()+<span class="string">"  :"</span> + i);</div><div class="line">		}</div><div class="line">	}</div><div class="line">}</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestJoin</span> </span>{</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(String[] args) <span class="keyword">throws</span> InterruptedException{</div><div class="line">		MyThread t1 = <span class="keyword">new</span> MyThread(<span class="string">"thread1"</span>);</div><div class="line">		MyThread t2 = <span class="keyword">new</span> MyThread(<span class="string">"thread2"</span>);</div><div class="line">		t1.start();</div><div class="line">		<span class="comment">//t1.join();</span></div><div class="line">		t2.start();</div><div class="line">		Runtime.getRuntime().addShutdownHook(<span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() {</div><div class="line">			<span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>() {</div><div class="line">				System.out.println(<span class="string">"jvm运行结束"</span>);</div><div class="line">			}</div><div class="line">		}));</div><div class="line">	}</div><div class="line">}</div></pre></td></tr></table></figure>
-
+<p>代码说明：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.test6.Thread;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">	 <span class="function"><span class="keyword">public</span> <span class="title">MyThread</span><span class="params">(String name)</span> </span>&#123; </span><br><span class="line">	        <span class="keyword">super</span>(name); </span><br><span class="line">	    &#125; </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">10</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				Thread.sleep(<span class="number">150</span>);</span><br><span class="line">			&#125; <span class="keyword">catch</span> (InterruptedException ex) &#123;</span><br><span class="line">				ex.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println(<span class="keyword">this</span>.getName()+<span class="string">"  :"</span> + i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestJoin</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException</span>&#123;</span><br><span class="line">		MyThread t1 = <span class="keyword">new</span> MyThread(<span class="string">"thread1"</span>);</span><br><span class="line">		MyThread t2 = <span class="keyword">new</span> MyThread(<span class="string">"thread2"</span>);</span><br><span class="line">		t1.start();</span><br><span class="line">		<span class="comment">//t1.join();</span></span><br><span class="line">		t2.start();</span><br><span class="line">		Runtime.getRuntime().addShutdownHook(<span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">				System.out.println(<span class="string">"jvm运行结束"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>运行结果<br><img src="/img/thread/3_7.png" alt=""></p>
 <p>小结<br>到目前位置，介绍了线程离开运行状态的3种方法：<br>1、调用Thread.sleep()：使当前线程睡眠至少多少毫秒（尽管它可能在指定的时间之前被中断）。<br>2、调用Thread.yield()：不能保障太多事情，尽管通常它会让当前运行线程回到可运行性状态，使得有相同优先级的线程有机会执行。<br>3、调用join()方法：保证当前线程停止执行，直到该线程所加入的线程完成为止。然而，如果它加入的线程没有存活，则当前线程不需要停止。</p>
 <p>除了以上三种方式外，还有下面几种特殊情况可能使线程离开运行状态：<br>1、线程的run()方法完成。<br>2、在对象上调用wait()方法（不是在线程上调用）。<br>3、线程不能在对象上获得锁定，它正试图运行该对象的方法代码。<br>4、线程调度程序可以决定将当前运行状态移动到可运行状态，以便让另一个线程获得运行机会，而不需要任何理由。<br>转载自：<a href="http://lavasoft.blog.51cto.com/62575/27069/" target="_blank" rel="external">http://lavasoft.blog.51cto.com/62575/27069/</a></p>
@@ -271,24 +93,16 @@
         
   
   <div class="categories">
-    <a href="/categories/笔记/">笔记</a>, <a href="/categories/笔记/java高级/">java高级</a>, <a href="/categories/笔记/java高级/多线程/">多线程</a>
+    <a href="/categories/转载/">转载</a>
   </div>
 
         
   
   <div class="tags">
-    <a href="/tags/201410/">201410</a>, <a href="/tags/转载/">转载</a>
+    <a href="/tags/Concurrency/">Concurrency</a>
   </div>
 
-       <div class="bdsharebuttonbox">
-   <a href="#" class="bds_more" data-cmd="more"></a>
-   <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-   <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-   <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
-   <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
-   <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-  </div> 
-  <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        
       
       <div class="clearfix"></div>
     </footer>
@@ -296,7 +110,8 @@
 </article>
 
 
-<nav id="pagination" >
+	
+	<nav id="pagination" >
     
     <a href="/2014/10/30/Java-多线程-四/" class="alignleft prev" >上一页</a>
     
@@ -304,21 +119,21 @@
     <a href="/2014/10/29/Java-多线程-二/" class="alignright next" >下一页</a>
     
     <div class="clearfix"></div>
-</nav>
+	</nav>
+
 <section id="comment">
-   <ul class="ds-recent-comments" data-num-items="10" data-show-avatars="1" data-show-time="1" data-show-admin="1" data-excerpt-length="70"></ul>
-<!--多说js加载开始，一个页面只需要加载一次 -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"jiangnan31.github.io"};
-(function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = 'http://static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
-})();
-</script>
-<!--多说js加载结束，一个页面只需要加载一次 -->
+<div class="ds-thread" data-thread-key="/2014/10/30/Java-多线程-三/" data-title="Java 多线程<三> 线程栈模型与线程的变量&线程状态的转换(转载)" data-url="http://jiangnan31.github.io/2014/10/30/Java-多线程-三/"></div>
+  <script type="text/javascript">
+	var duoshuoQuery = {short_name:"jiangnan31"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
 </section>
 
 </div></div>
@@ -335,23 +150,13 @@ var duoshuoQuery = {short_name:"jiangnan31.github.io"};
   <h3 class="title">分类</h3>
   <ul class="entry">
   
-    <li><a href="/categories/Hadoop/">Hadoop</a><small>2</small></li>
-  
-    <li><a href="/categories/笔记/JavaScript/">JavaScript</a><small>1</small></li>
-  
-    <li><a href="/categories/笔记/Linux/">Linux</a><small>2</small></li>
-  
-    <li><a href="/categories/笔记/java高级/">java高级</a><small>11</small></li>
-  
-    <li><a href="/categories/leetCode/">leetCode</a><small>1</small></li>
-  
-    <li><a href="/categories/笔记/分布式/">分布式</a><small>1</small></li>
-  
-    <li><a href="/categories/笔记/java高级/多线程/">多线程</a><small>8</small></li>
+    <li><a href="/categories/Code/">Code</a><small>1</small></li>
   
     <li><a href="/categories/扯犊子/">扯犊子</a><small>1</small></li>
   
-    <li><a href="/categories/笔记/">笔记</a><small>15</small></li>
+    <li><a href="/categories/笔记/">笔记</a><small>4</small></li>
+  
+    <li><a href="/categories/转载/">转载</a><small>12</small></li>
   
   </ul>
 </div>
@@ -362,19 +167,21 @@ var duoshuoQuery = {short_name:"jiangnan31.github.io"};
   <h3 class="title">标签</h3>
   <ul class="entry">
   
-    <li><a href="/tags/201410/">201410</a><small>11</small></li>
+    <li><a href="/tags/Concurrency/">Concurrency</a><small>9</small></li>
   
-    <li><a href="/tags/201411/">201411</a><small>2</small></li>
+    <li><a href="/tags/Distributed/">Distributed</a><small>1</small></li>
   
-    <li><a href="/tags/201412/">201412</a><small>3</small></li>
+    <li><a href="/tags/Hadoop/">Hadoop</a><small>2</small></li>
   
-    <li><a href="/tags/201503/">201503</a><small>1</small></li>
+    <li><a href="/tags/JavaScript/">JavaScript</a><small>1</small></li>
   
-    <li><a href="/tags/代码/">代码</a><small>1</small></li>
+    <li><a href="/tags/LeetCode/">LeetCode</a><small>1</small></li>
   
-    <li><a href="/tags/总结/">总结</a><small>1</small></li>
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
   
-    <li><a href="/tags/转载/">转载</a><small>12</small></li>
+    <li><a href="/tags/RPC/">RPC</a><small>1</small></li>
+  
+    <li><a href="/tags/Regex/">Regex</a><small>1</small></li>
   
   </ul>
 </div>

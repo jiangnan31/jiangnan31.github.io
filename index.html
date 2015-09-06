@@ -37,162 +37,12 @@
     
       <li><a href="/">首页</a></li>
     
-      <li><a href="/archives">全部文章</a></li>
+      <li><a href="/archives">归档</a></li>
     
       <li><a href="/about">关于我</a></li>
     
       <li><a href="/feature">规划页</a></li>
     
-	<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
-	function c() {
-		var e = document.createElement("link");
-		e.setAttribute("type", "text/css");
-		e.setAttribute("rel", "stylesheet");
-		e.setAttribute("href", f);
-		e.setAttribute("class", l);
-		document.body.appendChild(e)
-	}
- 
-	function h() {
-		var e = document.getElementsByClassName(l);
-		for (var t = 0; t < e.length; t++) {
-			document.body.removeChild(e[t])
-		}
-	}
- 
-	function p() {
-		var e = document.createElement("div");
-		e.setAttribute("class", a);
-		document.body.appendChild(e);
-		setTimeout(function() {
-			document.body.removeChild(e)
-		}, 100)
-	}
- 
-	function d(e) {
-		return {
-			height : e.offsetHeight,
-			width : e.offsetWidth
-		}
-	}
- 
-	function v(i) {
-		var s = d(i);
-		return s.height > e && s.height < n && s.width > t && s.width < r
-	}
- 
-	function m(e) {
-		var t = e;
-		var n = 0;
-		while (!!t) {
-			n += t.offsetTop;
-			t = t.offsetParent
-		}
-		return n
-	}
- 
-	function g() {
-		var e = document.documentElement;
-		if (!!window.innerWidth) {
-			return window.innerHeight
-		} else if (e && !isNaN(e.clientHeight)) {
-			return e.clientHeight
-		}
-		return 0
-	}
- 
-	function y() {
-		if (window.pageYOffset) {
-			return window.pageYOffset
-		}
-		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
-	}
- 
-	function E(e) {
-		var t = m(e);
-		return t >= w && t <= b + w
-	}
- 
-	function S() {
-		var e = document.createElement("audio");
-		e.setAttribute("class", l);
-		e.src = i;
-		e.loop = false;
-		e.addEventListener("canplay", function() {
-			setTimeout(function() {
-				x(k)
-			}, 500);
-			setTimeout(function() {
-				N();
-				p();
-				for (var e = 0; e < O.length; e++) {
-					T(O[e])
-				}
-			}, 15500)
-		}, true);
-		e.addEventListener("ended", function() {
-			N();
-			h()
-		}, true);
-		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
-		document.body.appendChild(e);
-		e.play()
-	}
- 
-	function x(e) {
-		e.className += " " + s + " " + o
-	}
- 
-	function T(e) {
-		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
-	}
- 
-	function N() {
-		var e = document.getElementsByClassName(s);
-		var t = new RegExp("\\b" + s + "\\b");
-		for (var n = 0; n < e.length; ) {
-			e[n].className = e[n].className.replace(t, "")
-		}
-	}
- 
-	var e = 30;
-	var t = 30;
-	var n = 350;
-	var r = 350;
-	var i = "//qzone.haoduoge.com/music/48A09O38IG846DBF4FD1889F31315A6A8B2F9.mp3";
-	var s = "mw-harlem_shake_me";
-	var o = "im_first";
-	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
-	var a = "mw-strobe_light";
-	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
-	var l = "mw_added_css";
-	var b = g();
-	var w = y();
-	var C = document.getElementsByTagName("*");
-	var k = null;
-	for (var L = 0; L < C.length; L++) {
-		var A = C[L];
-		if (v(A)) {
-			if (E(A)) {
-				k = A;
-				break
-			}
-		}
-	}
-	if (A === null) {
-		console.warn("Could not find a node of the right size. Please try a different page.");
-		return
-	}
-	c();
-	S();
-	var O = [];
-	for (var L = 0; L < C.length; L++) {
-		var A = C[L];
-		if (v(A)) {
-			O.push(A)
-		}
-	}
-})()    '>音乐</a> </li>
   </ul>
   <div class="clearfix"></div>
 </nav>
@@ -205,7 +55,7 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2015-03-08T15:09:00.000Z"><a href="/2015/03/08/Zookeeper学习与使用/">3月 8 2015</a></time>
+        <time datetime="2015-03-08T15:09:00.000Z"><a href="/2015/03/08/Zookeeper学习与使用/">Mar 8 2015</a></time>
       
       
   
@@ -215,11 +65,8 @@
     </header>
     <div class="entry">
       
-        <h2 id="1-_ZooKeeper的学习与应用">1. ZooKeeper的学习与应用</h2>
-<h3 id="1-1-_概述">1.1. 概述</h3>
-<p>ZooKeeper是Apache在很多云计算项目中的一个，与Hadoop密切相关，这种情况导致我一开始认为ZooKeeper的搭建需要Hadoop项目作为支持，但是最后发现完全不需要，它是可以单独运行的一个项目。</p>
+        <h2 id="1-_ZooKeeper的学习与应用">1. ZooKeeper的学习与应用</h2><h3 id="1-1-_概述">1.1. 概述</h3><p>ZooKeeper是Apache在很多云计算项目中的一个，与Hadoop密切相关，这种情况导致我一开始认为ZooKeeper的搭建需要Hadoop项目作为支持，但是最后发现完全不需要，它是可以单独运行的一个项目。</p>
 <p>在网上看到了一个很不错的关于ZooKeeper的介绍： 顾名思义<span style="color:red">动物园管理员，他是拿来管大象(Hadoop) 、 蜜蜂(Hive) 、 小猪(Pig)  的管理员</span>， Apache Hbase和 Apache Solr 以及LinkedIn sensei  等项目中都采用到了 Zookeeper。ZooKeeper是一个分布式的，<span style="color:red">开放源码的分布式应用程序协调服务</span>，ZooKeeper是以Fast Paxos算法为基础，实现<span style="color:red">同步服务，配置维护和命名服务</span>等分布式应用。</p>
-<p>
       
     </div>
     <footer>
@@ -245,7 +92,7 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-12-10T06:34:25.000Z"><a href="/2014/12/10/java-多线程-八/">12月 10 2014</a></time>
+        <time datetime="2014-12-10T06:34:25.000Z"><a href="/2014/12/10/java-多线程-八/">Dec 10 2014</a></time>
       
       
   
@@ -255,15 +102,14 @@
     </header>
     <div class="entry">
       
-        <h1 id="并发协作-生产者消费者模型">并发协作-生产者消费者模型</h1>
-<p>对于多线程程序来说，不管任何编程语言，生产者和消费者模型都是最经典的。就像学习每一门编程语言一样，Hello World！都是最经典的例子。</p>
+        <h1 id="并发协作-生产者消费者模型">并发协作-生产者消费者模型</h1><p>对于多线程程序来说，不管任何编程语言，生产者和消费者模型都是最经典的。就像学习每一门编程语言一样，Hello World！都是最经典的例子。</p>
 <p>实际上，准确说应该是“生产者-消费者-仓储”模型，离开了仓储，生产者消费者模型就显得没有说服力了。<br>对于此模型，应该明确一下几点：</p>
 <blockquote>
 <ul>
 <li>1、生产者仅仅在仓储未满时候生产，仓满则停止生产。</li>
 <li>2、消费者仅仅在仓储有产品时候才能消费，仓空则等待。</li>
-<li><span style="color:red"> 3、当消费者发现仓储没产品可消费时候会通知生产者生产。</span></li>
-<li>4、生产者在生产出可消费产品时候，应该通知等待的消费者去消费。<br> </li>
+<li><span style="color:red"> 3、当消费者发现仓储没产品可消费时候会通知生产者生产。</li>
+<li>4、生产者在生产出可消费产品时候，应该通知等待的消费者去消费。<br></span> </li>
 </ul>
 </blockquote>
 <p>此模型将要结合java.lang.Object的wait与notify、notifyAll方法来实现以上的需求。这是非常重要的。<br>
@@ -292,7 +138,7 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-12-10T02:55:06.000Z"><a href="/2014/12/10/java-多线程-七/">12月 10 2014</a></time>
+        <time datetime="2014-12-10T02:55:06.000Z"><a href="/2014/12/10/java-多线程-七/">Dec 10 2014</a></time>
       
       
   
@@ -302,8 +148,7 @@
     </header>
     <div class="entry">
       
-        <h1 id="线程的同步-同步方法">线程的同步-同步方法</h1>
-<p>线程的同步是<span style="color:red">保证多线程安全访问竞争资源的一种手段。</span><br>线程的同步是Java多线程编程的难点，往往开发者搞不清楚什么是竞争资源、什么时候需要考虑同步，怎么同步等等问题，当然，这些问题没有很明确的答案，但有些原则问题需要考虑，是否有竞争资源被同时改动的问题？</p>
+        <h1 id="线程的同步-同步方法">线程的同步-同步方法</h1><p>线程的同步是<span style="color:red">保证多线程安全访问竞争资源的一种手段。</span><br>线程的同步是Java多线程编程的难点，往往开发者搞不清楚什么是竞争资源、什么时候需要考虑同步，怎么同步等等问题，当然，这些问题没有很明确的答案，但有些原则问题需要考虑，是否有竞争资源被同时改动的问题？</p>
 <p>在本文之前，请参阅《Java线程：线程的同步与锁》，本文是在此基础上所写的。<br>
       
     </div>
@@ -330,7 +175,7 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-12-09T12:16:50.000Z"><a href="/2014/12/09/java-多线程-六/">12月 9 2014</a></time>
+        <time datetime="2014-12-09T12:16:50.000Z"><a href="/2014/12/09/java-多线程-六/">Dec 9 2014</a></time>
       
       
   
@@ -340,11 +185,9 @@
     </header>
     <div class="entry">
       
-        <h1 id="线程的调度-优先级">线程的调度-优先级</h1>
-<p>与线程休眠类似，线程的优先级仍然无法保障线程的执行次序。只不过，优先级高的线程获取CPU资源的概率较大，优先级低的并非没机会执行。</p>
+        <h1 id="线程的调度-优先级">线程的调度-优先级</h1><p>与线程休眠类似，线程的优先级仍然无法保障线程的执行次序。只不过，优先级高的线程获取CPU资源的概率较大，优先级低的并非没机会执行。</p>
 <p>线程的优先级用1-10之间的整数表示，数值越大优先级越高，默认的优先级为5。</p>
 <p>在一个线程中开启另外一个新线程，则新开线程称为该线程的子线程，子线程初始优先级与父线程相同。</p>
-
       
     </div>
     <footer>
@@ -370,7 +213,7 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-12-09T07:44:19.000Z"><a href="/2014/12/09/Java-多线程-五/">12月 9 2014</a></time>
+        <time datetime="2014-12-09T07:44:19.000Z"><a href="/2014/12/09/Java-多线程-五/">Dec 9 2014</a></time>
       
       
   
@@ -380,11 +223,8 @@
     </header>
     <div class="entry">
       
-        <h1 id="线程的交互">线程的交互</h1>
-<h2 id="一、线程交互的基础知识">一、线程交互的基础知识</h2>
-<p>线程交互知识点需要从java.lang.Object的类的三个方法来学习：</p>
+        <h1 id="线程的交互">线程的交互</h1><h2 id="一、线程交互的基础知识">一、线程交互的基础知识</h2><p>线程交互知识点需要从java.lang.Object的类的三个方法来学习：</p>
 <p>(1) void notify()<br>     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;唤醒在此对象监视器上等待的单个线程。<br>(2) void notifyAll()<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;唤醒在此对象监视器上等待的所有线程。<br>(3) void wait()<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;导致当前的线程等待，直到其他线程调用此对象的 notify() 方法或 notifyAll() 方法。</p>
-
       
     </div>
     <footer>
@@ -410,7 +250,7 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-12-03T10:48:53.000Z"><a href="/2014/12/03/function-this-in-JavaScript/">12月 3 2014</a></time>
+        <time datetime="2014-12-03T10:48:53.000Z"><a href="/2014/12/03/function-this-in-JavaScript/">Dec 3 2014</a></time>
       
       
   
@@ -420,13 +260,9 @@
     </header>
     <div class="entry">
       
-        <h2 id="简介">简介</h2>
-<p>javascript中的函数不同于其他的语言，每个函数都是作为一个对象被维护和运行的。通过函数对象的性质，可以很方便的将一个函数赋值给一个变量或者将函数作为参数传递。在继续讲述之前，先看一下函数的使用语法：</p>
-<p>以下是引用片段：</p>
-<figure class="highlight JavaScript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">func1</span><span class="params">(…)</span></span>{…}</div><div class="line"><span class="keyword">var</span> func2=<span class="function"><span class="keyword">function</span><span class="params">(…)</span></span>{…};</div><div class="line"><span class="keyword">var</span> func3=<span class="function"><span class="keyword">function</span> <span class="title">func4</span><span class="params">(…)</span></span>{…};</div><div class="line"><span class="keyword">var</span> func5=<span class="keyword">new</span> <span class="built_in">Function</span>();</div></pre></td></tr></table></figure>
-
+        <h2 id="简介">简介</h2><p>javascript中的函数不同于其他的语言，每个函数都是作为一个对象被维护和运行的。通过函数对象的性质，可以很方便的将一个函数赋值给一个变量或者将函数作为参数传递。在继续讲述之前，先看一下函数的使用语法：</p>
+<p>以下是引用片段：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func1</span>(<span class="params">…</span>)</span>&#123;…&#125;</span><br><span class="line"><span class="keyword">var</span> func2=<span class="function"><span class="keyword">function</span>(<span class="params">…</span>)</span>&#123;…&#125;;</span><br><span class="line"><span class="keyword">var</span> func3=<span class="function"><span class="keyword">function</span> <span class="title">func4</span>(<span class="params">…</span>)</span>&#123;…&#125;;</span><br><span class="line"><span class="keyword">var</span> func5=<span class="keyword">new</span> <span class="built_in">Function</span>();</span><br></pre></td></tr></table></figure></p>
 <p>这些都是声明函数的正确语法。它们和其他语言中常见的函数或之前介绍的函数定义方式有着很大的区别。那么在JavaScript中为什么能这么写？它所遵循的语法是什么呢？下面将介绍这些内容：</p>
-<p>
       
     </div>
     <footer>
@@ -452,7 +288,7 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-11-05T08:49:29.000Z"><a href="/2014/11/05/单点Hadoop搭建过程中错误/">11月 5 2014</a></time>
+        <time datetime="2014-11-05T08:49:29.000Z"><a href="/2014/11/05/单点Hadoop搭建过程中错误/">Nov 5 2014</a></time>
       
       
   
@@ -463,9 +299,7 @@
     <div class="entry">
       
         <p>Hadoop 安装过程中问题 </p>
-<h2 id="A_fatal_error_has_been_detected_by_the_Java_Runtime_Environment:">A fatal error has been detected by the Java Runtime Environment:</h2>
-<p>参考: <a href="http://blog.163.com/wf_shunqiziran/blog/static/17630720920125286153575/" target="_blank" rel="external">http://blog.163.com/wf_shunqiziran/blog/static/17630720920125286153575/</a>中的方法二</p>
-<p>
+<h2 id="A_fatal_error_has_been_detected_by_the_Java_Runtime_Environment:">A fatal error has been detected by the Java Runtime Environment:</h2><p>参考: <a href="http://blog.163.com/wf_shunqiziran/blog/static/17630720920125286153575/">http://blog.163.com/wf_shunqiziran/blog/static/17630720920125286153575/</a>中的方法二</p>
       
     </div>
     <footer>
@@ -491,7 +325,7 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-11-05T03:11:26.000Z"><a href="/2014/11/05/grep及正则表达式/">11月 5 2014</a></time>
+        <time datetime="2014-11-05T03:11:26.000Z"><a href="/2014/11/05/grep及正则表达式/">Nov 5 2014</a></time>
       
       
   
@@ -503,7 +337,6 @@
       
         <p>首先要记住的是: 正则表达式与通配符不一样,它们表示的含义并不相同!<br>正则表达式只是一种表示法,只要工具支持这种表示法， 那么该工具就可以处理正则表达式的字符串。vim、grep、awk 、sed 都支持正则表达式，也正是因为由于它们支持正则，才显得它们强大；</p>
 <h2 id="1-_基础正则表达式">1. 基础正则表达式</h2>
-<p>
       
     </div>
     <footer>
@@ -544,23 +377,13 @@
   <h3 class="title">分类</h3>
   <ul class="entry">
   
-    <li><a href="/categories/Hadoop/">Hadoop</a><small>2</small></li>
-  
-    <li><a href="/categories/笔记/JavaScript/">JavaScript</a><small>1</small></li>
-  
-    <li><a href="/categories/笔记/Linux/">Linux</a><small>2</small></li>
-  
-    <li><a href="/categories/笔记/java高级/">java高级</a><small>11</small></li>
-  
-    <li><a href="/categories/leetCode/">leetCode</a><small>1</small></li>
-  
-    <li><a href="/categories/笔记/分布式/">分布式</a><small>1</small></li>
-  
-    <li><a href="/categories/笔记/java高级/多线程/">多线程</a><small>8</small></li>
+    <li><a href="/categories/Code/">Code</a><small>1</small></li>
   
     <li><a href="/categories/扯犊子/">扯犊子</a><small>1</small></li>
   
-    <li><a href="/categories/笔记/">笔记</a><small>15</small></li>
+    <li><a href="/categories/笔记/">笔记</a><small>4</small></li>
+  
+    <li><a href="/categories/转载/">转载</a><small>12</small></li>
   
   </ul>
 </div>
@@ -571,19 +394,21 @@
   <h3 class="title">标签</h3>
   <ul class="entry">
   
-    <li><a href="/tags/201410/">201410</a><small>11</small></li>
+    <li><a href="/tags/Concurrency/">Concurrency</a><small>9</small></li>
   
-    <li><a href="/tags/201411/">201411</a><small>2</small></li>
+    <li><a href="/tags/Distributed/">Distributed</a><small>1</small></li>
   
-    <li><a href="/tags/201412/">201412</a><small>3</small></li>
+    <li><a href="/tags/Hadoop/">Hadoop</a><small>2</small></li>
   
-    <li><a href="/tags/201503/">201503</a><small>1</small></li>
+    <li><a href="/tags/JavaScript/">JavaScript</a><small>1</small></li>
   
-    <li><a href="/tags/代码/">代码</a><small>1</small></li>
+    <li><a href="/tags/LeetCode/">LeetCode</a><small>1</small></li>
   
-    <li><a href="/tags/总结/">总结</a><small>1</small></li>
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
   
-    <li><a href="/tags/转载/">转载</a><small>12</small></li>
+    <li><a href="/tags/RPC/">RPC</a><small>1</small></li>
+  
+    <li><a href="/tags/Regex/">Regex</a><small>1</small></li>
   
   </ul>
 </div>

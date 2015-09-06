@@ -37,162 +37,12 @@
     
       <li><a href="/">首页</a></li>
     
-      <li><a href="/archives">全部文章</a></li>
+      <li><a href="/archives">归档</a></li>
     
       <li><a href="/about">关于我</a></li>
     
       <li><a href="/feature">规划页</a></li>
     
-	<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
-	function c() {
-		var e = document.createElement("link");
-		e.setAttribute("type", "text/css");
-		e.setAttribute("rel", "stylesheet");
-		e.setAttribute("href", f);
-		e.setAttribute("class", l);
-		document.body.appendChild(e)
-	}
- 
-	function h() {
-		var e = document.getElementsByClassName(l);
-		for (var t = 0; t < e.length; t++) {
-			document.body.removeChild(e[t])
-		}
-	}
- 
-	function p() {
-		var e = document.createElement("div");
-		e.setAttribute("class", a);
-		document.body.appendChild(e);
-		setTimeout(function() {
-			document.body.removeChild(e)
-		}, 100)
-	}
- 
-	function d(e) {
-		return {
-			height : e.offsetHeight,
-			width : e.offsetWidth
-		}
-	}
- 
-	function v(i) {
-		var s = d(i);
-		return s.height > e && s.height < n && s.width > t && s.width < r
-	}
- 
-	function m(e) {
-		var t = e;
-		var n = 0;
-		while (!!t) {
-			n += t.offsetTop;
-			t = t.offsetParent
-		}
-		return n
-	}
- 
-	function g() {
-		var e = document.documentElement;
-		if (!!window.innerWidth) {
-			return window.innerHeight
-		} else if (e && !isNaN(e.clientHeight)) {
-			return e.clientHeight
-		}
-		return 0
-	}
- 
-	function y() {
-		if (window.pageYOffset) {
-			return window.pageYOffset
-		}
-		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
-	}
- 
-	function E(e) {
-		var t = m(e);
-		return t >= w && t <= b + w
-	}
- 
-	function S() {
-		var e = document.createElement("audio");
-		e.setAttribute("class", l);
-		e.src = i;
-		e.loop = false;
-		e.addEventListener("canplay", function() {
-			setTimeout(function() {
-				x(k)
-			}, 500);
-			setTimeout(function() {
-				N();
-				p();
-				for (var e = 0; e < O.length; e++) {
-					T(O[e])
-				}
-			}, 15500)
-		}, true);
-		e.addEventListener("ended", function() {
-			N();
-			h()
-		}, true);
-		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
-		document.body.appendChild(e);
-		e.play()
-	}
- 
-	function x(e) {
-		e.className += " " + s + " " + o
-	}
- 
-	function T(e) {
-		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
-	}
- 
-	function N() {
-		var e = document.getElementsByClassName(s);
-		var t = new RegExp("\\b" + s + "\\b");
-		for (var n = 0; n < e.length; ) {
-			e[n].className = e[n].className.replace(t, "")
-		}
-	}
- 
-	var e = 30;
-	var t = 30;
-	var n = 350;
-	var r = 350;
-	var i = "//qzone.haoduoge.com/music/48A09O38IG846DBF4FD1889F31315A6A8B2F9.mp3";
-	var s = "mw-harlem_shake_me";
-	var o = "im_first";
-	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
-	var a = "mw-strobe_light";
-	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
-	var l = "mw_added_css";
-	var b = g();
-	var w = y();
-	var C = document.getElementsByTagName("*");
-	var k = null;
-	for (var L = 0; L < C.length; L++) {
-		var A = C[L];
-		if (v(A)) {
-			if (E(A)) {
-				k = A;
-				break
-			}
-		}
-	}
-	if (A === null) {
-		console.warn("Could not find a node of the right size. Please try a different page.");
-		return
-	}
-	c();
-	S();
-	var O = [];
-	for (var L = 0; L < C.length; L++) {
-		var A = C[L];
-		if (v(A)) {
-			O.push(A)
-		}
-	}
-})()    '>音乐</a> </li>
   </ul>
   <div class="clearfix"></div>
 </nav>
@@ -204,7 +54,7 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-10-28T10:11:13.000Z"><a href="/2014/10/28/Java-多线程-一/">10月 28 2014</a></time>
+        <time datetime="2014-10-28T10:11:13.000Z"><a href="/2014/10/28/Java-多线程-一/">Oct 28 2014</a></time>
       
       
   
@@ -214,24 +64,20 @@
     </header>
     <div class="entry">
       
-        <h2 id="一、操作系统中线程和进程的概念">一、操作系统中线程和进程的概念</h2>
-<p>现在的操作系统是多任务操作系统。多线程是实现多任务的一种方式。</p>
+        <h2 id="一、操作系统中线程和进程的概念">一、操作系统中线程和进程的概念</h2><p>现在的操作系统是多任务操作系统。多线程是实现多任务的一种方式。</p>
 <p>进程是指一个内存中运行的应用程序，每个进程都有自己独立的一块内存空间，一个进程中可以启动多个线程。比如在Windows系统中，一个运行的exe就是一个进程。</p>
 <p>线程是指进程中的一个执行流程，一个进程中可以运行多个线程。比如java.exe进程中可以运行很多线程。线程总是属于某个进程，进程中的多个线程共享进程的内存。“同时”执行是人的感觉，在线程之间实际上轮换执行。<br><a id="more"></a><br>多线程的目的是为了<span style="color:red">最大限度的利用CPU资源。</span></p>
 <p>Java编写程序都运行在在Java虚拟机（JVM）中，在JVM的内部，程序的多任务是通过线程来实现的。每用java命令启动一个java应用程序，就会启动一个JVM进程。在同一个JVM进程中，有且只有一个进程，就是它自己。在这个JVM环境中，所有程序代码的运行都是以线程来运行。</p>
 <p>一般常见的Java应用程序都是单线程的。<span style="color:red">比如，用java命令运行一个最简单的HelloWorld的Java应用程序时，就启动了一个JVM进程，JVM找到程序程序的入口点main()，然后运行main()方法，这样就产生了一个线程，这个线程称之为主线程。当main方法结束后，主线程运行完成。JVM进程也随即退出。</span></p>
 <p>实际上，操作的系统的多进程实现了多任务并发执行，程序的多线程实现了进程的并发执行(？)。多任务、多进程、多线程的前提都是要求操作系统提供多任务、多进程、多线程的支持。</p>
-<h2 id="二、Java中的线程">二、Java中的线程</h2>
-<p>在Java中，“线程”指两件不同的事情：<br>1、java.lang.Thread类的一个实例。<br>2、线程的执行。</p>
+<h2 id="二、Java中的线程">二、Java中的线程</h2><p>在Java中，“线程”指两件不同的事情：<br>1、java.lang.Thread类的一个实例。<br>2、线程的执行。</p>
 <p>使用java.lang.Thread类或者java.lang.Runnable接口编写代码来定义、实例化和启动新线程。</p>
 <p>一个Thread类实例只是一个对象，像Java中的任何其他对象一样，具有变量和方法，生死于堆上。</p>
 <p>Java中，每个线程都有一个调用栈，即使不在程序中创建任何新的线程，线程也在后台运行着。</p>
 <p>一个Java应用总是从main()方法开始运行，mian()方法运行在一个线程内，它被称为主线程。</p>
 <p><span style="color:red">一旦创建一个新的线程，就产生一个新的调用栈。</span></p>
 <p>线程总体分两类：用户线程和守候线程。</p>
-<p>当所有用户线程执行完毕的时候，JVM自动关闭。但是守候线程却不独立于JVM，守候线程一般是由操作系统或者用户自己创建的。（两者唯一区别: 如果User Thread全部撤离，那么Daemon Thread也就没啥线程好服务的了，所以虚拟机也就退出了）。守护线程&amp;非守护线程参考： <a href="http://www.cnblogs.com/super-d2/p/3348183.html" target="_blank" rel="external">这里</a><br>例子</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.test5.DaemonThread;</div><div class="line"></div><div class="line">class TestThread1 extends Thread {</div><div class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>() {</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">50</span>; i++) {</div><div class="line">			<span class="keyword">try</span> {</div><div class="line">				Thread.sleep(<span class="number">100</span>);</div><div class="line">			} <span class="keyword">catch</span> (InterruptedException ex) {</div><div class="line">				ex.printStackTrace();</div><div class="line">			}</div><div class="line">			System.out.println(<span class="string">"TestThread1:"</span> + i);</div><div class="line">		}</div><div class="line">	}</div><div class="line">}</div><div class="line">class TestThread2 extends Thread {</div><div class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>() {</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">50</span>; i++) {</div><div class="line">			<span class="keyword">try</span> {</div><div class="line">				Thread.sleep(<span class="number">1000</span>);</div><div class="line">			} <span class="keyword">catch</span> (InterruptedException ex) {</div><div class="line">				ex.printStackTrace();</div><div class="line">			}</div><div class="line">			System.out.println(<span class="string">"TestThread2:"</span> + i);</div><div class="line">		}</div><div class="line">	}</div><div class="line">}</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo2</span>  </span>{</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(String[] args) {</div><div class="line">		TestThread1 test1 = <span class="keyword">new</span> TestThread1();</div><div class="line">		TestThread2 test2 = <span class="keyword">new</span> TestThread2();</div><div class="line">		test1.setDaemon(<span class="keyword">false</span>);<span class="comment">// 用户线程,必须结束后才能退出JVM</span></div><div class="line">		test2.setDaemon(<span class="keyword">true</span>);<span class="comment">// 守护线程，不需要结束</span></div><div class="line">		System.out.println(<span class="string">" test1  isDaemon:"</span> + test1.isDaemon());</div><div class="line">		System.out.println(<span class="string">" test2  isDaemon:"</span> + test2.isDaemon());</div><div class="line">		test1.start();</div><div class="line">		test2.start();</div><div class="line">		Runtime.getRuntime().addShutdownHook(<span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() {</div><div class="line">			<span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>() {</div><div class="line">				System.out.println(<span class="string">"jvm运行结束"</span>);</div><div class="line">			}</div><div class="line">		}));</div><div class="line">	}</div><div class="line">}</div></pre></td></tr></table></figure>
-
+<p>当所有用户线程执行完毕的时候，JVM自动关闭。但是守候线程却不独立于JVM，守候线程一般是由操作系统或者用户自己创建的。（两者唯一区别: 如果User Thread全部撤离，那么Daemon Thread也就没啥线程好服务的了，所以虚拟机也就退出了）。守护线程&amp;非守护线程参考： <a href="http://www.cnblogs.com/super-d2/p/3348183.html" target="_blank" rel="external">这里</a><br>例子<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.test5.DaemonThread;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestThread1</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">50</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				Thread.sleep(<span class="number">100</span>);</span><br><span class="line">			&#125; <span class="keyword">catch</span> (InterruptedException ex) &#123;</span><br><span class="line">				ex.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println(<span class="string">"TestThread1:"</span> + i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestThread2</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">50</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">			&#125; <span class="keyword">catch</span> (InterruptedException ex) &#123;</span><br><span class="line">				ex.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println(<span class="string">"TestThread2:"</span> + i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo2</span>  </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		TestThread1 test1 = <span class="keyword">new</span> TestThread1();</span><br><span class="line">		TestThread2 test2 = <span class="keyword">new</span> TestThread2();</span><br><span class="line">		test1.setDaemon(<span class="keyword">false</span>);<span class="comment">// 用户线程,必须结束后才能退出JVM</span></span><br><span class="line">		test2.setDaemon(<span class="keyword">true</span>);<span class="comment">// 守护线程，不需要结束</span></span><br><span class="line">		System.out.println(<span class="string">" test1  isDaemon:"</span> + test1.isDaemon());</span><br><span class="line">		System.out.println(<span class="string">" test2  isDaemon:"</span> + test2.isDaemon());</span><br><span class="line">		test1.start();</span><br><span class="line">		test2.start();</span><br><span class="line">		Runtime.getRuntime().addShutdownHook(<span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">				System.out.println(<span class="string">"jvm运行结束"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>运行结果：<br><img src="/img/thread/1.png" alt=""><br>从结果可以看出，jvm不必等守护线程执行完成再退出，用户线程执行完毕便可以自动关闭。<br>附：<br>Runtime.getRuntime().addShutdownHook(shutdownHook);<br>   这个方法的含义说明：<br>    这个方法的意思就是在jvm中增加一个关闭的钩子，当jvm关闭的时候，会执行系统中已经设置的所有通过方法addShutdownHook添加的钩子，当系统执行完这些钩子后，jvm才会关闭。所以这些钩子可以在jvm关闭的时候进行内存清理、对象销毁等操作。<br>转载自：<a href="http://lavasoft.blog.51cto.com/62575/27069/" target="_blank" rel="external">http://lavasoft.blog.51cto.com/62575/27069/</a></p>
 
       
@@ -241,24 +87,16 @@
         
   
   <div class="categories">
-    <a href="/categories/笔记/">笔记</a>, <a href="/categories/笔记/java高级/">java高级</a>, <a href="/categories/笔记/java高级/多线程/">多线程</a>
+    <a href="/categories/转载/">转载</a>
   </div>
 
         
   
   <div class="tags">
-    <a href="/tags/201410/">201410</a>, <a href="/tags/转载/">转载</a>
+    <a href="/tags/Concurrency/">Concurrency</a>
   </div>
 
-       <div class="bdsharebuttonbox">
-   <a href="#" class="bds_more" data-cmd="more"></a>
-   <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-   <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-   <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
-   <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
-   <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-  </div> 
-  <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+        
       
       <div class="clearfix"></div>
     </footer>
@@ -266,7 +104,8 @@
 </article>
 
 
-<nav id="pagination" >
+	
+	<nav id="pagination" >
     
     <a href="/2014/10/29/HDFS架构简介/" class="alignleft prev" >上一页</a>
     
@@ -274,21 +113,21 @@
     <a href="/2014/10/28/Future、FutureTask、Callable/" class="alignright next" >下一页</a>
     
     <div class="clearfix"></div>
-</nav>
+	</nav>
+
 <section id="comment">
-   <ul class="ds-recent-comments" data-num-items="10" data-show-avatars="1" data-show-time="1" data-show-admin="1" data-excerpt-length="70"></ul>
-<!--多说js加载开始，一个页面只需要加载一次 -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"jiangnan31.github.io"};
-(function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = 'http://static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
-})();
-</script>
-<!--多说js加载结束，一个页面只需要加载一次 -->
+<div class="ds-thread" data-thread-key="/2014/10/28/Java-多线程-一/" data-title="Java 多线程<一> 概念与原理(转载)" data-url="http://jiangnan31.github.io/2014/10/28/Java-多线程-一/"></div>
+  <script type="text/javascript">
+	var duoshuoQuery = {short_name:"jiangnan31"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
 </section>
 
 </div></div>
@@ -305,23 +144,13 @@ var duoshuoQuery = {short_name:"jiangnan31.github.io"};
   <h3 class="title">分类</h3>
   <ul class="entry">
   
-    <li><a href="/categories/Hadoop/">Hadoop</a><small>2</small></li>
-  
-    <li><a href="/categories/笔记/JavaScript/">JavaScript</a><small>1</small></li>
-  
-    <li><a href="/categories/笔记/Linux/">Linux</a><small>2</small></li>
-  
-    <li><a href="/categories/笔记/java高级/">java高级</a><small>11</small></li>
-  
-    <li><a href="/categories/leetCode/">leetCode</a><small>1</small></li>
-  
-    <li><a href="/categories/笔记/分布式/">分布式</a><small>1</small></li>
-  
-    <li><a href="/categories/笔记/java高级/多线程/">多线程</a><small>8</small></li>
+    <li><a href="/categories/Code/">Code</a><small>1</small></li>
   
     <li><a href="/categories/扯犊子/">扯犊子</a><small>1</small></li>
   
-    <li><a href="/categories/笔记/">笔记</a><small>15</small></li>
+    <li><a href="/categories/笔记/">笔记</a><small>4</small></li>
+  
+    <li><a href="/categories/转载/">转载</a><small>12</small></li>
   
   </ul>
 </div>
@@ -332,19 +161,21 @@ var duoshuoQuery = {short_name:"jiangnan31.github.io"};
   <h3 class="title">标签</h3>
   <ul class="entry">
   
-    <li><a href="/tags/201410/">201410</a><small>11</small></li>
+    <li><a href="/tags/Concurrency/">Concurrency</a><small>9</small></li>
   
-    <li><a href="/tags/201411/">201411</a><small>2</small></li>
+    <li><a href="/tags/Distributed/">Distributed</a><small>1</small></li>
   
-    <li><a href="/tags/201412/">201412</a><small>3</small></li>
+    <li><a href="/tags/Hadoop/">Hadoop</a><small>2</small></li>
   
-    <li><a href="/tags/201503/">201503</a><small>1</small></li>
+    <li><a href="/tags/JavaScript/">JavaScript</a><small>1</small></li>
   
-    <li><a href="/tags/代码/">代码</a><small>1</small></li>
+    <li><a href="/tags/LeetCode/">LeetCode</a><small>1</small></li>
   
-    <li><a href="/tags/总结/">总结</a><small>1</small></li>
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
   
-    <li><a href="/tags/转载/">转载</a><small>12</small></li>
+    <li><a href="/tags/RPC/">RPC</a><small>1</small></li>
+  
+    <li><a href="/tags/Regex/">Regex</a><small>1</small></li>
   
   </ul>
 </div>
