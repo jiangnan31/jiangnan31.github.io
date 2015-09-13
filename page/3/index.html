@@ -55,7 +55,82 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-10-22T12:32:12.000Z"><a href="/2014/10/22/leetCode系列-一/">Oct 22 2014</a></time>
+        <time datetime="2014-10-28T09:11:13.000Z"><a href="/2014/10/28/Java-多线程-一/">Oct 28 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/10/28/Java-多线程-一/">Java 多线程&lt;一&gt; 概念与原理(转载)</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="一、操作系统中线程和进程的概念">一、操作系统中线程和进程的概念</h2><p>现在的操作系统是多任务操作系统。多线程是实现多任务的一种方式。</p>
+<p>进程是指一个内存中运行的应用程序，每个进程都有自己独立的一块内存空间，一个进程中可以启动多个线程。比如在Windows系统中，一个运行的exe就是一个进程。</p>
+<p>线程是指进程中的一个执行流程，一个进程中可以运行多个线程。比如java.exe进程中可以运行很多线程。线程总是属于某个进程，进程中的多个线程共享进程的内存。“同时”执行是人的感觉，在线程之间实际上轮换执行。<br>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2014/10/28/Java-多线程-一/#more" class="more-link">阅读全文</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-10-28T05:13:50.000Z"><a href="/2014/10/28/Future、FutureTask、Callable/">Oct 28 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/10/28/Future、FutureTask、Callable/">Future、FutureTask、Callable</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="1-_Future接口">1. Future接口</h2><p>JDK API中的说明<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Future</span> &lt;<span class="title">V</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p> Future表示异步计算的结果。<span style="color:red">它提供了检查计算是否完成的方法，以等待计算的完成，并获取计算的结果。</span>计算完成后只能使用 get 方法来获取结果，如有必要，计算完成前可以阻塞此方法。<span style="color:red">取消则由cancel方法来执行。</span>还提供了其他方法，以确定任务是正常完成还是被取消了。一旦计算完成，就不能再取消计算。如果为了可取消性而使用 Future 但又不提供可用的结果，则可以声明 Future&lt;?&gt; 形式类型、并返回 null 作为底层任务的结果。<br>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2014/10/28/Future、FutureTask、Callable/#more" class="more-link">阅读全文</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-10-22T11:32:12.000Z"><a href="/2014/10/22/leetCode系列-一/">Oct 22 2014</a></time>
       
       
   
@@ -87,7 +162,7 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-10-22T09:18:05.000Z"><a href="/2014/10/22/Thrift-java-使用实例/">Oct 22 2014</a></time>
+        <time datetime="2014-10-22T08:18:05.000Z"><a href="/2014/10/22/Thrift-java-使用实例/">Oct 22 2014</a></time>
       
       
   
@@ -124,7 +199,7 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-10-20T13:11:32.000Z"><a href="/2014/10/20/博客说明/">Oct 20 2014</a></time>
+        <time datetime="2014-10-20T12:11:32.000Z"><a href="/2014/10/20/博客说明/">Oct 20 2014</a></time>
       
       
   
@@ -176,6 +251,8 @@
   
     <li><a href="/categories/扯犊子/">扯犊子</a><small>2</small></li>
   
+    <li><a href="/categories/整理/">整理</a><small>2</small></li>
+  
     <li><a href="/categories/笔记/">笔记</a><small>4</small></li>
   
     <li><a href="/categories/转载/">转载</a><small>12</small></li>
@@ -194,6 +271,8 @@
     <li><a href="/tags/Distributed/">Distributed</a><small>1</small></li>
   
     <li><a href="/tags/Hadoop/">Hadoop</a><small>2</small></li>
+  
+    <li><a href="/tags/IO/">IO</a><small>2</small></li>
   
     <li><a href="/tags/JavaScript/">JavaScript</a><small>1</small></li>
   

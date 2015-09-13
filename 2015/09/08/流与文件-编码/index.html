@@ -1,0 +1,209 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>流与文件 &lt;-&gt;   编码 | JiangNan&#39;s Blog</title>
+  <meta name="author" content="JiangNan">
+  
+  <meta name="description" content="筚路蓝缕，以启山林">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="流与文件 &lt;-&gt;   编码"/>
+  <meta property="og:site_name" content="JiangNan&#39;s Blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="JiangNan&#39;s Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">JiangNan&#39;s Blog</a></h1>
+  <h2><a href="/">筚路蓝缕，以启山林</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/about">关于我</a></li>
+    
+      <li><a href="/feature">规划页</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-09-08T06:52:15.000Z"><a href="/2015/09/08/流与文件-编码/">Sep 8 2015</a></time>
+      
+      
+  
+    <h1 class="title">流与文件 &lt;-&gt;   编码</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="为什么要进行编码">为什么要进行编码</h2><p>计算机无法理解我们人类使用的语言，只能识别0或者1。所以，为了使计算机能够理解我们所使用的语言，我们需要通过翻译的过程，将其翻译成计算机能够理解的语言。这个翻译的过程就是编码。多数计算机使用8位的块，或者字节（byte）作为最小的可寻址的存储器单位，而不是在存储器中访问单独的位。<br><a id="more"></a><br>因此我们可知：<br>1、计算机中存储信息的最小单元是一个字节即 8 个 bit，所以能表示的字符范围是 0~255 个<br>2、人类要表示的符号太多，无法用一个字节来完全表示<br>3、要解决这个矛盾必须需要一个新的数据结构 char，从 char 到 byte 必须编码</p>
+<h2 id="常用编码格式">常用编码格式</h2><ul>
+<li><p>ASCII 码<br>标准ASCII 码也叫基础ASCII码，使用字节低7 位二进制数来表示所有的大写和小写字母，数字0 到9、标点符号， 以及在美式英语中使用的特殊控制字符。0~31 是控制字符如换行回车删除等；32~126 是打印字符，可以通过键盘输入并且能够显示出来。</p>
+</li>
+<li><p>ISO-8859-1<br>以ASCII为基础，在空置的0xA0-0xFF的范围内，加入96个字母及符号，涵盖了大多数西欧语言字符，所有应用的最广泛。ISO-8859-1 仍然是单字节编码，它总共能表示 256 个字符。</p>
+</li>
+<li><p>GB2312 &amp; GBK<br>双字节编码，GBK兼容GB2312 ，可以用 GB2312 编码的汉字可以用 GBK 来解码，并且不会有乱码。</p>
+</li>
+<li><p>UTF-8 &amp; UTF-16 &amp; UTF-32<br>Unicode将世界上所有的符号都纳入其中，每一个符号都给予一个独一无二的编码。但它只是一个符号集，它只规定了符号的二进制代码，却没有规定这个二进制代码应该如何存储实现。<br>UTF-8就是在互联网上使用最广的一种Unicode的实现方式。其他实现方式还包括UTF-16（字符用两个字节或四个字节表示）和UTF-32（字符用四个字节表示）。<br>UTF-8最大的一个特点，就是它是一种变长的编码方式。它可以使用1~4个字节表示一个符号，根据不同的符号而变化字节长度。<br>链接：（  <a href="http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html" target="_blank" rel="external">Unicode存在的问题  |  Unicode与UTF-8之间的转换</a>）</p>
+</li>
+</ul>
+<p>参考文献：<br>[1] <a href="http://lavasoft.blog.51cto.com/62575/273608" target="_blank" rel="external">Java字符编码根本原理</a><br>[2] <a href="http://blog.sina.com.cn/s/blog_5920510a0101ijj5.html" target="_blank" rel="external">JAVA字符串与字符编码处理的终极解决</a><br>[3] <a href="http://www.ibm.com/developerworks/cn/java/j-lo-chinesecoding/" target="_blank" rel="external">深入分析 Java 中的中文编码问题</a><br>[4] <a href="http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html" target="_blank" rel="external">字符编码笔记：ASCII，Unicode和UTF-8</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/整理/">整理</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/IO/">IO</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+	
+	<nav id="pagination" >
+    
+    <a href="/2015/09/13/流与文件-二-流/" class="alignleft prev" >上一页</a>
+    
+    
+    <a href="/2015/09/06/重新出发/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+	</nav>
+
+<section id="comment">
+<div class="ds-thread" data-thread-key="/2015/09/08/流与文件-编码/" data-title="流与文件 <->   编码" data-url="http://jiangnan31.github.io/2015/09/08/流与文件-编码/"></div>
+  <script type="text/javascript">
+	var duoshuoQuery = {short_name:"jiangnan31"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:jiangnan31.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Code/">Code</a><small>1</small></li>
+  
+    <li><a href="/categories/扯犊子/">扯犊子</a><small>2</small></li>
+  
+    <li><a href="/categories/整理/">整理</a><small>2</small></li>
+  
+    <li><a href="/categories/笔记/">笔记</a><small>4</small></li>
+  
+    <li><a href="/categories/转载/">转载</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Concurrency/">Concurrency</a><small>9</small></li>
+  
+    <li><a href="/tags/Distributed/">Distributed</a><small>1</small></li>
+  
+    <li><a href="/tags/Hadoop/">Hadoop</a><small>2</small></li>
+  
+    <li><a href="/tags/IO/">IO</a><small>2</small></li>
+  
+    <li><a href="/tags/JavaScript/">JavaScript</a><small>1</small></li>
+  
+    <li><a href="/tags/LeetCode/">LeetCode</a><small>1</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/tags/RPC/">RPC</a><small>1</small></li>
+  
+    <li><a href="/tags/Regex/">Regex</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2015 JiangNan
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
