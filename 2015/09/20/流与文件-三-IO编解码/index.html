@@ -1,0 +1,208 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>流与文件 &lt;三&gt; IO编解码 | JiangNan&#39;s Blog</title>
+  <meta name="author" content="JiangNan">
+  
+  <meta name="description" content="筚路蓝缕，以启山林">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="流与文件 &lt;三&gt; IO编解码"/>
+  <meta property="og:site_name" content="JiangNan&#39;s Blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="JiangNan&#39;s Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">JiangNan&#39;s Blog</a></h1>
+  <h2><a href="/">筚路蓝缕，以启山林</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/about">关于我</a></li>
+    
+      <li><a href="/feature">规划页</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-09-20T02:29:42.000Z"><a href="/2015/09/20/流与文件-三-IO编解码/">Sep 20 2015</a></time>
+      
+      
+  
+    <h1 class="title">流与文件 &lt;三&gt; IO编解码</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="1、字节字符转化：InputStreamReader、_OutputStreamWriter">1、字节字符转化：InputStreamReader、 OutputStreamWriter</h2><h3 id="1-1_转化过程">1.1 转化过程</h3><p><img src="/img/io/intout.jpg" alt="转化步骤"><br><a id="more"></a><br>数据持久化或网络传输都是以字节进行的，所以必须要进行字符到字节或字节到字符的转化。以操作文件为例，内存中的字符数据需要通过OutputStreamWriter变为字节流才能保存在文件中，读取时需要将读入的字节流通过InputStreamReader变为字符流。</p>
+<h3 id="1-2_适配器模式">1.2 适配器模式</h3><p><img src="/img/io/adapter.png" alt="适配器的作用"><br>如上图所示，适配器能够不改变原有代码，将现有系统的请求转换成厂商能够理解的请求。<br><img src="/img/io/adapter2.png" alt="适配器模式"><br>如图所示，适配器对象将实现目标接口，并持有被适配对象。</p>
+<p>我们拿火鸡对象来冒充缺少的鸭子对象时：TurkeyAdapter实现鸭子接口（以火鸡的行为替代鸭子的行为），持有火鸡对象。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> headfirst.adapter.ducks;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Duck</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">quack</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> headfirst.adapter.ducks;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Turkey</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">gobble</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> headfirst.adapter.ducks;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TurkeyAdapter</span> <span class="keyword">implements</span> <span class="title">Duck</span> </span>&#123;</span><br><span class="line">	Turkey turkey;</span><br><span class="line"> </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">TurkeyAdapter</span><span class="params">(Turkey turkey)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.turkey = turkey;</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">quack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		turkey.gobble();</span><br><span class="line">	&#125;</span><br><span class="line">  </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">			turkey.fly();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> headfirst.adapter.ducks;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WildTurkey</span> <span class="keyword">implements</span> <span class="title">Turkey</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">gobble</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Gobble gobble"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"I'm flying a short distance"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-3_字符转字节_|_写入_|_编码_|_OutputStreamWriter">1.3 字符转字节 | 写入 | 编码 | OutputStreamWriter</h3><p>OutputStreamWriter将使用选定的字符编码方式，将字符流转化为字节流<br><img src="/img/io/outputstreamwriter.png" alt="OutputStreamWriter类结构图"><br>OutputStreamWriter实现了Writer接口，同时通过StreamEncoder间接持有了InputStream的引用，OutputStreamWriter使用OutputStream的行为来替代了Writer的行为。（当然没有那么简单，中间有涉及到StreamEncoder进行char到byte的编码）</p>
+<p>StreamEncoder中流程间较多，可以调试查看。。。好吧，我承认我没看懂。。。</p>
+<h3 id="1-4_字节转字符_|_读取_|_解码_|_InputStreamReader">1.4 字节转字符 | 读取 | 解码 | InputStreamReader</h3><p>InputStreamReader将使用选定的字符编码方式，将字节流转化为字符流<br><img src="/img/io/inputstreamreader.png" alt="InputStreamReader类结构图"><br>InputStreamReader实现了Reader接口，同时通过StreamDecoder间接持有了InputStream的引用，InputStreamReader使用InputStream的行为来替代了Reader的行为。（当然中间也涉及到StreamDecoder进行byte到char的解码）</p>
+<h3 id="1-5_装饰者模式">1.5 装饰者模式</h3><p><img src="/img/io/decorator.png" alt="headfirst decorator"><br><strong>装饰者可以在所委托被装饰者的行为之前与/或之后，加上自己的行为，以达到特定的目的.</strong><br>Java io中的装饰者： <a href="http://yulingtianxia.com/blog/2014/05/10/zhuang-shi-zhe-mo-shi/#Java中的装饰者" target="_blank" rel="external">详情</a><br><strong>注： 类图有些缺失，FilterInputStream持有InputStream对象实例引用的关系未标明。</strong></p>
+<p>装饰者模式vs适配器模式</p>
+<p>适配器模式：将一个接口转换为另一个接口，通过改变接口来达到重复使用的目的。{鸭子不足，通过用火鸡代替鸭子的方式来鸭子的可重复使用？}<br>装饰者模式：不改变被装饰者对象的接口，保持原有的接口，但要增强原有对象的功能，或改变原有对象的处理方法。</p>
+<p>参考文献：<br>[1] <a href="http://davidisok.iteye.com/blog/2106489" target="_blank" rel="external">Java IO 详解</a><br>[2] <a href="http://blog.sina.com.cn/s/blog_5920510a0101ijj5.html" target="_blank" rel="external">JAVA字符串与字符编码处理的终极解决</a><br>[3] <a href="http://book.douban.com/subject/3360866/" target="_blank" rel="external">JAVA核心技术卷2</a><br>[4] <a href="http://book.douban.com/subject/25953851/" target="_blank" rel="external">深入分析java web技术内幕</a><br>[5] <a href="http://book.douban.com/subject/2243615/" target="_blank" rel="external">Head First 设计模式</a><br>[6] <a href="http://blog.csdn.net/crave_shy/article/details/17239313" target="_blank" rel="external">Java_io体系之OutputStreamWriter、InputStreamReader简介、走进源码及示例——17</a><br>[7] <a href="http://www.cnblogs.com/mengdd/archive/2013/02/12/2910302.html" target="_blank" rel="external">Java IO 装饰者模式</a><br>[8] <a href="http://yulingtianxia.com/blog/2014/05/10/zhuang-shi-zhe-mo-shi/" target="_blank" rel="external">装饰者模式</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/整理/">整理</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/IO/">IO</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+	
+	<nav id="pagination" >
+    
+    
+    <a href="/2015/09/13/流与文件-二-流/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+	</nav>
+
+<section id="comment">
+<div class="ds-thread" data-thread-key="/2015/09/20/流与文件-三-IO编解码/" data-title="流与文件 <三> IO编解码" data-url="http://jiangnan31.github.io/2015/09/20/流与文件-三-IO编解码/"></div>
+  <script type="text/javascript">
+	var duoshuoQuery = {short_name:"jiangnan31"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:jiangnan31.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Code/">Code</a><small>1</small></li>
+  
+    <li><a href="/categories/扯犊子/">扯犊子</a><small>2</small></li>
+  
+    <li><a href="/categories/整理/">整理</a><small>3</small></li>
+  
+    <li><a href="/categories/笔记/">笔记</a><small>4</small></li>
+  
+    <li><a href="/categories/转载/">转载</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Concurrency/">Concurrency</a><small>9</small></li>
+  
+    <li><a href="/tags/Distributed/">Distributed</a><small>1</small></li>
+  
+    <li><a href="/tags/Hadoop/">Hadoop</a><small>2</small></li>
+  
+    <li><a href="/tags/IO/">IO</a><small>3</small></li>
+  
+    <li><a href="/tags/JavaScript/">JavaScript</a><small>1</small></li>
+  
+    <li><a href="/tags/LeetCode/">LeetCode</a><small>1</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/tags/RPC/">RPC</a><small>1</small></li>
+  
+    <li><a href="/tags/Regex/">Regex</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2015 JiangNan
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
