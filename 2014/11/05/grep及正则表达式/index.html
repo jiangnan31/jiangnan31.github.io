@@ -35,18 +35,17 @@
 <nav id="main-nav" class="alignright">
   <ul>
     
-      <li><a href="/">首页</a></li>
+      <li><a href="/">Home</a></li>
     
       <li><a href="/archives">归档</a></li>
     
       <li><a href="/about">关于我</a></li>
     
-      <li><a href="/feature">规划页</a></li>
-    
   </ul>
   <div class="clearfix"></div>
 </nav>
-<div class="clearfix"></div></header>
+<div class="clearfix"></div>
+</header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
   
@@ -54,7 +53,7 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-11-05T02:11:26.000Z"><a href="/2014/11/05/grep及正则表达式/">Nov 5 2014</a></time>
+        <time datetime="2014-11-05T03:11:26.000Z"><a href="/2014/11/05/grep及正则表达式/">2014-11-05</a></time>
       
       
   
@@ -65,38 +64,38 @@
     <div class="entry">
       
         <p>首先要记住的是: 正则表达式与通配符不一样,它们表示的含义并不相同!<br>正则表达式只是一种表示法,只要工具支持这种表示法， 那么该工具就可以处理正则表达式的字符串。vim、grep、awk 、sed 都支持正则表达式，也正是因为由于它们支持正则，才显得它们强大；</p>
-<h2 id="1-_基础正则表达式">1. 基础正则表达式</h2><a id="more"></a>
+<h2 id="1-基础正则表达式"><a href="#1-基础正则表达式" class="headerlink" title="1. 基础正则表达式"></a>1. 基础正则表达式</h2><a id="more"></a>
 <p>grep -[acinv] ‘搜索内容串’ filename<br>-a 以文本文件方式搜索<br>-c 计算找到的符合行的次数<br>-i 忽略大小写<br>-n 顺便输出行号<br>-v 反向选择，即找 没有搜索字符串的行<br>其中搜索串可以是正则表达式! </p>
-<h3 id="1-1_搜索关键字">1.1 搜索关键字</h3><p>搜索有the的行,并输出行号<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &#39;the&#39; crm-web.log&#10;5:11/04 10:53:15 [scheduleFactory_Worker-9] INFO  utils.BNSUtils   .getUsedJobTrackerInfo:237 - the used jobtracker is &#123;&#34;serviceName&#34;:&#34;melody-cal-bnsMonitor.MP3.91fzcm&#34;,&#34;hostName&#34;:&#34;yf-mp3-melody-cal00.yf01&#34;,&#34;port&#34;:27017,&#34;isUsed&#34;:1&#125;&#10;49:11/04 10:54:15 [scheduleFactory_Worker-9] INFO  utils.BNSUtils   .getUsedJobTrackerInfo:237 - the used jobtracker is &#123;&#34;serviceName&#34;:&#34;melody-cal-bnsMonitor.MP3.91fzcm&#34;,&#34;hostName&#34;:&#34;yf-mp3-melody-cal00.yf01&#34;,&#34;port&#34;:27017,&#34;isUsed&#34;:1&#125;</span><br></pre></td></tr></table></figure></p>
-<p>搜 索没有the的行,并输出行号 (-v反选)<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ grep -nv &#39;the&#39; crm-web.log</span><br></pre></td></tr></table></figure></p>
-<h3 id="1-2_利_用[]搜索集合字符">1.2 利 用[]搜索集合字符</h3><p>[] 表示其中的某一个字符 ，例如[ade] 表示a或d或e<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &#39;bi[gt]log&#39; crm-web.log&#10;&#10;75:  11/04 10:54:21 [timing-1] INFO  service.OpenDataSourceService.run:349 - [biglog] datasource has no change&#10;76:  11/04 10:54:21 [timing-1] INFO  service.OpenDataSourceService.run:349 - [bitlog] datasource has no change</span><br></pre></td></tr></table></figure></p>
-<p><span style="color:red">可以用^符号做[]内的前缀，表示除[]内的字符之外的字符。</span><br>比如搜索oo前没有g的字符串所在的行. 使用 ‘[^g]oo’ 作搜索字符串<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &#39;[^g]oo&#39; crm-web.log&#10;41:  http://bns.noah.baidu.com/webfoot/index.php?r=Group/GroupInfo_v2&#38;groupName=group.cal-melody.MP3.ai&#10;78:  apple is my favorite food&#10;79:  Football is not use feet only&#10;80:  google is the best tools for search keyword&#10;81:  goooooog test.</span><br></pre></td></tr></table></figure></p>
-<p><span style="color:red">[] 内可以用范围表示</span>，比如[a-z] 表示小写字母,[0-9] 表示0~9的数字, [A-Z] 则是大写字母们。[a-zA-Z0-9]表示所有数字与英文字符。 当然也可以配合^来排除字符。<br>搜索包含数字的行<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &#39;[7-9]&#39; crm-web.log</span><br></pre></td></tr></table></figure></p>
+<h3 id="1-1-搜索关键字"><a href="#1-1-搜索关键字" class="headerlink" title="1.1 搜索关键字"></a>1.1 搜索关键字</h3><p>搜索有the的行,并输出行号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &apos;the&apos; crm-web.log</span><br><span class="line">5:11/04 10:53:15 [scheduleFactory_Worker-9] INFO  utils.BNSUtils   .getUsedJobTrackerInfo:237 - the used jobtracker is &#123;&quot;serviceName&quot;:&quot;melody-cal-bnsMonitor.MP3.91fzcm&quot;,&quot;hostName&quot;:&quot;yf-mp3-melody-cal00.yf01&quot;,&quot;port&quot;:27017,&quot;isUsed&quot;:1&#125;</span><br><span class="line">49:11/04 10:54:15 [scheduleFactory_Worker-9] INFO  utils.BNSUtils   .getUsedJobTrackerInfo:237 - the used jobtracker is &#123;&quot;serviceName&quot;:&quot;melody-cal-bnsMonitor.MP3.91fzcm&quot;,&quot;hostName&quot;:&quot;yf-mp3-melody-cal00.yf01&quot;,&quot;port&quot;:27017,&quot;isUsed&quot;:1&#125;</span><br></pre></td></tr></table></figure></p>
+<p>搜 索没有the的行,并输出行号 (-v反选)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ grep -nv &apos;the&apos; crm-web.log</span><br></pre></td></tr></table></figure></p>
+<h3 id="1-2-利-用-搜索集合字符"><a href="#1-2-利-用-搜索集合字符" class="headerlink" title="1.2 利 用[]搜索集合字符"></a>1.2 利 用[]搜索集合字符</h3><p>[] 表示其中的某一个字符 ，例如[ade] 表示a或d或e<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &apos;bi[gt]log&apos; crm-web.log</span><br><span class="line"></span><br><span class="line">75:  11/04 10:54:21 [timing-1] INFO  service.OpenDataSourceService.run:349 - [biglog] datasource has no change</span><br><span class="line">76:  11/04 10:54:21 [timing-1] INFO  service.OpenDataSourceService.run:349 - [bitlog] datasource has no change</span><br></pre></td></tr></table></figure></p>
+<p><span style="color:red">可以用^符号做[]内的前缀，表示除[]内的字符之外的字符。</span><br>比如搜索oo前没有g的字符串所在的行. 使用 ‘[^g]oo’ 作搜索字符串<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &apos;[^g]oo&apos; crm-web.log</span><br><span class="line">41:  http://bns.noah.baidu.com/webfoot/index.php?r=Group/GroupInfo_v2&amp;groupName=group.cal-melody.MP3.ai</span><br><span class="line">78:  apple is my favorite food</span><br><span class="line">79:  Football is not use feet only</span><br><span class="line">80:  google is the best tools for search keyword</span><br><span class="line">81:  goooooog test.</span><br></pre></td></tr></table></figure></p>
+<p><span style="color:red">[] 内可以用范围表示</span>，比如[a-z] 表示小写字母,[0-9] 表示0~9的数字, [A-Z] 则是大写字母们。[a-zA-Z0-9]表示所有数字与英文字符。 当然也可以配合^来排除字符。<br>搜索包含数字的行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &apos;[7-9]&apos; crm-web.log</span><br></pre></td></tr></table></figure></p>
 <p><span style="color:red">行首与行尾字符 ‘^’ \$</span></p>
-<p>^表示行的开头，\$表示行的结尾( 不是字符，是位置）那么‘^$’ 就表示空行,因为只有<br>行首和行尾。<br>这里^与[]里面使用的^意义不同。它表示^后面的串是在行的开头。<br>比如搜索  app在开头的行<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &#39;^$&#39; crm-web.log &#10;77:&#10;[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &#39;^  app&#39; crm-web.log &#10;78:  apple is my favorite food</span><br></pre></td></tr></table></figure></p>
-<p>搜索以小写字母开头的行<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &#39;^[a-z]&#39; crm-web.log&#10;78:apple is my favorite food&#10;79:Xmeadgsadg&#10;80:Football is not use feet only&#10;81:google is the best tools for search keywords &#10;82:goooooog test.</span><br></pre></td></tr></table></figure></p>
+<p>^表示行的开头，\$表示行的结尾( 不是字符，是位置）那么‘^$’ 就表示空行,因为只有<br>行首和行尾。<br>这里^与[]里面使用的^意义不同。它表示^后面的串是在行的开头。<br>比如搜索  app在开头的行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &apos;^$&apos; crm-web.log </span><br><span class="line">77:</span><br><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &apos;^  app&apos; crm-web.log </span><br><span class="line">78:  apple is my favorite food</span><br></pre></td></tr></table></figure></p>
+<p>搜索以小写字母开头的行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &apos;^[a-z]&apos; crm-web.log</span><br><span class="line">78:apple is my favorite food</span><br><span class="line">79:Xmeadgsadg</span><br><span class="line">80:Football is not use feet only</span><br><span class="line">81:google is the best tools for search keywords </span><br><span class="line">82:goooooog test.</span><br></pre></td></tr></table></figure></p>
 <p><span style="color:red">不知道为什么会有79和80行。。。</span></p>
-<p>搜索开头不是数字的行<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &#39;^[^0-9]&#39; crm-web.log&#10;52:current info:yf-mp3-melody-cal00.yf01:27017&#10;53:BNS info:yf-mp3-melody-cal00.yf01:27017&#10;76:apple is my favorite food&#10;77:Xmeadgsadg&#10;78:Football is not use feet only&#10;79:google is the best tools for search keywords &#10;80:goooooog test.</span><br></pre></td></tr></table></figure></p>
-<p>$表示它前面的串是在行的结尾，比如 ‘\.’ 表示 . 在一行的结尾<br>搜索末尾是.的行<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &#39;\.$&#39; crm-web.log //.</span><br></pre></td></tr></table></figure></p>
-<p>是正则表达式的特殊符号，所以要用\转义<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &#39;\.$&#39; crm-web.log //.&#10;crm-web.log:78:Football is not use feet only.&#10;crm-web.log:80:goooooog test.</span><br></pre></td></tr></table></figure></p>
+<p>搜索开头不是数字的行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &apos;^[^0-9]&apos; crm-web.log</span><br><span class="line">52:current info:yf-mp3-melody-cal00.yf01:27017</span><br><span class="line">53:BNS info:yf-mp3-melody-cal00.yf01:27017</span><br><span class="line">76:apple is my favorite food</span><br><span class="line">77:Xmeadgsadg</span><br><span class="line">78:Football is not use feet only</span><br><span class="line">79:google is the best tools for search keywords </span><br><span class="line">80:goooooog test.</span><br></pre></td></tr></table></figure></p>
+<p>$表示它前面的串是在行的结尾，比如 ‘\.’ 表示 . 在一行的结尾<br>搜索末尾是.的行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &apos;\.$&apos; crm-web.log //.</span><br></pre></td></tr></table></figure></p>
+<p>是正则表达式的特殊符号，所以要用\转义<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &apos;\.$&apos; crm-web.log //.</span><br><span class="line">crm-web.log:78:Football is not use feet only.</span><br><span class="line">crm-web.log:80:goooooog test.</span><br></pre></td></tr></table></figure></p>
 <p>注意在MS的系统下生成的文本文件，换行会加上一个 ^M 字符。所以最后的字符会是隐藏的^M ,在处理Windows<br>下面的文本时要特别注意！<br>可以用cat dos_file | tr -d ‘\r’ &gt; unix_file 来删除^M符号。 ^M==\r </p>
 <p>那么’^$’ 就表示只有行首行尾的空行拉！ </p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&#25628;&#32034;&#31354;&#34892; &#10;[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$  grep -n &#39;^$&#39; crm-web.log&#10;75:&#10;#&#25628;&#32034;&#38750;&#31354;&#34892; &#10;[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$  grep -vn &#39;^$&#39; crm-web.log&#10;....</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#搜索空行 </span><br><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$  grep -n &apos;^$&apos; crm-web.log</span><br><span class="line">75:</span><br><span class="line">#搜索非空行 </span><br><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$  grep -vn &apos;^$&apos; crm-web.log</span><br><span class="line">....</span><br></pre></td></tr></table></figure>
 <p><span style="color:red">任意一个字符. 与重复字符 * </span></p>
 <p><span style="color:red">在bash中<em>代表通配符，用来代表任意个 字符，但是在正则表达式中，他含义不同，</em>表示有0个或多个 某个字符。<br>例如 oo*, 表示第一个o一定存在，第二个o可以有一个或多个，也可以没有，因此代表至少一个o. </span></p>
 <p>点. 代表一个任意字符，必须存在。 g??d 可以用 ‘g..d’ 表示。 good ,gxxd ,gabd …..都符合。 </p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &#39;bi..og&#39; crm-web.log&#10;73:11/04 10:54:21 [timing-1] INFO  service.OpenDataSourceService.run:349 - [biglog] datasource has no change&#10;74:11/04 10:54:21 [timing-1] INFO  service.OpenDataSourceService.run:349 - [bitlog] datasource has no change</span><br></pre></td></tr></table></figure>
-<p>搜索两个o以上的字符串 (//前两个o一定存在，第三个o可没有，也可有多个。 )<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &#39;ooo*&#39; crm-web.log&#10;39:http://bns.noah.baidu.com/webfoot/index.php?r=Group/GroupInfo_v2&#38;groupName=group.cal-melody.MP3.ai&#10;76:apple is my favorite food&#10;78:Football is not use feet only.&#10;79:google is the best tools for search keywords.&#10;80:goooooog test.&#10;[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &#39;oooo*&#39; crm-web.log&#10;80:goooooog test.</span><br></pre></td></tr></table></figure></p>
-<p>搜索g开头和结尾，中间是至少一个o的字符串，即gog, goog….gooog…等<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &#39;goo*g&#39; crm-web.log&#10;79:google is the best tools for search keywords.&#10;80:goooooog test.</span><br></pre></td></tr></table></figure></p>
-<p>搜索g开头和结尾的字符串在的行<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &#39;g.*t&#39; crm-web.log   &#10; // .*&#34920;&#31034; 0&#20010;&#25110;&#22810;&#20010;&#20219;&#24847;&#23383;&#31526; &#10;1:&#34;Open Source&#34; is a good mechanism to develop programs. &#10;14:The gd software is a library for drafting programs. &#10;18:google is the best tools for search keyword. &#10;19:goooooogle yes! &#10;20:go! go! Let&#39;s go.</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &apos;bi..og&apos; crm-web.log</span><br><span class="line">73:11/04 10:54:21 [timing-1] INFO  service.OpenDataSourceService.run:349 - [biglog] datasource has no change</span><br><span class="line">74:11/04 10:54:21 [timing-1] INFO  service.OpenDataSourceService.run:349 - [bitlog] datasource has no change</span><br></pre></td></tr></table></figure>
+<p>搜索两个o以上的字符串 (//前两个o一定存在，第三个o可没有，也可有多个。 )<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &apos;ooo*&apos; crm-web.log</span><br><span class="line">39:http://bns.noah.baidu.com/webfoot/index.php?r=Group/GroupInfo_v2&amp;groupName=group.cal-melody.MP3.ai</span><br><span class="line">76:apple is my favorite food</span><br><span class="line">78:Football is not use feet only.</span><br><span class="line">79:google is the best tools for search keywords.</span><br><span class="line">80:goooooog test.</span><br><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &apos;oooo*&apos; crm-web.log</span><br><span class="line">80:goooooog test.</span><br></pre></td></tr></table></figure></p>
+<p>搜索g开头和结尾，中间是至少一个o的字符串，即gog, goog….gooog…等<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &apos;goo*g&apos; crm-web.log</span><br><span class="line">79:google is the best tools for search keywords.</span><br><span class="line">80:goooooog test.</span><br></pre></td></tr></table></figure></p>
+<p>搜索g开头和结尾的字符串在的行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &apos;g.*t&apos; crm-web.log   </span><br><span class="line"> // .*表示 0个或多个任意字符 </span><br><span class="line">1:&quot;Open Source&quot; is a good mechanism to develop programs. </span><br><span class="line">14:The gd software is a library for drafting programs. </span><br><span class="line">18:google is the best tools for search keyword. </span><br><span class="line">19:goooooogle yes! </span><br><span class="line">20:go! go! Let&apos;s go.</span><br></pre></td></tr></table></figure></p>
 <p><span style="color:red">限定连续重复字符的范围 { }  </span></p>
 <p>. * 只能限制0个或多个， 如果要确切的限制字符重复数量，就用{范围} 。范围是数字用,隔开 2,5 表示2~5个,<br>2表示2个，2, 表示2到更多个<br>注意，由于{ }在SHELL中有特殊意义，因此作为正则表达式用的时候要用\转义一下。 </p>
-<p>搜索包含两个o的字符串的行。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &#39;o\&#123;2\&#125;&#39; crm-web.log&#10;39:http://bns.noah.baidu.com/webfoot/index.php?r=Group/GroupInfo_v2&#38;groupName=group.cal-melody.MP3.ai&#10;76:apple is my favorite food&#10;78:Football is not use feet only.&#10;79:google is the best tools for search keywords.&#10;80:goooooog test.&#10;[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &#39;o\&#123;3\&#125;&#39; crm-web.log&#10;80:goooooog test.</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&#25628;&#32034;g&#21518;&#38754;&#36319;2~5&#20010;o,&#21518;&#38754;&#20877;&#36319;&#19968;&#20010;g&#30340;&#23383;&#31526;&#20018;&#30340;&#34892;&#12290;&#10;[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &#39;go\&#123;2,5\&#125;g&#39; crm-web.log&#10;79:google is the best tools for search keywords.&#10;#&#25628;&#32034;&#21253;&#21547;g&#21518;&#38754;&#36319;2&#20010;&#20197;&#19978;o,&#21518;&#38754;&#20877;&#36319;g&#30340;&#34892;&#12290;&#12290; &#10;[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &#39;go\&#123;2,\&#125;g&#39; crm-web.log&#10;79:google is the best tools for search keywords.&#10;80:goooooog test.</span><br></pre></td></tr></table></figure>
+<p>搜索包含两个o的字符串的行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &apos;o\&#123;2\&#125;&apos; crm-web.log</span><br><span class="line">39:http://bns.noah.baidu.com/webfoot/index.php?r=Group/GroupInfo_v2&amp;groupName=group.cal-melody.MP3.ai</span><br><span class="line">76:apple is my favorite food</span><br><span class="line">78:Football is not use feet only.</span><br><span class="line">79:google is the best tools for search keywords.</span><br><span class="line">80:goooooog test.</span><br><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &apos;o\&#123;3\&#125;&apos; crm-web.log</span><br><span class="line">80:goooooog test.</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#搜索g后面跟2~5个o,后面再跟一个g的字符串的行。</span><br><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &apos;go\&#123;2,5\&#125;g&apos; crm-web.log</span><br><span class="line">79:google is the best tools for search keywords.</span><br><span class="line">#搜索包含g后面跟2个以上o,后面再跟g的行。。 </span><br><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -n &apos;go\&#123;2,\&#125;g&apos; crm-web.log</span><br><span class="line">79:google is the best tools for search keywords.</span><br><span class="line">80:goooooog test.</span><br></pre></td></tr></table></figure>
 <p>注意，相让[]中的^ － 不表现特殊意义，可以放在[]里面内容的后面。<br>‘[^a-z.!^ -]’ 表示没有小写字母，没有. 没有!, 没有空格，没有- 的 串，注意[]里面有个小空格。 </p>
 <p>另外shell 里面的反向选择为[!range], 正则里面是 [^range] <span style="color:red">?</span></p>
-<h2 id="2-_扩展正则表达式">2. 扩展正则表达式</h2><p>扩展正则表达式是对基础正则表达式添加了几个特殊构成的。<br>它令某些操作更加方便。<br>比如我们要去除 空白行和行首为数字的行， 会这样用：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -v &#39;^$&#39; crm-web.log  | grep -v &#39;^[0-9]&#39;&#10;&#123;&#34;flag&#34;:1,&#34;jobtracker&#34;:[&#123;&#34;serviceName&#34;:&#34;crm-cal-bnsSinglePointMonitor.MP3.91fzcm&#34;,&#34;hostName&#34;:&#34;tc-mp3-melody-web01.tc&#34;,&#34;port&#34;:27017,&#34;isUsed&#34;:0&#125;,&#123;&#34;serviceName&#34;:&#34;melody-cal-bnsMonitor.MP3.91fzcm&#34;,&#34;hostName&#34;:&#34;yf-mp3-melody-cal00.yf01&#34;,&#34;port&#34;:27017,&#34;isUsed&#34;:1&#125;]&#125;&#10;current info:yf-mp3-melody-cal00.yf01:27017&#10;BNS info:yf-mp3-melody-cal00.yf01:27017&#10;apple is my favorite food&#10;Xmeadgsadg&#10;Football is not use feet only.&#10;google is the best tools for search keywords.&#10;goooooog test.&#10;# &#31649;&#36947;&#32487;&#32493;&#36807;&#28388;&#10;[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -v &#39;^$&#39; crm-web.log  | grep -v &#39;^[0-9]&#39; | grep -n &#39;^[a-z]&#39;&#10;2:http://bns.noah.baidu.com/webfoot/index.php?r=Group/GroupInfo_v2&#38;groupName=group.cal-melody.MP3.ai&#10;6:current info:yf-mp3-melody-cal00.yf01:27017&#10;7:BNS info:yf-mp3-melody-cal00.yf01:27017&#10;8:apple is my favorite food&#10;9:Xmeadgsadg&#10;10:Football is not use feet only.&#10;11:google is the best tools for search keywords.&#10;12:goooooog test.</span><br></pre></td></tr></table></figure></p>
-<p>然而使用支持扩展正则表达式的 egrep 与扩展特殊符号 | ，会方便许多。<br>注意grep只支持基础表达式， 而egrep 支持扩展的， 其实 egrep 是 grep -E 的别名而已。因此grep -E 支持扩展正则。<br>那么:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ egrep -v &#39;^$|^[0-9]|^&#123;&#39; crm-web.log  &#10;http://bns.noah.baidu.com/webfoot/index.php?r=Group/GroupInfo_v2&#38;groupName=group.cal-melody.MP3.ai&#10;current info:yf-mp3-melody-cal00.yf01:27017&#10;BNS info:yf-mp3-melody-cal00.yf01:27017&#10;apple is my favorite food&#10;Xmeadgsadg&#10;Football is not use feet only.&#10;google is the best tools for search keywords.&#10;goooooog test.</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-扩展正则表达式"><a href="#2-扩展正则表达式" class="headerlink" title="2. 扩展正则表达式"></a>2. 扩展正则表达式</h2><p>扩展正则表达式是对基础正则表达式添加了几个特殊构成的。<br>它令某些操作更加方便。<br>比如我们要去除 空白行和行首为数字的行， 会这样用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -v &apos;^$&apos; crm-web.log  | grep -v &apos;^[0-9]&apos;</span><br><span class="line">&#123;&quot;flag&quot;:1,&quot;jobtracker&quot;:[&#123;&quot;serviceName&quot;:&quot;crm-cal-bnsSinglePointMonitor.MP3.91fzcm&quot;,&quot;hostName&quot;:&quot;tc-mp3-melody-web01.tc&quot;,&quot;port&quot;:27017,&quot;isUsed&quot;:0&#125;,&#123;&quot;serviceName&quot;:&quot;melody-cal-bnsMonitor.MP3.91fzcm&quot;,&quot;hostName&quot;:&quot;yf-mp3-melody-cal00.yf01&quot;,&quot;port&quot;:27017,&quot;isUsed&quot;:1&#125;]&#125;</span><br><span class="line">current info:yf-mp3-melody-cal00.yf01:27017</span><br><span class="line">BNS info:yf-mp3-melody-cal00.yf01:27017</span><br><span class="line">apple is my favorite food</span><br><span class="line">Xmeadgsadg</span><br><span class="line">Football is not use feet only.</span><br><span class="line">google is the best tools for search keywords.</span><br><span class="line">goooooog test.</span><br><span class="line"># 管道继续过滤</span><br><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ grep -v &apos;^$&apos; crm-web.log  | grep -v &apos;^[0-9]&apos; | grep -n &apos;^[a-z]&apos;</span><br><span class="line">2:http://bns.noah.baidu.com/webfoot/index.php?r=Group/GroupInfo_v2&amp;groupName=group.cal-melody.MP3.ai</span><br><span class="line">6:current info:yf-mp3-melody-cal00.yf01:27017</span><br><span class="line">7:BNS info:yf-mp3-melody-cal00.yf01:27017</span><br><span class="line">8:apple is my favorite food</span><br><span class="line">9:Xmeadgsadg</span><br><span class="line">10:Football is not use feet only.</span><br><span class="line">11:google is the best tools for search keywords.</span><br><span class="line">12:goooooog test.</span><br></pre></td></tr></table></figure></p>
+<p>然而使用支持扩展正则表达式的 egrep 与扩展特殊符号 | ，会方便许多。<br>注意grep只支持基础表达式， 而egrep 支持扩展的， 其实 egrep 是 grep -E 的别名而已。因此grep -E 支持扩展正则。<br>那么:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[jiangnan04@cp01-rdqa-dev361.cp01.baidu.com document]$ egrep -v &apos;^$|^[0-9]|^&#123;&apos; crm-web.log  </span><br><span class="line">http://bns.noah.baidu.com/webfoot/index.php?r=Group/GroupInfo_v2&amp;groupName=group.cal-melody.MP3.ai</span><br><span class="line">current info:yf-mp3-melody-cal00.yf01:27017</span><br><span class="line">BNS info:yf-mp3-melody-cal00.yf01:27017</span><br><span class="line">apple is my favorite food</span><br><span class="line">Xmeadgsadg</span><br><span class="line">Football is not use feet only.</span><br><span class="line">google is the best tools for search keywords.</span><br><span class="line">goooooog test.</span><br></pre></td></tr></table></figure></p>
 <p><span style="color:red">这里| 表示或的关系。 即满足 ^$ 、 ^# 或者 ^{ 的字符串。 </span></p>
 <p>这里列出几个扩展特殊符号：<br>＋， 于 . <em> 作用类似，表示 一个或多个重复字符。<br>?， 于 . </em> 作用类似，表示0个或一个字符。<br>｜，表示或关系，比如 ‘gd|good|dog’ 表示有gd,good或dog的串<br>（），将部分内容合成一个单元组。 比如 要搜索 glad 或 good 可以这样 ‘g(la|oo)d’<br><span style="color:red">()的好处是可以对小组使用 + ? * 等。 </span><br>比如要搜索A和C开头结尾，中间有至少一个(xyz) 的串，可以这样 : ‘A(xyz)+C’</p>
 <p>转载自：<a href="http://www.jb51.net/article/31207.htm" target="_blank" rel="external">http://www.jb51.net/article/31207.htm</a><br>参考：<a href="http://www.jb51.net/tools/zhengze.html" target="_blank" rel="external">http://www.jb51.net/tools/zhengze.html</a></p>
@@ -114,7 +113,7 @@
         
   
   <div class="tags">
-    <a href="/tags/Linux/">Linux</a>, <a href="/tags/Regex/">Regex</a>
+    <a href="/tags/Regex/">Regex</a>, <a href="/tags/Linux/">Linux</a>
   </div>
 
         
@@ -125,31 +124,25 @@
 </article>
 
 
-	
-	<nav id="pagination" >
-    
-    <a href="/2014/11/05/单点Hadoop搭建过程中错误/" class="alignleft prev" >上一页</a>
-    
-    
-    <a href="/2014/11/03/服务器搭建参考/" class="alignright next" >下一页</a>
-    
-    <div class="clearfix"></div>
-	</nav>
-
 <section id="comment">
-<div class="ds-thread" data-thread-key="/2014/11/05/grep及正则表达式/" data-title="grep及正则表达式" data-url="http://jiangnan31.github.io/2014/11/05/grep及正则表达式/"></div>
-  <script type="text/javascript">
-	var duoshuoQuery = {short_name:"jiangnan31"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
+  <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2014/11/05/grep及正则表达式/" data-title="grep及正则表达式" data-url="http://jiangnan31.github.io/2014/11/05/grep及正则表达式/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jiangnan31"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+      </script>
+    <!-- 多说公共JS代码 end -->
 </section>
+
 
 </div></div>
     <aside id="sidebar" class="alignright">
@@ -167,9 +160,9 @@
   
     <li><a href="/categories/Code/">Code</a><small>1</small></li>
   
-    <li><a href="/categories/扯犊子/">扯犊子</a><small>2</small></li>
+    <li><a href="/categories/扯犊子/">扯犊子</a><small>1</small></li>
   
-    <li><a href="/categories/整理/">整理</a><small>3</small></li>
+    <li><a href="/categories/整理/">整理</a><small>2</small></li>
   
     <li><a href="/categories/笔记/">笔记</a><small>4</small></li>
   
@@ -190,7 +183,7 @@
   
     <li><a href="/tags/Hadoop/">Hadoop</a><small>2</small></li>
   
-    <li><a href="/tags/IO/">IO</a><small>3</small></li>
+    <li><a href="/tags/IO/">IO</a><small>2</small></li>
   
     <li><a href="/tags/JavaScript/">JavaScript</a><small>1</small></li>
   
@@ -210,7 +203,7 @@
   </div>
   <footer id="footer" class="inner"><div class="alignleft">
   
-  &copy; 2015 JiangNan
+  &copy; 2016 JiangNan
   
 </div>
 <div class="clearfix"></div></footer>

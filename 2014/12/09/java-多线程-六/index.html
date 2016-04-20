@@ -35,18 +35,17 @@
 <nav id="main-nav" class="alignright">
   <ul>
     
-      <li><a href="/">首页</a></li>
+      <li><a href="/">Home</a></li>
     
       <li><a href="/archives">归档</a></li>
     
       <li><a href="/about">关于我</a></li>
     
-      <li><a href="/feature">规划页</a></li>
-    
   </ul>
   <div class="clearfix"></div>
 </nav>
-<div class="clearfix"></div></header>
+<div class="clearfix"></div>
+</header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
   
@@ -54,7 +53,7 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-12-09T11:16:50.000Z"><a href="/2014/12/09/java-多线程-六/">Dec 9 2014</a></time>
+        <time datetime="2014-12-09T12:16:50.000Z"><a href="/2014/12/09/java-多线程-六/">2014-12-09</a></time>
       
       
   
@@ -64,20 +63,20 @@
     </header>
     <div class="entry">
       
-        <h1 id="线程的调度-优先级">线程的调度-优先级</h1><p>与线程休眠类似，线程的优先级仍然无法保障线程的执行次序。只不过，优先级高的线程获取CPU资源的概率较大，优先级低的并非没机会执行。</p>
+        <h1 id="线程的调度-优先级"><a href="#线程的调度-优先级" class="headerlink" title="线程的调度-优先级"></a>线程的调度-优先级</h1><p>与线程休眠类似，线程的优先级仍然无法保障线程的执行次序。只不过，优先级高的线程获取CPU资源的概率较大，优先级低的并非没机会执行。</p>
 <p>线程的优先级用1-10之间的整数表示，数值越大优先级越高，默认的优先级为5。</p>
 <p>在一个线程中开启另外一个新线程，则新开线程称为该线程的子线程，子线程初始优先级与父线程相同。</p>
 <a id="more"></a>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** </span><br><span class="line">* Java线程：线程的调度-优先级 </span><br><span class="line">* </span><br><span class="line">* <span class="doctag">@author</span> leizhimin 2009-11-4 9:02:40 </span><br><span class="line">*/</span> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread1</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">			System.out.println(<span class="string">"线程1第"</span> + i + <span class="string">"次执行！"</span>);</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				Thread.sleep(<span class="number">100</span>);</span><br><span class="line">			&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyRunnable</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">			System.out.println(<span class="string">"线程2第"</span> + i + <span class="string">"次执行！"</span>);</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				Thread.sleep(<span class="number">100</span>);</span><br><span class="line">			&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestPriority</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Thread t1 = <span class="keyword">new</span> MyThread1();</span><br><span class="line">		Thread t2 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> MyRunnable());</span><br><span class="line">		t1.setPriority(<span class="number">10</span>);</span><br><span class="line">		t2.setPriority(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">		t2.start();</span><br><span class="line">		t1.start();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>Result:</strong><br>线程2第0次执行！<br>线程1第0次执行！<br>线程1第1次执行！<br>线程2第1次执行！<br>线程1第2次执行！<br>线程2第2次执行！<br>线程1第3次执行！<br>线程2第3次执行！<br>线程1第4次执行！<br>线程2第4次执行！<br>线程1第5次执行！<br>线程2第5次执行！<br>线程1第6次执行！<br>线程2第6次执行！<br>线程1第7次执行！<br>线程2第7次执行！<br>线程1第8次执行！<br>线程2第8次执行！<br>线程1第9次执行！<br>线程2第9次执行！ </p>
-<h1 id="线程的调度-让步">线程的调度-让步</h1><p>线程的让步含义就是使当前运行着线程让出CPU资源，但是然给谁不知道，仅仅是让出，线程状态回到可运行状态。</p>
+<h1 id="线程的调度-让步"><a href="#线程的调度-让步" class="headerlink" title="线程的调度-让步"></a>线程的调度-让步</h1><p>线程的让步含义就是使当前运行着线程让出CPU资源，但是然给谁不知道，仅仅是让出，线程状态回到可运行状态。</p>
 <p>线程的让步使用Thread.yield()方法，yield() 为静态方法，功能是暂停当前正在执行的线程对象，并执行其他线程。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** </span><br><span class="line">* Java线程：线程的调度-让步 </span><br><span class="line">* </span><br><span class="line">*/</span> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread2</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123; </span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123; </span><br><span class="line">                    System.out.println(<span class="string">"线程1第"</span> + i + <span class="string">"次执行！"</span>); </span><br><span class="line">            &#125; </span><br><span class="line">    &#125; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyRunnable2</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123; </span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123; </span><br><span class="line">                    System.out.println(<span class="string">"线程2第"</span> + i + <span class="string">"次执行！"</span>); </span><br><span class="line">                    Thread.yield(); </span><br><span class="line">            &#125; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestThreadYield</span> </span>&#123; </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123; </span><br><span class="line">                Thread t1 = <span class="keyword">new</span> MyThread2(); </span><br><span class="line">                Thread t2 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> MyRunnable2()); </span><br><span class="line"></span><br><span class="line">                t2.start(); </span><br><span class="line">                t1.start(); </span><br><span class="line">        &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>线程2第0次执行！<br>线程2第1次执行！<br>线程1第0次执行！<br>线程1第1次执行！<br>线程1第2次执行！<br>线程1第3次执行！<br>线程2第2次执行！<br>线程1第4次执行！<br>线程2第3次执行！<br>线程2第4次执行！<br>线程2第5次执行！<br>线程1第5次执行！<br>线程1第6次执行！<br>线程2第6次执行！<br>线程2第7次执行！<br>线程2第8次执行！<br>线程1第7次执行！<br>线程1第8次执行！<br>线程1第9次执行！<br>线程2第9次执行！ </p>
 <p><span style="color:red">yiedld这个方法是让当前线程回到可执行状态，以便让具有相同优先级的线程进入执行状态，但不是绝对的。因为虚拟机可能会让该线程重新进入执行状态。？？</span></p>
-<h1 id="线程的调度-合并">线程的调度-合并</h1><p>线程的合并的含义就是将几个并行线程的线程合并为一个单线程执行，应用场景是<span style="color:red">当一个线程必须等待另一个线程执行完毕才能执行时可以使用join方法。</span></p>
+<h1 id="线程的调度-合并"><a href="#线程的调度-合并" class="headerlink" title="线程的调度-合并"></a>线程的调度-合并</h1><p>线程的合并的含义就是将几个并行线程的线程合并为一个单线程执行，应用场景是<span style="color:red">当一个线程必须等待另一个线程执行完毕才能执行时可以使用join方法。</span></p>
 <p>join为非静态方法，定义如下：<br>void join()<br>    等待该线程终止。<br>void join(long millis)<br>    等待该线程终止的时间最长为 millis 毫秒。<br>void join(long millis, int nanos)<br>    等待该线程终止的时间最长为 millis 毫秒 + nanos 纳秒。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** </span><br><span class="line">* Java线程：线程的调度-合并 </span><br><span class="line">* </span><br><span class="line">* <span class="doctag">@author</span> leizhimin 2009-11-4 9:02:40 </span><br><span class="line">*/</span> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123; </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123; </span><br><span class="line">                Thread t1 = <span class="keyword">new</span> MyThread1(); </span><br><span class="line">                t1.start(); </span><br><span class="line"></span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) &#123; </span><br><span class="line">                        System.out.println(<span class="string">"主线程第"</span> + i + <span class="string">"次执行！"</span>); </span><br><span class="line">                        <span class="keyword">if</span> (i &gt; <span class="number">2</span>) <span class="keyword">try</span> &#123; </span><br><span class="line">                                <span class="comment">//t1线程合并到主线程中，主线程停止执行过程，转而执行t1线程，直到t1执行完毕后继续。 </span></span><br><span class="line">                                t1.join(); </span><br><span class="line">                        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123; </span><br><span class="line">                                e.printStackTrace(); </span><br><span class="line">                        &#125; </span><br><span class="line">                &#125; </span><br><span class="line">        &#125; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread1</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123; </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123; </span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123; </span><br><span class="line">                        System.out.println(<span class="string">"线程1第"</span> + i + <span class="string">"次执行！"</span>); </span><br><span class="line">                &#125; </span><br><span class="line">        &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>主线程第0次执行！<br>线程1第0次执行！<br>主线程第1次执行！<br>线程1第1次执行！<br>主线程第2次执行！<br>主线程第3次执行！<br>线程1第2次执行！<br>线程1第3次执行！<br>线程1第4次执行！<br>线程1第5次执行！<br>线程1第6次执行！<br>线程1第7次执行！<br>线程1第8次执行！<br>线程1第9次执行！<br>join结束<br>主线程第4次执行！<br>join结束<br>主线程第5次执行！<br>join结束<br>主线程第6次执行！<br>join结束<br>主线程第7次执行！<br>join结束<br>主线程第8次执行！<br>join结束<br>主线程第9次执行！<br>join结束<br>主线程第10次执行！<br>join结束<br>主线程第11次执行！<br>join结束<br>主线程第12次执行！<br>join结束<br>主线程第13次执行！<br>join结束<br>主线程第14次执行！<br>join结束<br>主线程第15次执行！<br>join结束<br>主线程第16次执行！<br>join结束<br>主线程第17次执行！<br>join结束<br>主线程第18次执行！<br>join结束<br>主线程第19次执行！<br>join结束</p>
-<h1 id="线程的调度-守护线程">线程的调度-守护线程</h1><p>守护线程与普通线程写法上基本么啥区别，调用线程对象的方法setDaemon(true)，则可以将其设置为守护线程。</p>
+<h1 id="线程的调度-守护线程"><a href="#线程的调度-守护线程" class="headerlink" title="线程的调度-守护线程"></a>线程的调度-守护线程</h1><p>守护线程与普通线程写法上基本么啥区别，调用线程对象的方法setDaemon(true)，则可以将其设置为守护线程。</p>
 <p>守护线程使用的情况较少，但并非无用，举例来说，JVM的垃圾回收、内存管理等线程都是守护线程。还有就是在做数据库应用时候，使用的数据库连接池，连接池本身也包含着很多后台线程，监控连接个数、超时时间、状态等等。</p>
 <p>setDaemon方法的详细说明：<br>public final void setDaemon(boolean on)将该线程标记为守护线程或用户线程。当正在运行的线程都是守护线程时，Java 虚拟机退出。<br>  该方法必须在启动线程前调用。</p>
 <p>  该方法首先调用该线程的 checkAccess 方法，且不带任何参数。这可能抛出 SecurityException（在当前线程中）。    </p>
@@ -112,31 +111,25 @@
 </article>
 
 
-	
-	<nav id="pagination" >
-    
-    <a href="/2014/12/10/java-多线程-七/" class="alignleft prev" >上一页</a>
-    
-    
-    <a href="/2014/12/09/Java-多线程-五/" class="alignright next" >下一页</a>
-    
-    <div class="clearfix"></div>
-	</nav>
-
 <section id="comment">
-<div class="ds-thread" data-thread-key="/2014/12/09/java-多线程-六/" data-title="java 多线程<六>" data-url="http://jiangnan31.github.io/2014/12/09/java-多线程-六/"></div>
-  <script type="text/javascript">
-	var duoshuoQuery = {short_name:"jiangnan31"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
+  <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2014/12/09/java-多线程-六/" data-title="java 多线程&lt;六&gt;" data-url="http://jiangnan31.github.io/2014/12/09/java-多线程-六/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jiangnan31"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+      </script>
+    <!-- 多说公共JS代码 end -->
 </section>
+
 
 </div></div>
     <aside id="sidebar" class="alignright">
@@ -154,9 +147,9 @@
   
     <li><a href="/categories/Code/">Code</a><small>1</small></li>
   
-    <li><a href="/categories/扯犊子/">扯犊子</a><small>2</small></li>
+    <li><a href="/categories/扯犊子/">扯犊子</a><small>1</small></li>
   
-    <li><a href="/categories/整理/">整理</a><small>3</small></li>
+    <li><a href="/categories/整理/">整理</a><small>2</small></li>
   
     <li><a href="/categories/笔记/">笔记</a><small>4</small></li>
   
@@ -177,7 +170,7 @@
   
     <li><a href="/tags/Hadoop/">Hadoop</a><small>2</small></li>
   
-    <li><a href="/tags/IO/">IO</a><small>3</small></li>
+    <li><a href="/tags/IO/">IO</a><small>2</small></li>
   
     <li><a href="/tags/JavaScript/">JavaScript</a><small>1</small></li>
   
@@ -197,7 +190,7 @@
   </div>
   <footer id="footer" class="inner"><div class="alignleft">
   
-  &copy; 2015 JiangNan
+  &copy; 2016 JiangNan
   
 </div>
 <div class="clearfix"></div></footer>

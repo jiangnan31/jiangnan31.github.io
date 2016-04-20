@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>流与文件 &lt;一&gt;   编码简介 | JiangNan&#39;s Blog</title>
+  <title>流与文件 &lt;-&gt;   编码 | JiangNan&#39;s Blog</title>
   <meta name="author" content="JiangNan">
   
   <meta name="description" content="筚路蓝缕，以启山林">
@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="流与文件 &lt;一&gt;   编码简介"/>
+  <meta property="og:title" content="流与文件 &lt;-&gt;   编码"/>
   <meta property="og:site_name" content="JiangNan&#39;s Blog"/>
 
   
@@ -35,18 +35,17 @@
 <nav id="main-nav" class="alignright">
   <ul>
     
-      <li><a href="/">首页</a></li>
+      <li><a href="/">Home</a></li>
     
       <li><a href="/archives">归档</a></li>
     
       <li><a href="/about">关于我</a></li>
     
-      <li><a href="/feature">规划页</a></li>
-    
   </ul>
   <div class="clearfix"></div>
 </nav>
-<div class="clearfix"></div></header>
+<div class="clearfix"></div>
+</header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
   
@@ -54,18 +53,18 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2015-09-08T06:52:15.000Z"><a href="/2015/09/08/流与文件-一-编码简介/">Sep 8 2015</a></time>
+        <time datetime="2015-09-08T07:52:15.000Z"><a href="/2015/09/08/流与文件-编码/">2015-09-08</a></time>
       
       
   
-    <h1 class="title">流与文件 &lt;一&gt;   编码简介</h1>
+    <h1 class="title">流与文件 &lt;-&gt;   编码</h1>
   
 
     </header>
     <div class="entry">
       
-        <h2 id="为什么要进行编码">为什么要进行编码</h2><p>计算机无法理解我们人类使用的语言，只能识别0或者1。所以，为了使计算机能够理解我们所使用的语言，我们需要通过翻译的过程，将其翻译成计算机能够理解的语言。这个翻译的过程就是编码。多数计算机使用8位的块，或者字节（byte）作为最小的可寻址的存储器单位，而不是在存储器中访问单独的位。<br><a id="more"></a><br>因此我们可知：<br>1、计算机中存储信息的最小单元是一个字节即 8 个 bit，所以能表示的字符范围是 0~255 个<br>2、人类要表示的符号太多，无法用一个字节来完全表示<br>3、要解决这个矛盾必须需要一个新的数据结构 char，从 char 到 byte 必须编码</p>
-<h2 id="常用编码格式">常用编码格式</h2><ul>
+        <h2 id="为什么要进行编码"><a href="#为什么要进行编码" class="headerlink" title="为什么要进行编码"></a>为什么要进行编码</h2><p>计算机无法理解我们人类使用的语言，只能识别0或者1。所以，为了使计算机能够理解我们所使用的语言，我们需要通过翻译的过程，将其翻译成计算机能够理解的语言。这个翻译的过程就是编码。多数计算机使用8位的块，或者字节（byte）作为最小的可寻址的存储器单位，而不是在存储器中访问单独的位。<br><a id="more"></a><br>因此我们可知：<br>1、计算机中存储信息的最小单元是一个字节即 8 个 bit，所以能表示的字符范围是 0~255 个<br>2、人类要表示的符号太多，无法用一个字节来完全表示<br>3、要解决这个矛盾必须需要一个新的数据结构 char，从 char 到 byte 必须编码</p>
+<h2 id="常用编码格式"><a href="#常用编码格式" class="headerlink" title="常用编码格式"></a>常用编码格式</h2><ul>
 <li><p>ASCII 码<br>标准ASCII 码也叫基础ASCII码，使用字节低7 位二进制数来表示所有的大写和小写字母，数字0 到9、标点符号， 以及在美式英语中使用的特殊控制字符。0~31 是控制字符如换行回车删除等；32~126 是打印字符，可以通过键盘输入并且能够显示出来。</p>
 </li>
 <li><p>ISO-8859-1<br>以ASCII为基础，在空置的0xA0-0xFF的范围内，加入96个字母及符号，涵盖了大多数西欧语言字符，所有应用的最广泛。ISO-8859-1 仍然是单字节编码，它总共能表示 256 个字符。</p>
@@ -101,31 +100,25 @@
 </article>
 
 
-	
-	<nav id="pagination" >
-    
-    <a href="/2015/09/13/流与文件-二-流/" class="alignleft prev" >上一页</a>
-    
-    
-    <a href="/2015/09/06/重新出发/" class="alignright next" >下一页</a>
-    
-    <div class="clearfix"></div>
-	</nav>
-
 <section id="comment">
-<div class="ds-thread" data-thread-key="/2015/09/08/流与文件-一-编码简介/" data-title="流与文件 <一>   编码简介" data-url="http://jiangnan31.github.io/2015/09/08/流与文件-一-编码简介/"></div>
-  <script type="text/javascript">
-	var duoshuoQuery = {short_name:"jiangnan31"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
+  <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2015/09/08/流与文件-编码/" data-title="流与文件 &lt;-&gt;   编码" data-url="http://jiangnan31.github.io/2015/09/08/流与文件-编码/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jiangnan31"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+      </script>
+    <!-- 多说公共JS代码 end -->
 </section>
+
 
 </div></div>
     <aside id="sidebar" class="alignright">
@@ -143,9 +136,9 @@
   
     <li><a href="/categories/Code/">Code</a><small>1</small></li>
   
-    <li><a href="/categories/扯犊子/">扯犊子</a><small>2</small></li>
+    <li><a href="/categories/扯犊子/">扯犊子</a><small>1</small></li>
   
-    <li><a href="/categories/整理/">整理</a><small>3</small></li>
+    <li><a href="/categories/整理/">整理</a><small>2</small></li>
   
     <li><a href="/categories/笔记/">笔记</a><small>4</small></li>
   
@@ -166,7 +159,7 @@
   
     <li><a href="/tags/Hadoop/">Hadoop</a><small>2</small></li>
   
-    <li><a href="/tags/IO/">IO</a><small>3</small></li>
+    <li><a href="/tags/IO/">IO</a><small>2</small></li>
   
     <li><a href="/tags/JavaScript/">JavaScript</a><small>1</small></li>
   
@@ -186,7 +179,7 @@
   </div>
   <footer id="footer" class="inner"><div class="alignleft">
   
-  &copy; 2015 JiangNan
+  &copy; 2016 JiangNan
   
 </div>
 <div class="clearfix"></div></footer>

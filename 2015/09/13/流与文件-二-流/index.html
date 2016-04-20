@@ -35,18 +35,17 @@
 <nav id="main-nav" class="alignright">
   <ul>
     
-      <li><a href="/">首页</a></li>
+      <li><a href="/">Home</a></li>
     
       <li><a href="/archives">归档</a></li>
     
       <li><a href="/about">关于我</a></li>
     
-      <li><a href="/feature">规划页</a></li>
-    
   </ul>
   <div class="clearfix"></div>
 </nav>
-<div class="clearfix"></div></header>
+<div class="clearfix"></div>
+</header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
   
@@ -54,7 +53,7 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2015-09-13T01:50:44.000Z"><a href="/2015/09/13/流与文件-二-流/">Sep 13 2015</a></time>
+        <time datetime="2015-09-13T02:50:44.000Z"><a href="/2015/09/13/流与文件-二-流/">2015-09-13</a></time>
       
       
   
@@ -64,15 +63,24 @@
     </header>
     <div class="entry">
       
-        <h2 id="1、简介">1、简介</h2><p>在面向字节的流中，可以从其中读入一个字节序列的对象称为输入流，向其中写入一个字节序列的对象称为输入流。字节序列的来源和目的地可以是文件，也可以是网络连接，甚至是内存块。<br>但面向字节的流不便于处理以字符形式（每个字符均由多个字节表示）存储信息，所以我们需要有面向字符的流。<br><a id="more"></a><br><img src="/img/io/classify.jpg" alt="Java IO"></p>
+        <h2 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h2><p>在面向字节的流中，可以从其中读入一个字节序列的对象称为输入流，向其中写入一个字节序列的对象称为输入流。字节序列的来源和目的地可以是文件，也可以是网络连接，甚至是内存块。<br>但面向字节的流不便于处理以字符形式（每个字符均由多个字节表示）存储信息，所以我们需要有面向字符的流。<br><a id="more"></a><br><img src="/img/io/classify.jpg" alt="Java IO"></p>
 <p>如上图所示，按照传输数据的数据格式的不同分为两种，分别为字符流、字节流。</p>
 <p><img src="/img/io/all_class.png" alt="简易版类图"><br>简单版类图中仅展示了接口与继承关系，未对依赖关系进行描述。从类图中可以看出顶层接口有 Flushable（刷新数据的目标地，调用 flush 方法将所有已缓冲输出写入底层流。）、Closeable（关闭的数据源或目标，调用 close 方法可释放对象保存的资源。）、serializable（启用其序列化功能。序列化接口没有方法或字段，仅用于标识可序列化的语义。）。</p>
-<h2 id="2、字节流_：_InputStream_、OutputStream">2、字节流 ： InputStream 、OutputStream</h2><p><img src="/img/io/inputstream.png" alt="InputStream相关类图"><br>InputStream相关类图如上图所示，其中主要包含有 FileInputStream（从文件系统中的某个文件中获得输入字节）、FilterInputStream（数据流的过滤）、ObjectInputStream（恢复序列化的对象）、PipedInputStream（管道输入流，多线程通过管道进行线程间通信）、SequenceInputStream、<del>StringBufferInputStream</del>、ByteArrayInputStream(包含一个内部缓冲区，缓冲区中有从流中读取的字节。)。</p>
+<h2 id="2、字节流-：-InputStream-、OutputStream"><a href="#2、字节流-：-InputStream-、OutputStream" class="headerlink" title="2、字节流 ： InputStream 、OutputStream"></a>2、字节流 ： InputStream 、OutputStream</h2><p><img src="/img/io/inputstream.png" alt="InputStream相关类图"><br>InputStream相关类图如上图所示，其中主要包含有 FileInputStream（从文件系统中的某个文件中获得输入字节）、FilterInputStream（数据流的过滤）、ObjectInputStream（恢复序列化的对象）、PipedInputStream（管道输入流，多线程通过管道进行线程间通信）、SequenceInputStream、<del>StringBufferInputStream</del>、ByteArrayInputStream(包含一个内部缓冲区，缓冲区中有从流中读取的字节。)。</p>
 <p><img src="/img/io/outputstream.png" alt="OutputStream相关类图"><br>OutputStream相关类图如上图所示，其中包含有FileOutputStream、FilterOutputStream、ObjectOutputStream、ByteArrayOutputStream等</p>
-<h2 id="3、字符流_：_Reader、Writer">3、字符流 ： Reader、Writer</h2><p><img src="/img/io/reader.png" alt="Reader相关类图"><br>Reader相关类图如上图所示，BufferedReader（从字符输入流中读取文本，缓冲各个字符，从而实现字符、数组和行的高效读取。）、FilterReader（读取已过滤的字符流）、CharArrayReader（实现用作字符输入流的字符缓冲区）、PipedReader、<strong>InputStreamReader（字节转字符，使用指定的 charset 读取字节并将其解码为字符。）</strong>、StringReader。</p>
+<h2 id="3、字符流-：-Reader、Writer"><a href="#3、字符流-：-Reader、Writer" class="headerlink" title="3、字符流 ： Reader、Writer"></a>3、字符流 ： Reader、Writer</h2><p><img src="/img/io/reader.png" alt="Reader相关类图"><br>Reader相关类图如上图所示，BufferedReader（从字符输入流中读取文本，缓冲各个字符，从而实现字符、数组和行的高效读取。）、FilterReader（读取已过滤的字符流）、CharArrayReader（实现用作字符输入流的字符缓冲区）、PipedReader、<strong>InputStreamReader（字节转字符，使用指定的 charset 读取字节并将其解码为字符。）</strong>、StringReader。</p>
 <p><img src="/img/io/writer.png" alt="Writer相关类图"></p>
 <p>Writer相关类图如上图所示，BufferedWriter（从字符输入流中读取文本，缓冲各个字符，从而实现字符、数组和行的高效读取。）、FilterWriter（读取已过滤的字符流）、CharArrayWriter（实现用作字符输入流的字符缓冲区）、PipedWriter、<strong>OutputStreamWriter（字符转字节，使用指定的 charset 将要写入流中的字符编码成字节。）</strong>、StringReader。</p>
-<p>参考文献：<br>[1] <a href="http://davidisok.iteye.com/blog/2106489" target="_blank" rel="external">Java IO 详解</a><br>[2] <a href="http://blog.sina.com.cn/s/blog_5920510a0101ijj5.html" target="_blank" rel="external">JAVA字符串与字符编码处理的终极解决</a><br>[3] <a href="http://book.douban.com/subject/3360866/" target="_blank" rel="external">JAVA核心技术卷2</a><br>[4] <a href="http://book.douban.com/subject/25953851/" target="_blank" rel="external">深入分析java web技术内幕</a><br>[5] <a href="http://book.douban.com/subject/2243615/" target="_blank" rel="external">Head First 设计模式</a><br>[6] <a href="http://blog.csdn.net/crave_shy/article/details/17239313" target="_blank" rel="external">Java_io体系之OutputStreamWriter、InputStreamReader简介、走进源码及示例——17</a><br>[7] <a href="http://www.cnblogs.com/mengdd/archive/2013/02/12/2910302.html" target="_blank" rel="external">Java IO 装饰者模式</a><br>[8] <a href="http://yulingtianxia.com/blog/2014/05/10/zhuang-shi-zhe-mo-shi/" target="_blank" rel="external">装饰者模式</a></p>
+<h2 id="4、字节字符转化：InputStreamReader、-OutputStreamWriter"><a href="#4、字节字符转化：InputStreamReader、-OutputStreamWriter" class="headerlink" title="4、字节字符转化：InputStreamReader、 OutputStreamWriter"></a>4、字节字符转化：InputStreamReader、 OutputStreamWriter</h2><h3 id="4-1-转化过程"><a href="#4-1-转化过程" class="headerlink" title="4.1 转化过程"></a>4.1 转化过程</h3><p><img src="/img/io/intout.jpg" alt="转化步骤"><br>数据持久化或网络传输都是以字节进行的，所以必须要进行字符到字节或字节到字符的转化。以操作文件为例，内存中的字符数据需要通过OutputStreamWriter变为字节流才能保存在文件中，读取时需要将读入的字节流通过InputStreamReader变为字符流。</p>
+<h3 id="4-2-适配器模式"><a href="#4-2-适配器模式" class="headerlink" title="4.2 适配器模式"></a>4.2 适配器模式</h3><p><img src="/img/io/adapter.png" alt="适配器的作用"><br>如上图所示，适配器能够不改变原有代码，将现有系统的请求转换成厂商能够理解的请求。<br><img src="/img/io/adapter2.png" alt="适配器模式"><br>如图所示，适配器对象将实现目标接口，并持有被适配对象。</p>
+<p>我们拿火鸡对象来冒充缺少的鸭子对象时：TurkeyAdapter实现鸭子接口（以火鸡的行为替代鸭子的行为），持有火鸡对象。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> headfirst.adapter.ducks;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Duck</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">quack</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> headfirst.adapter.ducks;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Turkey</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">gobble</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> headfirst.adapter.ducks;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TurkeyAdapter</span> <span class="keyword">implements</span> <span class="title">Duck</span> </span>&#123;</span><br><span class="line">	Turkey turkey;</span><br><span class="line"> </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">TurkeyAdapter</span><span class="params">(Turkey turkey)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.turkey = turkey;</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">quack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		turkey.gobble();</span><br><span class="line">	&#125;</span><br><span class="line">  </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">			turkey.fly();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> headfirst.adapter.ducks;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WildTurkey</span> <span class="keyword">implements</span> <span class="title">Turkey</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">gobble</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Gobble gobble"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"I'm flying a short distance"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-3-字符转字节-写入-编码-OutputStreamWriter"><a href="#4-3-字符转字节-写入-编码-OutputStreamWriter" class="headerlink" title="4.3 字符转字节 | 写入 | 编码 | OutputStreamWriter"></a>4.3 字符转字节 | 写入 | 编码 | OutputStreamWriter</h3><p>OutputStreamWriter将使用选定的字符编码方式，将字符流转化为字节流<br><img src="/img/io/outputstreamwriter.png" alt="OutputStreamWriter类结构图"><br>OutputStreamWriter实现了Writer接口，同时通过StreamEncoder间接持有了InputStream的引用，OutputStreamWriter使用OutputStream的行为来替代了Writer的行为。（当然没有那么简单，中间有涉及到StreamEncoder进行char到byte的编码）</p>
+<p>StreamEncoder中流程间较多，可以调试查看。。。好吧，我承认我没看懂。。。</p>
+<h3 id="4-4-字节转字符-读取-解码-InputStreamReader"><a href="#4-4-字节转字符-读取-解码-InputStreamReader" class="headerlink" title="4.4 字节转字符 | 读取 | 解码 | InputStreamReader"></a>4.4 字节转字符 | 读取 | 解码 | InputStreamReader</h3><p>InputStreamReader将使用选定的字符编码方式，将字节流转化为字符流<br><img src="/img/io/inputstreamreader.png" alt="InputStreamReader类结构图"><br>InputStreamReader实现了Reader接口，同时通过StreamDecoder间接持有了InputStream的引用，InputStreamReader使用InputStream的行为来替代了Reader的行为。（当然中间也涉及到StreamDecoder进行byte到char的解码）</p>
+<p>参考文献：<br>[1] <a href="http://davidisok.iteye.com/blog/2106489" target="_blank" rel="external">Java IO 详解</a><br>[2] <a href="http://blog.sina.com.cn/s/blog_5920510a0101ijj5.html" target="_blank" rel="external">JAVA字符串与字符编码处理的终极解决</a><br>[3] <a href="http://book.douban.com/subject/3360866/" target="_blank" rel="external">JAVA核心技术卷2</a><br>[4] <a href="http://book.douban.com/subject/25953851/" target="_blank" rel="external">深入分析java web技术内幕</a><br>[5] <a href="http://book.douban.com/subject/2243615/" target="_blank" rel="external">Head First 设计模式</a><br>[6] <a href="http://blog.csdn.net/crave_shy/article/details/17239313" target="_blank" rel="external"> Java_io体系之OutputStreamWriter、InputStreamReader简介、走进源码及示例——17</a></p>
 
       
     </div>
@@ -98,31 +106,25 @@
 </article>
 
 
-	
-	<nav id="pagination" >
-    
-    <a href="/2015/09/20/流与文件-三-IO编解码/" class="alignleft prev" >上一页</a>
-    
-    
-    <a href="/2015/09/08/流与文件-一-编码简介/" class="alignright next" >下一页</a>
-    
-    <div class="clearfix"></div>
-	</nav>
-
 <section id="comment">
-<div class="ds-thread" data-thread-key="/2015/09/13/流与文件-二-流/" data-title="流与文件 <二> 流" data-url="http://jiangnan31.github.io/2015/09/13/流与文件-二-流/"></div>
-  <script type="text/javascript">
-	var duoshuoQuery = {short_name:"jiangnan31"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
+  <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2015/09/13/流与文件-二-流/" data-title="流与文件 &lt;二&gt; 流" data-url="http://jiangnan31.github.io/2015/09/13/流与文件-二-流/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jiangnan31"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+      </script>
+    <!-- 多说公共JS代码 end -->
 </section>
+
 
 </div></div>
     <aside id="sidebar" class="alignright">
@@ -140,9 +142,9 @@
   
     <li><a href="/categories/Code/">Code</a><small>1</small></li>
   
-    <li><a href="/categories/扯犊子/">扯犊子</a><small>2</small></li>
+    <li><a href="/categories/扯犊子/">扯犊子</a><small>1</small></li>
   
-    <li><a href="/categories/整理/">整理</a><small>3</small></li>
+    <li><a href="/categories/整理/">整理</a><small>2</small></li>
   
     <li><a href="/categories/笔记/">笔记</a><small>4</small></li>
   
@@ -163,7 +165,7 @@
   
     <li><a href="/tags/Hadoop/">Hadoop</a><small>2</small></li>
   
-    <li><a href="/tags/IO/">IO</a><small>3</small></li>
+    <li><a href="/tags/IO/">IO</a><small>2</small></li>
   
     <li><a href="/tags/JavaScript/">JavaScript</a><small>1</small></li>
   
@@ -183,7 +185,7 @@
   </div>
   <footer id="footer" class="inner"><div class="alignleft">
   
-  &copy; 2015 JiangNan
+  &copy; 2016 JiangNan
   
 </div>
 <div class="clearfix"></div></footer>

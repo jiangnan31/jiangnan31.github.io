@@ -35,18 +35,17 @@
 <nav id="main-nav" class="alignright">
   <ul>
     
-      <li><a href="/">首页</a></li>
+      <li><a href="/">Home</a></li>
     
       <li><a href="/archives">归档</a></li>
     
       <li><a href="/about">关于我</a></li>
     
-      <li><a href="/feature">规划页</a></li>
-    
   </ul>
   <div class="clearfix"></div>
 </nav>
-<div class="clearfix"></div></header>
+<div class="clearfix"></div>
+</header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
   
@@ -54,7 +53,7 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-12-10T05:34:25.000Z"><a href="/2014/12/10/java-多线程-八/">Dec 10 2014</a></time>
+        <time datetime="2014-12-10T06:34:25.000Z"><a href="/2014/12/10/java-多线程-八/">2014-12-10</a></time>
       
       
   
@@ -64,7 +63,7 @@
     </header>
     <div class="entry">
       
-        <h1 id="并发协作-生产者消费者模型">并发协作-生产者消费者模型</h1><p>对于多线程程序来说，不管任何编程语言，生产者和消费者模型都是最经典的。就像学习每一门编程语言一样，Hello World！都是最经典的例子。</p>
+        <h1 id="并发协作-生产者消费者模型"><a href="#并发协作-生产者消费者模型" class="headerlink" title="并发协作-生产者消费者模型"></a>并发协作-生产者消费者模型</h1><p>对于多线程程序来说，不管任何编程语言，生产者和消费者模型都是最经典的。就像学习每一门编程语言一样，Hello World！都是最经典的例子。</p>
 <p>实际上，准确说应该是“生产者-消费者-仓储”模型，离开了仓储，生产者消费者模型就显得没有说服力了。<br>对于此模型，应该明确一下几点：</p>
 <blockquote>
 <ul>
@@ -78,9 +77,9 @@
 <p><strong>Result:</strong><br>欲消费量50 超过库存量30，不可进行消费<br>已经生产了10个产品，现仓储量为40<br>已经生产了10个产品，现仓储量为50<br>已经消费了30个产品，现仓储量为20<br>已经生产了10个产品，现仓储量为30<br>已经消费了20个产品，现仓储量为10<br>已经生产了10个产品，现仓储量为20<br>已经生产了10个产品，现仓储量为30<br>欲消费量50 超过库存量30，不可进行消费<br>已经生产了10个产品，现仓储量为40<br>欲消费量50 超过库存量40，不可进行消费<br>要生产的产品数量80超过剩余仓库空间60，暂时不能执行生产任务!</p>
 <p>说明：<br>对于本例，要说明的是当发现不能满足生产或者消费条件的时候，调用对象的wait方法，wait方法的作用是释放当前线程的所获得的锁，并调用对象的notifyAll() 方法，通知（唤醒）该对象上其他等待线程，使得其继续执行。这样，整个生产者、消费者线程得以正确的协作执行。<br><span style="color:red">notifyAll() 方法，起到的是一个通知作用，不释放锁，也不获取锁。只是告诉该对象上等待的线程“可以竞争执行了，都醒来去执行吧”。</span></p>
 <p>本例仅仅是生产者消费者模型中最简单的一种表示，本例中，如果消费者消费的仓储量达不到满足，而又没有生产者，则程序会一直处于等待状态，这当然是不对的。实际上可以将此例进行修改，修改为，根据消费驱动生产，同时生产兼顾仓库，如果仓不满就生产，并对每次最大消费量做个限制，这样就不存在此问题了，当然这样的例子更复杂，更难以说明这样一个简单模型。</p>
-<h1 id="并发协作-死锁">并发协作-死锁</h1><p>线程发生死锁可能性很小，即使看似可能发生死锁的代码，在运行时发生死锁的可能性也是小之又小。</p>
+<h1 id="并发协作-死锁"><a href="#并发协作-死锁" class="headerlink" title="并发协作-死锁"></a>并发协作-死锁</h1><p>线程发生死锁可能性很小，即使看似可能发生死锁的代码，在运行时发生死锁的可能性也是小之又小。</p>
 <p>发生死锁的原因一般是两个对象的锁相互等待造成的。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> DeadlockRisk dead;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> a, b;</span><br><span class="line"></span><br><span class="line">	MyThread(DeadlockRisk dead, <span class="keyword">int</span> a, <span class="keyword">int</span> b) &#123;</span><br><span class="line">		<span class="keyword">this</span>.dead = dead;</span><br><span class="line">		<span class="keyword">this</span>.a = a;</span><br><span class="line">		<span class="keyword">this</span>.b = b;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="annotation">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		dead.read();</span><br><span class="line">		dead.write(a, b);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DeadlockRisk</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Resource</span> </span>&#123;</span><br><span class="line">		<span class="keyword">public</span> <span class="keyword">int</span> value;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> Resource resourceA = <span class="keyword">new</span> Resource();</span><br><span class="line">	<span class="keyword">private</span> Resource resourceB = <span class="keyword">new</span> Resource();</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">synchronized</span> (resourceA) &#123;</span><br><span class="line">			System.out.println(<span class="string">"read():"</span> + Thread.currentThread().getName()</span><br><span class="line">					+ <span class="string">"获取了resourceA的锁！"</span>);</span><br><span class="line">			<span class="keyword">synchronized</span> (resourceB) &#123;</span><br><span class="line">				System.out.println(<span class="string">"read():"</span> + Thread.currentThread().getName()</span><br><span class="line">						+ <span class="string">"获取了resourceB的锁！"</span>);</span><br><span class="line">				<span class="keyword">return</span> resourceB.value + resourceA.value;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">synchronized</span> (resourceB) &#123;</span><br><span class="line">			System.out.println(<span class="string">"write():"</span> + Thread.currentThread().getName()</span><br><span class="line">					+ <span class="string">"获取了resourceA的锁！"</span>);</span><br><span class="line">			<span class="keyword">synchronized</span> (resourceA) &#123;</span><br><span class="line">				System.out.println(<span class="string">"write():"</span></span><br><span class="line">						+ Thread.currentThread().getName() + <span class="string">"获取了resourceB的锁！"</span>);</span><br><span class="line">				resourceA.value = a;</span><br><span class="line">				resourceB.value = b;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test2</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		DeadlockRisk dead = <span class="keyword">new</span> DeadlockRisk();</span><br><span class="line">		MyThread t1 = <span class="keyword">new</span> MyThread(dead, <span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">		MyThread t2 = <span class="keyword">new</span> MyThread(dead, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line">		MyThread t3 = <span class="keyword">new</span> MyThread(dead, <span class="number">5</span>, <span class="number">6</span>);</span><br><span class="line">		MyThread t4 = <span class="keyword">new</span> MyThread(dead, <span class="number">7</span>, <span class="number">8</span>);</span><br><span class="line"></span><br><span class="line">		t1.start();</span><br><span class="line">		t2.start();</span><br><span class="line">		t3.start();</span><br><span class="line">		t4.start();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> DeadlockRisk dead;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> a, b;</span><br><span class="line"></span><br><span class="line">	MyThread(DeadlockRisk dead, <span class="keyword">int</span> a, <span class="keyword">int</span> b) &#123;</span><br><span class="line">		<span class="keyword">this</span>.dead = dead;</span><br><span class="line">		<span class="keyword">this</span>.a = a;</span><br><span class="line">		<span class="keyword">this</span>.b = b;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		dead.read();</span><br><span class="line">		dead.write(a, b);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DeadlockRisk</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Resource</span> </span>&#123;</span><br><span class="line">		<span class="keyword">public</span> <span class="keyword">int</span> value;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> Resource resourceA = <span class="keyword">new</span> Resource();</span><br><span class="line">	<span class="keyword">private</span> Resource resourceB = <span class="keyword">new</span> Resource();</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">synchronized</span> (resourceA) &#123;</span><br><span class="line">			System.out.println(<span class="string">"read():"</span> + Thread.currentThread().getName()</span><br><span class="line">					+ <span class="string">"获取了resourceA的锁！"</span>);</span><br><span class="line">			<span class="keyword">synchronized</span> (resourceB) &#123;</span><br><span class="line">				System.out.println(<span class="string">"read():"</span> + Thread.currentThread().getName()</span><br><span class="line">						+ <span class="string">"获取了resourceB的锁！"</span>);</span><br><span class="line">				<span class="keyword">return</span> resourceB.value + resourceA.value;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">synchronized</span> (resourceB) &#123;</span><br><span class="line">			System.out.println(<span class="string">"write():"</span> + Thread.currentThread().getName()</span><br><span class="line">					+ <span class="string">"获取了resourceA的锁！"</span>);</span><br><span class="line">			<span class="keyword">synchronized</span> (resourceA) &#123;</span><br><span class="line">				System.out.println(<span class="string">"write():"</span></span><br><span class="line">						+ Thread.currentThread().getName() + <span class="string">"获取了resourceB的锁！"</span>);</span><br><span class="line">				resourceA.value = a;</span><br><span class="line">				resourceB.value = b;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test2</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		DeadlockRisk dead = <span class="keyword">new</span> DeadlockRisk();</span><br><span class="line">		MyThread t1 = <span class="keyword">new</span> MyThread(dead, <span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">		MyThread t2 = <span class="keyword">new</span> MyThread(dead, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line">		MyThread t3 = <span class="keyword">new</span> MyThread(dead, <span class="number">5</span>, <span class="number">6</span>);</span><br><span class="line">		MyThread t4 = <span class="keyword">new</span> MyThread(dead, <span class="number">7</span>, <span class="number">8</span>);</span><br><span class="line"></span><br><span class="line">		t1.start();</span><br><span class="line">		t2.start();</span><br><span class="line">		t3.start();</span><br><span class="line">		t4.start();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>Result:</strong><br>read():Thread-0获取了resourceA的锁！<br>read():Thread-0获取了resourceB的锁！<br>write():Thread-0获取了resourceA的锁！<br>read():Thread-3获取了resourceA的锁！</p>
 
       
@@ -107,31 +106,25 @@
 </article>
 
 
-	
-	<nav id="pagination" >
-    
-    <a href="/2015/03/08/Zookeeper学习与使用/" class="alignleft prev" >上一页</a>
-    
-    
-    <a href="/2014/12/10/java-多线程-七/" class="alignright next" >下一页</a>
-    
-    <div class="clearfix"></div>
-	</nav>
-
 <section id="comment">
-<div class="ds-thread" data-thread-key="/2014/12/10/java-多线程-八/" data-title="java 多线程<八> 并发协作 生产者消费者模型&&死锁" data-url="http://jiangnan31.github.io/2014/12/10/java-多线程-八/"></div>
-  <script type="text/javascript">
-	var duoshuoQuery = {short_name:"jiangnan31"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
+  <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2014/12/10/java-多线程-八/" data-title="java 多线程&lt;八&gt; 并发协作 生产者消费者模型&amp;&amp;死锁" data-url="http://jiangnan31.github.io/2014/12/10/java-多线程-八/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jiangnan31"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+      </script>
+    <!-- 多说公共JS代码 end -->
 </section>
+
 
 </div></div>
     <aside id="sidebar" class="alignright">
@@ -149,9 +142,9 @@
   
     <li><a href="/categories/Code/">Code</a><small>1</small></li>
   
-    <li><a href="/categories/扯犊子/">扯犊子</a><small>2</small></li>
+    <li><a href="/categories/扯犊子/">扯犊子</a><small>1</small></li>
   
-    <li><a href="/categories/整理/">整理</a><small>3</small></li>
+    <li><a href="/categories/整理/">整理</a><small>2</small></li>
   
     <li><a href="/categories/笔记/">笔记</a><small>4</small></li>
   
@@ -172,7 +165,7 @@
   
     <li><a href="/tags/Hadoop/">Hadoop</a><small>2</small></li>
   
-    <li><a href="/tags/IO/">IO</a><small>3</small></li>
+    <li><a href="/tags/IO/">IO</a><small>2</small></li>
   
     <li><a href="/tags/JavaScript/">JavaScript</a><small>1</small></li>
   
@@ -192,7 +185,7 @@
   </div>
   <footer id="footer" class="inner"><div class="alignleft">
   
-  &copy; 2015 JiangNan
+  &copy; 2016 JiangNan
   
 </div>
 <div class="clearfix"></div></footer>
